@@ -30,5 +30,7 @@ namespace ManagementStore.Form
             loginUser.Show();
             Hide();
         }
+
+
     }
 }

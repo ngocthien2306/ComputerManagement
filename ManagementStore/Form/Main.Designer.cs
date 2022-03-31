@@ -36,6 +36,7 @@ namespace ManagementStore.Form
             this.skinRibbonTheme = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.ribbonPage_Product = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_System = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -51,11 +52,12 @@ namespace ManagementStore.Form
             this.barBtn_Profile,
             this.skinRibbonTheme});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbon.MaxItemId = 4;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_Product});
-            this.ribbon.Size = new System.Drawing.Size(1172, 181);
+            this.ribbon.Size = new System.Drawing.Size(1022, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barBtn_Logout
@@ -85,6 +87,7 @@ namespace ManagementStore.Form
             // 
             this.ribbonPage_Product.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_System,
+            this.ribbonGroupEmployee,
             this.ribbonPageGroup1});
             this.ribbonPage_Product.Name = "ribbonPage_Product";
             this.ribbonPage_Product.Text = "Home";
@@ -96,6 +99,11 @@ namespace ManagementStore.Form
             this.ribbonPageGroup_System.Name = "ribbonPageGroup_System";
             this.ribbonPageGroup_System.Text = "Systems";
             // 
+            // ribbonGroupEmployee
+            // 
+            this.ribbonGroupEmployee.Name = "ribbonGroupEmployee";
+            this.ribbonGroupEmployee.Text = "Employee";
+            // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.skinRibbonTheme);
@@ -104,18 +112,20 @@ namespace ManagementStore.Form
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 551);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 518);
+            this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1172, 29);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1022, 23);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1172, 580);
+            this.ClientSize = new System.Drawing.Size(1022, 541);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main";
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
@@ -137,5 +147,6 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.BarButtonItem barBtn_Profile;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonTheme;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupEmployee;
     }
 }

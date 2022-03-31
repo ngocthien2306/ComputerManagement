@@ -53,7 +53,7 @@ namespace ManagementStore.Services
                         else
                         {
                             transaction.Rollback();
-                            return new Result { Success = false, Message = "Register user successfull" };
+                            return new Result { Success = false, Message = "Register user failed" };
                         }
 
                     }
@@ -62,6 +62,7 @@ namespace ManagementStore.Services
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                return new Result { Success = false, Message = ex.Message };
             }
             return result;
         }

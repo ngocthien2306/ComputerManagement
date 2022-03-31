@@ -41,6 +41,12 @@ namespace ManagementStore.Form.User
                 main.Show();
                 Hide();
             }
+            else if(result.Success && result.Data.ToString() == "3")
+            {
+                Main main = new Main();
+                main.Show();
+                Hide();
+            }
             else
             {
                 XtraMessageBox.Show(result.Message, "Error" , MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

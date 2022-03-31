@@ -49,6 +49,9 @@ namespace ManagementStore.Form.User
                 if(result.Success)
                 {
                     XtraMessageBox.Show(result.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoginUser loginUser = new LoginUser();
+                    loginUser.Show();
+                    Hide();
                 }
                 else
                 {
