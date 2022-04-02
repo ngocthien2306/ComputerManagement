@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Camera;
 using ManagementStore.Extensions;
 using ManagementStore.Model;
 using ManagementStore.Services;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +76,26 @@ namespace ManagementStore.Form.User
             txtInputPassword.Text = "user123456";
             txtInputRePassword.Text = "user123456";
 
+        }
+
+
+        private void InvokeDefaultCameraDialog()
+        {
+            TakePictureDialog dialog = new TakePictureDialog();
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                Image image = dialog.Image;
+                using(var stream = new MemoryStream())
+                {
+                    image.Save(stream, ImageFormat.Jpeg);
+                    PictureEditUser.EditValue = stream.ToArray();
+                    
+                }
+            }
+        }
+        private void PictureEditUser_DoubleClick(object sender, EventArgs e)
+        {
+            InvokeDefaultCameraDialog();
         }
     }
 }

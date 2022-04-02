@@ -45,6 +45,7 @@ namespace ManagementStore.Form.User
             this.txtInputLastname = new DevExpress.XtraEditors.TextEdit();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.PictureEditUser = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputFirstname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).BeginInit();
             this.groupControlInfo.SuspendLayout();
@@ -53,6 +54,7 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputFirstname
@@ -65,6 +67,7 @@ namespace ManagementStore.Form.User
             // 
             // groupControlInfo
             // 
+            this.groupControlInfo.Controls.Add(this.PictureEditUser);
             this.groupControlInfo.Controls.Add(this.labelControlRePass);
             this.groupControlInfo.Controls.Add(this.labelControlPassword);
             this.groupControlInfo.Controls.Add(this.labelControlUsername);
@@ -79,7 +82,7 @@ namespace ManagementStore.Form.User
             this.groupControlInfo.Controls.Add(this.txtInputFirstname);
             this.groupControlInfo.Location = new System.Drawing.Point(12, 28);
             this.groupControlInfo.Name = "groupControlInfo";
-            this.groupControlInfo.Size = new System.Drawing.Size(632, 382);
+            this.groupControlInfo.Size = new System.Drawing.Size(937, 382);
             this.groupControlInfo.TabIndex = 0;
             this.groupControlInfo.Text = "User Information";
             // 
@@ -187,11 +190,21 @@ namespace ManagementStore.Form.User
             this.hyperLinkLogin.Text = "I have a account! login now";
             this.hyperLinkLogin.Click += new System.EventHandler(this.hyperLinkLogin_Click);
             // 
+            // PictureEditUser
+            // 
+            this.PictureEditUser.Location = new System.Drawing.Point(605, 41);
+            this.PictureEditUser.Name = "PictureEditUser";
+            this.PictureEditUser.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray;
+            this.PictureEditUser.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Always;
+            this.PictureEditUser.Size = new System.Drawing.Size(314, 320);
+            this.PictureEditUser.TabIndex = 18;
+            this.PictureEditUser.DoubleClick += new System.EventHandler(this.PictureEditUser_DoubleClick);
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 495);
+            this.ClientSize = new System.Drawing.Size(961, 532);
             this.Controls.Add(this.hyperLinkLogin);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.groupControlInfo);
@@ -207,6 +220,7 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +242,6 @@ namespace ManagementStore.Form.User
         private DevExpress.XtraEditors.TextEdit txtInputFirstname;
         private DevExpress.XtraEditors.SimpleButton btnRegister;
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkLogin;
+        private DevExpress.XtraEditors.PictureEdit PictureEditUser;
     }
 }
