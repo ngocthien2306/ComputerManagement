@@ -28,6 +28,7 @@ namespace ManagementStore.Form.User
             txtInputPassword.Text = "user123456";
             txtInputUsername.Text = "ngocthien";
             radioBtnStaff.Checked = true;
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -72,12 +73,28 @@ namespace ManagementStore.Form.User
                 e.Cancel = true;
 
                 txtInputUsername.Focus();
-                errorProvider1.SetError(txtInputUsername, "Please input username!");
+                dxErrorUsername.SetError(txtInputUsername, "Please input username!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtInputUsername, null);
+                dxErrorUsername.SetError(txtInputUsername, null);
+            }
+        }
+
+        private void txtInputPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtInputPassword.Text))
+            {
+                e.Cancel = true;
+
+                txtInputPassword.Focus();
+                dxErrorPass.SetError(txtInputPassword, "Please input password!");
+            }
+            else
+            {
+                e.Cancel = false;
+                dxErrorPass.SetError(txtInputPassword, null);
             }
         }
     }
