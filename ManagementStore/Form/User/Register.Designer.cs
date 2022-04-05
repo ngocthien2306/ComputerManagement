@@ -32,6 +32,7 @@ namespace ManagementStore.Form.User
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Register));
             this.txtInputFirstname = new DevExpress.XtraEditors.TextEdit();
             this.groupControlInfo = new DevExpress.XtraEditors.GroupControl();
+            this.PictureEditUser = new DevExpress.XtraEditors.PictureEdit();
             this.labelControlRePass = new DevExpress.XtraEditors.LabelControl();
             this.labelControlPassword = new DevExpress.XtraEditors.LabelControl();
             this.labelControlUsername = new DevExpress.XtraEditors.LabelControl();
@@ -45,16 +46,17 @@ namespace ManagementStore.Form.User
             this.txtInputLastname = new DevExpress.XtraEditors.TextEdit();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.PictureEditUser = new DevExpress.XtraEditors.PictureEdit();
+            this.btnUploadImage = new DevExpress.XtraEditors.SimpleButton();
+            this.btnTakePicture = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputFirstname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).BeginInit();
             this.groupControlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputRePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputFirstname
@@ -67,6 +69,8 @@ namespace ManagementStore.Form.User
             // 
             // groupControlInfo
             // 
+            this.groupControlInfo.Controls.Add(this.btnTakePicture);
+            this.groupControlInfo.Controls.Add(this.btnUploadImage);
             this.groupControlInfo.Controls.Add(this.PictureEditUser);
             this.groupControlInfo.Controls.Add(this.labelControlRePass);
             this.groupControlInfo.Controls.Add(this.labelControlPassword);
@@ -85,6 +89,17 @@ namespace ManagementStore.Form.User
             this.groupControlInfo.Size = new System.Drawing.Size(937, 382);
             this.groupControlInfo.TabIndex = 0;
             this.groupControlInfo.Text = "User Information";
+            // 
+            // PictureEditUser
+            // 
+            this.PictureEditUser.Location = new System.Drawing.Point(606, 41);
+            this.PictureEditUser.Name = "PictureEditUser";
+            this.PictureEditUser.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray;
+            this.PictureEditUser.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Always;
+            this.PictureEditUser.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.PictureEditUser.Size = new System.Drawing.Size(315, 196);
+            this.PictureEditUser.TabIndex = 18;
+            this.PictureEditUser.DoubleClick += new System.EventHandler(this.PictureEditUser_DoubleClick);
             // 
             // labelControlRePass
             // 
@@ -174,7 +189,7 @@ namespace ManagementStore.Form.User
             this.btnRegister.Appearance.ForeColor = System.Drawing.Color.Black;
             this.btnRegister.Appearance.Options.UseForeColor = true;
             this.btnRegister.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRegister.ImageOptions.SvgImage")));
-            this.btnRegister.Location = new System.Drawing.Point(506, 424);
+            this.btnRegister.Location = new System.Drawing.Point(811, 433);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(138, 41);
             this.btnRegister.TabIndex = 1;
@@ -183,22 +198,29 @@ namespace ManagementStore.Form.User
             // 
             // hyperLinkLogin
             // 
-            this.hyperLinkLogin.Location = new System.Drawing.Point(12, 424);
+            this.hyperLinkLogin.Location = new System.Drawing.Point(12, 433);
             this.hyperLinkLogin.Name = "hyperLinkLogin";
             this.hyperLinkLogin.Size = new System.Drawing.Size(157, 16);
             this.hyperLinkLogin.TabIndex = 2;
             this.hyperLinkLogin.Text = "I have a account! login now";
             this.hyperLinkLogin.Click += new System.EventHandler(this.hyperLinkLogin_Click);
             // 
-            // PictureEditUser
+            // btnUploadImage
             // 
-            this.PictureEditUser.Location = new System.Drawing.Point(605, 41);
-            this.PictureEditUser.Name = "PictureEditUser";
-            this.PictureEditUser.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray;
-            this.PictureEditUser.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Always;
-            this.PictureEditUser.Size = new System.Drawing.Size(314, 320);
-            this.PictureEditUser.TabIndex = 18;
-            this.PictureEditUser.DoubleClick += new System.EventHandler(this.PictureEditUser_DoubleClick);
+            this.btnUploadImage.Location = new System.Drawing.Point(606, 279);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(108, 45);
+            this.btnUploadImage.TabIndex = 19;
+            this.btnUploadImage.Text = "Upload Image";
+            // 
+            // btnTakePicture
+            // 
+            this.btnTakePicture.Location = new System.Drawing.Point(813, 279);
+            this.btnTakePicture.Name = "btnTakePicture";
+            this.btnTakePicture.Size = new System.Drawing.Size(108, 45);
+            this.btnTakePicture.TabIndex = 20;
+            this.btnTakePicture.Text = "Camera";
+            this.btnTakePicture.Click += new System.EventHandler(this.btnTakePicture_Click);
             // 
             // Register
             // 
@@ -215,12 +237,12 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).EndInit();
             this.groupControlInfo.ResumeLayout(false);
             this.groupControlInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputRePassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,5 +265,7 @@ namespace ManagementStore.Form.User
         private DevExpress.XtraEditors.SimpleButton btnRegister;
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkLogin;
         private DevExpress.XtraEditors.PictureEdit PictureEditUser;
+        private DevExpress.XtraEditors.SimpleButton btnTakePicture;
+        private DevExpress.XtraEditors.SimpleButton btnUploadImage;
     }
 }

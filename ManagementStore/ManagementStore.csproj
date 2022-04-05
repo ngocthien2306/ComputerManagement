@@ -88,11 +88,11 @@
     <Compile Include="ConnectionDB.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
-    <Compile Include="Form\Production\Production.cs">
+    <Compile Include="Form\Production\Productions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Production\Production.Designer.cs">
-      <DependentUpon>Production.cs</DependentUpon>
+    <Compile Include="Form\Production\Productions.Designer.cs">
+      <DependentUpon>Productions.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\User\LoginUser.cs">
       <SubType>Form</SubType>
@@ -127,8 +127,8 @@
     <EmbeddedResource Include="Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Production\Production.resx">
-      <DependentUpon>Production.cs</DependentUpon>
+    <EmbeddedResource Include="Form\Production\Productions.resx">
+      <DependentUpon>Productions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\User\LoginUser.resx">
       <DependentUpon>LoginUser.cs</DependentUpon>
@@ -167,9 +167,7 @@
       <Name>InfrastructureCore</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Form\Employee\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿
 namespace ManagementStore.Form.Production
 {
-    partial class Production
+    partial class Productions
     {
         /// <summary>
         /// Required designer variable.

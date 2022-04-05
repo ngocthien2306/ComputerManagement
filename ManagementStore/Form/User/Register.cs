@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Camera;
+using InfrastructureCore;
 using ManagementStore.Extensions;
 using ManagementStore.Model;
 using ManagementStore.Services;
@@ -45,7 +46,8 @@ namespace ManagementStore.Form.User
             user.Password = txtInputPassword.Text;
             string RePass = txtInputRePassword.Text;
             ValidateExtensions validate = new ValidateExtensions();
-            if(validate.ValidatePassword(user.Password, RePass))
+            Result r = validate.Validate("", user.Email, user.Password, RePass);
+            if (r.Success)
             {
                 var result = userServices.RegisterUser(user, "Guest");
 
@@ -63,7 +65,7 @@ namespace ManagementStore.Form.User
             }
             else
             {
-                XtraMessageBox.Show("Error", "Password not match", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show(r.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -94,6 +96,11 @@ namespace ManagementStore.Form.User
             }
         }
         private void PictureEditUser_DoubleClick(object sender, EventArgs e)
+        {
+            InvokeDefaultCameraDialog();
+        }
+
+        private void btnTakePicture_Click(object sender, EventArgs e)
         {
             InvokeDefaultCameraDialog();
         }

@@ -40,11 +40,13 @@ namespace ManagementStore.Form.User
             this.radioBtnGuest = new System.Windows.Forms.RadioButton();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkRegister = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).BeginInit();
             this.groupControlRole.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputUsername
@@ -56,6 +58,7 @@ namespace ManagementStore.Form.User
             this.txtInputUsername.Properties.MaxLength = 100;
             this.txtInputUsername.Size = new System.Drawing.Size(358, 44);
             this.txtInputUsername.TabIndex = 0;
+            this.txtInputUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtInputUsername_Validating);
             // 
             // txtInputPassword
             // 
@@ -128,6 +131,10 @@ namespace ManagementStore.Form.User
             this.hyperLinkRegister.Text = "Click here to create a account!";
             this.hyperLinkRegister.Click += new System.EventHandler(this.hyperLinkRegister_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // LoginUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -147,6 +154,7 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).EndInit();
             this.groupControlRole.ResumeLayout(false);
             this.groupControlRole.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +170,6 @@ namespace ManagementStore.Form.User
         private System.Windows.Forms.RadioButton radioBtnGuest;
         private DevExpress.XtraEditors.SimpleButton btnLogin;
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkRegister;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
