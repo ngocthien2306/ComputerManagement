@@ -118,8 +118,12 @@
     <Compile Include="Form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CommonModel\Menu.cs" />
     <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\AppUser.cs" />
+    <Compile Include="Model\UserModel\AppUser.cs" />
+    <Compile Include="Model\UserModel\GroupAccessMenu.cs" />
+    <Compile Include="Model\UserModel\UserAccessMenus.cs" />
+    <Compile Include="Model\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProductServices.cs" />
@@ -167,7 +171,9 @@
       <Name>InfrastructureCore</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\Dto\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

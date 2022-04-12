@@ -3,7 +3,9 @@ using DevExpress.XtraEditors.Camera;
 using InfrastructureCore;
 using ManagementStore.Extensions;
 using ManagementStore.Model;
+using ManagementStore.Model.UserModel;
 using ManagementStore.Services;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
