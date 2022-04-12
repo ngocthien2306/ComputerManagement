@@ -45,12 +45,26 @@ namespace ManagementStore.Form.User
                 
                 if (result.Success)
                 {
-                    var GroupAccessRole = userServices.GetListGroupAccessMenus(appUser.GroupRoleId);
-                    var UserAccessRole = userServices.GetListUserAccessMenus(appUser.Id);
+                    var groupAccessRole = userServices.GetListGroupAccessMenus(appUser.GroupRoleId);
+                    var userAccessRole = userServices.GetListUserAccessMenus(appUser.Id);
 
                     Main main = new Main();
-                    main.gridGroupRole.DataSource = GroupAccessRole;
-                    main.gridUserRole.DataSource = UserAccessRole;
+                    main.gridGroupRole.DataSource = groupAccessRole;
+                    main.gridUserRole.DataSource = userAccessRole;
+
+                    main.barBtnCreateProduct.Enabled = groupAccessRole[0].CreateYN;
+                    main.barBtnEditProduct.Enabled = groupAccessRole[0].EditYN;
+                    main.barBtnDeleteProduct.Enabled = groupAccessRole[0].DeleteYN;
+                    main.barBtnSearchProduct.Enabled = groupAccessRole[0].SearchYN;
+                    main.barBtnSaveProduct.Enabled = groupAccessRole[0].SaveYN;
+                    main.barBtnPrintProduct.Enabled = groupAccessRole[0].PrintYN;
+
+                    main.barBtnDeleteSale.Enabled = userAccessRole[0].DeleteYN;
+                    main.barBtnSaveSale.Enabled = userAccessRole[0].SaveYN;
+                    main.barBtnPrintSale.Enabled = userAccessRole[0].PrintYN;
+
+                    main.labelUsername.Text = "Wellcome " + appUser.Firstname + " " + appUser.Lastname;
+      
 
                     main.Show();
                     Hide();
