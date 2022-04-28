@@ -26,7 +26,7 @@ namespace ManagementStore.Form.User
         private void LoginUser_Load(object sender, EventArgs e)
         {
             txtInputPassword.Text = "user123456";
-            txtInputUsername.Text = "ngocthien";
+            txtInputUsername.Text = "thien123";
             radioBtnStaff.Checked = true;
         }
 
@@ -34,26 +34,17 @@ namespace ManagementStore.Form.User
         {
             string username = txtInputUsername.Text;
             string password = txtInputPassword.Text;
-            var role = radioBtnAdmin.Checked == true ? 1 : radioBtnStaff.Checked ? 2 : 3;
+      
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
-                var result = userServices.LoginUser(username, password, role);
-                if (result.Success && result.Data.ToString() == "2")
+                var result = userServices.LoginUser(username, password);
+                if (result.Success)
                 {
                     Main main = new Main();
                     main.Show();
                     Hide();
                 }
-                else if (result.Success && result.Data.ToString() == "3")
-                {
-                    Productions productions = new Productions();
-                    productions.Show();
-                    Hide();
-                }
-                else
-                {
-                    XtraMessageBox.Show(result.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
+
             }
         }
 

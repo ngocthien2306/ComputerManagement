@@ -35,21 +35,37 @@ namespace ManagementStore.Form.User
           
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        public AppUser GetAppUser()
         {
             AppUser user = new AppUser();
 
+            MemoryStream pic = new MemoryStream();
+
+            PictureEditUser.Image.Save(pic, PictureEditUser.Image.RawFormat);
+            user.Id = Guid.NewGuid().ToString();
             user.Firstname = txtInputFirstname.Text;
             user.Lastname = txtInputLastname.Text;
             user.Email = txtInputEmail.Text;
+            user.Phone = txtInputPhone.Text;
+            user.Address = txtInputAddress.Text;
+            user.Birthday = birthdayDate.DateTime;
+            user.Picture = pic.ToArray();
             user.Username = txtInputUsername.Text;
             user.Password = txtInputPassword.Text;
+
+            return user;
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            var user = GetAppUser();
+
             string RePass = txtInputRePassword.Text;
             ValidateExtensions validate = new ValidateExtensions();
             Result r = validate.Validate("", user.Email, user.Password, RePass);
             if (r.Success)
             {
-                var result = userServices.RegisterUser(user, "Guest");
+                var result = userServices.RegisterUser(user);
 
                 if(result.Success)
                 {
@@ -77,7 +93,7 @@ namespace ManagementStore.Form.User
             txtInputEmail.Text = "example@gmail.com";
             txtInputPassword.Text = "user123456";
             txtInputRePassword.Text = "user123456";
-
+            birthdayDate.EditValue = "1/1/2000";
         }
 
 
@@ -103,6 +119,16 @@ namespace ManagementStore.Form.User
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
             InvokeDefaultCameraDialog();
+        }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.pnq;*.gif";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                PictureEditUser.Image = Image.FromFile(open.FileName);
+            }
         }
     }
 }

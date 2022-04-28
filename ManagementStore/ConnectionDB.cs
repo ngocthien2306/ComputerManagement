@@ -10,7 +10,7 @@ namespace ManagementStore
 {
     public static class ConnectionDB
     {
-        private static readonly string SqlString = @"Data Source=26.209.131.79, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=ngocthien; Password=thien123";
+        private static readonly string SqlString = @"Data Source=26.178.255.191, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=thiennguyen; Password=ngocthien";
         static SqlConnection connection = new SqlConnection(SqlString);
         public static string GetConnectionString()
         {

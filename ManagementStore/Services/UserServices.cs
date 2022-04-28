@@ -15,7 +15,7 @@ namespace ManagementStore.Services
     {
        
         private static readonly string SP_Name = "SP_USER_MANAGEMENT";
-        public Result RegisterUser(AppUser user, string createdBy)
+        public Result RegisterUser(AppUser user)
         {
             var resultString = "Error";
             Result result = new Result();
@@ -24,25 +24,28 @@ namespace ManagementStore.Services
                 using(var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
                     using (var transaction = connect.BeginTransaction())
-                    {
-                        int role = createdBy == "Manager" ? 2 : 3;
-
-                        string[] arrParams = new string[7];
+                    {                       
+                        string[] arrParams = new string[11];
                         arrParams[0] = "@Method";
                         arrParams[1] = "@Firstname";
                         arrParams[2] = "@Lastname";
-                        arrParams[3] = "@Email";
-                        arrParams[4] = "@Username";
-                        arrParams[5] = "@PasswordHash"; arrParams[6] = "@RoleId";
+                        arrParams[3] = "@Email"; arrParams[4] = "@Username";
+                        arrParams[5] = "@PasswordHash"; arrParams[6] = "@Picture";
+                        arrParams[7] = "@Phone"; arrParams[8] = "@Address";
+                        arrParams[9] = "@Birthday"; arrParams[10] = "@UserId";
 
-                        object[] arrParamsValue = new object[7];
+                        object[] arrParamsValue = new object[11];
                         arrParamsValue[0] = "InsertUser";
                         arrParamsValue[1] = user.Firstname;
                         arrParamsValue[2] = user.Lastname;
                         arrParamsValue[3] = user.Email;
                         arrParamsValue[4] = user.Username;
                         arrParamsValue[5] = PasswordExtensions.HashPassword(user.Password);
-                        arrParamsValue[6] = role;
+                        arrParamsValue[6] = user.Picture;
+                        arrParamsValue[7] = user.Phone;
+                        arrParamsValue[8] = user.Address;
+                        arrParamsValue[9] = user.Birthday;
+                        arrParamsValue[10] = user.Id;
 
                         resultString = connect.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue, transaction);
                         transaction.Commit();
@@ -64,9 +67,9 @@ namespace ManagementStore.Services
                 Console.WriteLine(ex.Message);
                 return new Result { Success = false, Message = ex.Message };
             }
-            return result;
+
         }
-        public Result LoginUser(string uname, string password, int role)
+        public Result LoginUser(string uname, string password)
         {
             Result result = new Result();        
 
@@ -75,39 +78,23 @@ namespace ManagementStore.Services
                 using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
               
-                    var user = GetUserByUsername(uname, role);
+                    var user = GetUserByUsername(uname);
                     if (user == null)
                     {
                         return new Result { Success = false, Message = "Not found account!" };
                     }
                     else
                     {
-                        string[] arrParams = new string[4];
-                        arrParams[0] = "@Method";
-                        arrParams[1] = "@Username";
-                        arrParams[2] = "@PasswordHash";
-                        arrParams[3] = "@RoleId";
 
-                        object[] arrParamsValue = new object[5];
-                        arrParamsValue[0] = "LoginUser";
-                        arrParamsValue[1] = uname;
-                        arrParamsValue[2] = user.Password;
-                        arrParamsValue[3] = role;
-                        var userLogin = connect.ExecuteQuery<AppUser>(SP_Name, arrParams, arrParamsValue).First();
-
-                        if (userLogin != null)
+                        if (PasswordExtensions.VerifyPassword(user.Password, password))
                         {
-                            return new Result { Success = true, Message = "Login Successfull!", Data = userLogin.RoleId };
+                            return new Result { Success = true, Message = "Login Successfull!", Data = user };
                         }
                         else
                         {
                             return new Result { Success = false, Message = "Login fail! Username or Password incorrect!" };
                         }
-                    }
-                    
-
-
-
+                    }                 
                 }            
             }
             catch(Exception ex)
@@ -117,7 +104,7 @@ namespace ManagementStore.Services
             return result;
         }
 
-        public AppUser GetUserByUsername(string username, int role)
+        public AppUser GetUserByUsername(string username)
         {
             AppUser user = null;
             try
@@ -125,17 +112,17 @@ namespace ManagementStore.Services
                 
                 using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
-                    string[] arrParams = new string[3];
+                    string[] arrParams = new string[2];
                     arrParams[0] = "@Method";
                     arrParams[1] = "@Username";
-                    arrParams[2] = "@RoleId";
+  
 
-                    object[] arrParamsValue = new object[3];
+                    object[] arrParamsValue = new object[2];
                     arrParamsValue[0] = "GetUserByName";
                     arrParamsValue[1] = username;
-                    arrParamsValue[2] = role;
+        
                     var result = connect.ExecuteQuery<AppUser>(SP_Name, arrParams, arrParamsValue);
-
+                    
                     return result.FirstOrDefault();
                 }
             }
@@ -143,9 +130,10 @@ namespace ManagementStore.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                
+                return user;
+
             }
-            return user;
+            
         }
     }
 }
