@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using ManagementStore.Form.Production;
 using ManagementStore.Form.User;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,10 @@ namespace ManagementStore.Form
             Hide();
         }
 
-
+        private void barBtnCreate_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ProductionMgt productionMgt = new ProductionMgt();
+            productionMgt.ShowDialog();
+        }
     }
 }

@@ -88,11 +88,11 @@
     <Compile Include="ConnectionDB.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
-    <Compile Include="Form\Production\Productions.cs">
+    <Compile Include="Form\Production\ProductionMgt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Production\Productions.Designer.cs">
-      <DependentUpon>Productions.cs</DependentUpon>
+    <Compile Include="Form\Production\ProductionMgt.Designer.cs">
+      <DependentUpon>ProductionMgt.cs</DependentUpon>
     </Compile>
     <Compile Include="Form\User\LoginUser.cs">
       <SubType>Form</SubType>
@@ -127,8 +127,8 @@
     <EmbeddedResource Include="Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Production\Productions.resx">
-      <DependentUpon>Productions.cs</DependentUpon>
+    <EmbeddedResource Include="Form\Production\ProductionMgt.resx">
+      <DependentUpon>ProductionMgt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\User\LoginUser.resx">
       <DependentUpon>LoginUser.cs</DependentUpon>

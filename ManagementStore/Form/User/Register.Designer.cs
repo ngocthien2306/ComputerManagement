@@ -205,6 +205,9 @@ namespace ManagementStore.Form.User
             // 
             this.txtInputPhone.Location = new System.Drawing.Point(137, 173);
             this.txtInputPhone.Name = "txtInputPhone";
+            this.txtInputPhone.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtInputPhone.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtInputPhone.Properties.MaxLength = 10;
             this.txtInputPhone.Size = new System.Drawing.Size(363, 22);
             this.txtInputPhone.TabIndex = 27;
             // 
@@ -374,7 +377,7 @@ namespace ManagementStore.Form.User
             this.PictureEditUser.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.ByteArray;
             this.PictureEditUser.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Always;
             this.PictureEditUser.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.PictureEditUser.Size = new System.Drawing.Size(315, 216);
+            this.PictureEditUser.Size = new System.Drawing.Size(315, 243);
             this.PictureEditUser.TabIndex = 18;
             this.PictureEditUser.DoubleClick += new System.EventHandler(this.PictureEditUser_DoubleClick);
             // 
