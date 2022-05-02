@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using ManagementStore.Model;
 using ManagementStore.Services;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,9 @@ namespace ManagementStore.Form.Production
     public partial class ProductionMgt : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         ProductServices productServices = new ProductServices();
-
+        decimal startPrice = 0;
+        decimal endPrice = 0;
+        decimal max = 999999999;
         public ProductionMgt()
         {
             InitializeComponent();
@@ -54,28 +57,81 @@ namespace ManagementStore.Form.Production
 
 
             GetListProduct();
+        }
 
+        public void PriceOptionSearch()
+        {
+            string price = ccbPrice.Text;
+            if(price != "")
+            {
+                price = ccbPrice.SelectedValue.ToString();
+            }
+            
+            if (ccbPrice.Text == "")
+            {
+                startPrice = 0;
+                endPrice = max;
+            }
+            else if (price == "PRIP01")
+            {
+                startPrice = 0;
+                endPrice = 5000000;
+            }
+            else if (price == "PRIP02")
+            {
+                startPrice = 5000000;
+                endPrice = 1000000;
+            }
+            else if (price == "PRIP03")
+            {
+                startPrice = 10000000;
+                endPrice = 15000000;
+            }
+            else if (price == "PRIP04")
+            {
+                startPrice = 15000000;
+                endPrice = 20000000;
+            }
+            else if (price == "PRIP05")
+            {
+                startPrice = 20000000;
+                endPrice = 30000000;
+            }
+            else if (price == "PRIP06")
+            {
+                startPrice = 30000000;
+                endPrice = max;
+            }
 
         }
         public void GetListProduct()
         {
+            
+            string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId)";
+            PriceOptionSearch();
+            string[] arrParams = new string[7];
+            arrParams[0] = "@ProductName";       
+            arrParams[1] = "@Brands";
+            arrParams[2] = "@Category";
+            arrParams[3] = "@Rams";
+            arrParams[4] = "@StartPrice";
+            arrParams[5] = "@EndPrice";
+            arrParams[6] = "@UserId";
 
-            string query = @"select * from[dbo].[GetListProduct](@ProductName, @Price, @Brands, @Category, @Rams)";
-            string[] arrParams = new string[5];
-            arrParams[0] = "@ProductName";
-            arrParams[1] = "@Price";
-            arrParams[2] = "@Brands";
-            arrParams[3] = "@Category";
-            arrParams[4] = "@Rams";
-            object[] arrParamsValue = new object[5];
+            object[] arrParamsValue = new object[7];
             arrParamsValue[0] = txtInputPName.Text;
-            arrParamsValue[1] = ccbPrice.Text;
-            arrParamsValue[2] = ccbBrands.Text;
-            arrParamsValue[3] = ccbBrands.Text == "" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
-            arrParamsValue[4] = ccbRams.Text;
+            arrParamsValue[1] = ccbBrands.Text == "" ? "" : ccbBrands.SelectedValue.ToString();
+            arrParamsValue[2] = ccbCategory.Text == "" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
+            arrParamsValue[3] = ccbRams.Text == "" ? "" : ccbRams.SelectedValue.ToString();
+            arrParamsValue[4] = startPrice;
+            arrParamsValue[5] = endPrice;
+            arrParamsValue[6] = CurrentUser.AppUser.Id;
+
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
 
             gridControlProduct.DataSource = products;
+            gridViewProduct.EditingValue = false;
+       
         }
         private void barBtnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -85,6 +141,18 @@ namespace ManagementStore.Form.Production
         private void barBtnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GetListProduct();
+        }
+
+        private void barBtnCreate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CreateProduct createProduct = new CreateProduct();
+            createProduct.ShowDialog();
+        }
+
+        private void gridViewProduct_DoubleClick(object sender, EventArgs e)
+        {
+            CreateProduct createProduct = new CreateProduct();
+            createProduct.ShowDialog();
         }
     }
 }

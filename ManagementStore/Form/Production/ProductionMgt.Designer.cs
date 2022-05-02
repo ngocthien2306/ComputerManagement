@@ -54,9 +54,22 @@ namespace ManagementStore.Form.Production
             this.txtInputPName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridControlProduct = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.PId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Price = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Brand = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Category = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Picture = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
+            this.Mainboard = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CPU = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.VGA = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RAM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SSD = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -64,7 +77,10 @@ namespace ManagementStore.Form.Production
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -108,6 +124,7 @@ namespace ManagementStore.Form.Production
             this.barBtnCreate.Id = 3;
             this.barBtnCreate.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnCreate.ImageOptions.SvgImage")));
             this.barBtnCreate.Name = "barBtnCreate";
+            this.barBtnCreate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnCreate_ItemClick);
             // 
             // barBtnExport
             // 
@@ -279,21 +296,38 @@ namespace ManagementStore.Form.Production
             // gridControlProduct
             // 
             this.gridControlProduct.Location = new System.Drawing.Point(3, 6);
-            this.gridControlProduct.MainView = this.gridView1;
+            this.gridControlProduct.MainView = this.gridViewProduct;
             this.gridControlProduct.MenuManager = this.ribbonControl1;
             this.gridControlProduct.Name = "gridControlProduct";
+            this.gridControlProduct.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemPictureEdit1,
+            this.repositoryItemDateEdit1});
             this.gridControlProduct.Size = new System.Drawing.Size(1252, 584);
             this.gridControlProduct.TabIndex = 0;
             this.gridControlProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridViewProduct});
             // 
-            // gridView1
+            // gridViewProduct
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.PId,
-            this.ProductName});
-            this.gridView1.GridControl = this.gridControlProduct;
-            this.gridView1.Name = "gridView1";
+            this.ProductName,
+            this.Price,
+            this.Brand,
+            this.Category,
+            this.Picture,
+            this.Mainboard,
+            this.CPU,
+            this.VGA,
+            this.RAM,
+            this.SSD,
+            this.CreatedBy,
+            this.CreatedAt});
+            this.gridViewProduct.GridControl = this.gridControlProduct;
+            this.gridViewProduct.Name = "gridViewProduct";
+            this.gridViewProduct.OptionsPrint.EnableAppearanceEvenRow = true;
+            this.gridViewProduct.OptionsPrint.PrintSelectedRowsOnly = true;
+            this.gridViewProduct.DoubleClick += new System.EventHandler(this.gridViewProduct_DoubleClick);
             // 
             // PId
             // 
@@ -309,9 +343,136 @@ namespace ManagementStore.Form.Production
             this.ProductName.FieldName = "ProductName";
             this.ProductName.MinWidth = 25;
             this.ProductName.Name = "ProductName";
+            this.ProductName.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 0;
-            this.ProductName.Width = 94;
+            this.ProductName.Width = 102;
+            // 
+            // Price
+            // 
+            this.Price.Caption = "Price";
+            this.Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Price.FieldName = "Price";
+            this.Price.MinWidth = 25;
+            this.Price.Name = "Price";
+            this.Price.Visible = true;
+            this.Price.VisibleIndex = 1;
+            this.Price.Width = 102;
+            // 
+            // Brand
+            // 
+            this.Brand.Caption = "Brand";
+            this.Brand.FieldName = "Brand";
+            this.Brand.MinWidth = 25;
+            this.Brand.Name = "Brand";
+            this.Brand.Visible = true;
+            this.Brand.VisibleIndex = 2;
+            this.Brand.Width = 102;
+            // 
+            // Category
+            // 
+            this.Category.Caption = "Category";
+            this.Category.FieldName = "CategoryId";
+            this.Category.MinWidth = 25;
+            this.Category.Name = "Category";
+            this.Category.Visible = true;
+            this.Category.VisibleIndex = 3;
+            this.Category.Width = 106;
+            // 
+            // Picture
+            // 
+            this.Picture.Caption = "Picture";
+            this.Picture.ColumnEdit = this.repositoryItemPictureEdit1;
+            this.Picture.FieldName = "Picture";
+            this.Picture.MinWidth = 25;
+            this.Picture.Name = "Picture";
+            this.Picture.Visible = true;
+            this.Picture.VisibleIndex = 4;
+            this.Picture.Width = 74;
+            // 
+            // repositoryItemPictureEdit1
+            // 
+            this.repositoryItemPictureEdit1.Name = "repositoryItemPictureEdit1";
+            // 
+            // Mainboard
+            // 
+            this.Mainboard.Caption = "Mainboard";
+            this.Mainboard.FieldName = "Mainboard";
+            this.Mainboard.MinWidth = 25;
+            this.Mainboard.Name = "Mainboard";
+            this.Mainboard.Visible = true;
+            this.Mainboard.VisibleIndex = 5;
+            this.Mainboard.Width = 104;
+            // 
+            // CPU
+            // 
+            this.CPU.Caption = "CPU";
+            this.CPU.FieldName = "CPU";
+            this.CPU.MinWidth = 25;
+            this.CPU.Name = "CPU";
+            this.CPU.Visible = true;
+            this.CPU.VisibleIndex = 6;
+            this.CPU.Width = 110;
+            // 
+            // VGA
+            // 
+            this.VGA.Caption = "VGA";
+            this.VGA.FieldName = "VGA";
+            this.VGA.MinWidth = 25;
+            this.VGA.Name = "VGA";
+            this.VGA.Visible = true;
+            this.VGA.VisibleIndex = 7;
+            this.VGA.Width = 120;
+            // 
+            // RAM
+            // 
+            this.RAM.Caption = "RAM";
+            this.RAM.FieldName = "RAM";
+            this.RAM.MinWidth = 25;
+            this.RAM.Name = "RAM";
+            this.RAM.Visible = true;
+            this.RAM.VisibleIndex = 8;
+            this.RAM.Width = 57;
+            // 
+            // SSD
+            // 
+            this.SSD.Caption = "SSD";
+            this.SSD.FieldName = "SSD";
+            this.SSD.MinWidth = 25;
+            this.SSD.Name = "SSD";
+            this.SSD.Visible = true;
+            this.SSD.VisibleIndex = 9;
+            this.SSD.Width = 51;
+            // 
+            // CreatedBy
+            // 
+            this.CreatedBy.Caption = "Created By";
+            this.CreatedBy.FieldName = "CreatedBy";
+            this.CreatedBy.MinWidth = 25;
+            this.CreatedBy.Name = "CreatedBy";
+            this.CreatedBy.Visible = true;
+            this.CreatedBy.VisibleIndex = 10;
+            this.CreatedBy.Width = 136;
+            // 
+            // CreatedAt
+            // 
+            this.CreatedAt.Caption = "Created At";
+            this.CreatedAt.ColumnEdit = this.repositoryItemDateEdit1;
+            this.CreatedAt.FieldName = "CreatedAt";
+            this.CreatedAt.MinWidth = 25;
+            this.CreatedAt.Name = "CreatedAt";
+            this.CreatedAt.Visible = true;
+            this.CreatedAt.VisibleIndex = 11;
+            this.CreatedAt.Width = 165;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // ProductionMgt
             // 
@@ -334,7 +495,10 @@ namespace ManagementStore.Form.Production
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,10 +528,23 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraEditors.TextEdit txtInputPName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridControlProduct;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
         private DevExpress.XtraBars.BarButtonItem barBtnClose;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraGrid.Columns.GridColumn PId;
         private DevExpress.XtraGrid.Columns.GridColumn ProductName;
+        private DevExpress.XtraGrid.Columns.GridColumn Price;
+        private DevExpress.XtraGrid.Columns.GridColumn Brand;
+        private DevExpress.XtraGrid.Columns.GridColumn Category;
+        private DevExpress.XtraGrid.Columns.GridColumn Picture;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn Mainboard;
+        private DevExpress.XtraGrid.Columns.GridColumn CPU;
+        private DevExpress.XtraGrid.Columns.GridColumn VGA;
+        private DevExpress.XtraGrid.Columns.GridColumn RAM;
+        private DevExpress.XtraGrid.Columns.GridColumn SSD;
+        private DevExpress.XtraGrid.Columns.GridColumn CreatedBy;
+        private DevExpress.XtraGrid.Columns.GridColumn CreatedAt;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }
