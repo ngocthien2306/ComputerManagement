@@ -34,6 +34,12 @@ namespace ManagementStore.Form
 
         private void barBtnCreate_ItemClick(object sender, ItemClickEventArgs e)
         {
+            CreateProduct createProduct = new CreateProduct();
+            createProduct.ShowDialog();
+        }
+
+        private void barBtnProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
             ProductionMgt productionMgt = new ProductionMgt();
             productionMgt.ShowDialog();
         }

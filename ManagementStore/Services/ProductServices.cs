@@ -4,6 +4,7 @@ using ManagementStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,49 @@ namespace ManagementStore.Services
             return products; 
         }
 
+        public Result CreateProduct(Product product, string userId)
+        {
+            try
+            {
+                var resultString = "Error";
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    using(var trans = connection.BeginTransaction())
+                    {
+                        string[] arrParams = new string[13];
+                        arrParams[0] = "@Method"; arrParams[1] = "@ProductName"; arrParams[2] = "@Price";
+                        arrParams[3] = "@Brand"; arrParams[4] = "@CategoryId"; arrParams[5] = "@UserId";
+                        arrParams[6] = "@Pricture"; arrParams[7] = "@Mainboard"; arrParams[8] = "@CPU";
+                        arrParams[9] = "@RAM"; arrParams[10] = "@VGA"; arrParams[11] = "@SSD"; arrParams[12] = "@HDD";
+                        object[] arrParamsValue = new object[13];
+                        arrParamsValue[0] = "InsertData"; arrParamsValue[1] = product.ProductName;
+                        arrParamsValue[2] = product.Price; arrParamsValue[3] = product.Brand;
+                        arrParamsValue[4] = product.CategoryId; arrParamsValue[5] = userId;
+                        arrParamsValue[6] = product.Picture; arrParamsValue[7] = product.Mainboard;
+                        arrParamsValue[8] = product.CPU; arrParamsValue[9] = product.RAM;
+                        arrParamsValue[10] = product.VGA; arrParamsValue[11] = product.SSD;
+                        arrParamsValue[12] = product.HDD;
+                        resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue, trans);
+                        trans.Commit();
+                        if (resultString != "Error")
+                        {
+                            return new Result { Success = true, Data = resultString, Message = "Create product successfull" };
+                        }
+                        else
+                        {
+                            trans.Rollback();
+                            return new Result { Success = false, Message = "Create product failed" };
+                        }
+                    }
 
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
         public List<Category> GetListCategory()
         {
             List<Category> categorys = new List<Category>();
@@ -76,10 +119,31 @@ namespace ManagementStore.Services
             brands.Add(new Brands { Id = 5, Name = "HP" });
             brands.Add(new Brands { Id = 6, Name = "MACBOOK" });
             brands.Add(new Brands { Id = 7, Name = "DELL" });
-
-
             return brands;
         }
+
+
+        public DataTable GetListData(string query, object[] comCode, string[] param)
+        {
+            My_Database database = new My_Database();
+            SqlCommand command = new SqlCommand(query, database.GetConnection);
+
+            for (int i = 0; i < param.Length; i++)
+            {
+                command.Parameters.Add(param[i], SqlDbType.NVarChar).Value = comCode[i];
+            }
+            
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable table = new DataTable();
+            database.Openconnection();
+            adapter.Fill(table);
+            database.Closeconnection();
+            return table;
+
+        }
+
+
 
 
     }

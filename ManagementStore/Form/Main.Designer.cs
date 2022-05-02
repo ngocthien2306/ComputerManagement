@@ -44,6 +44,7 @@ namespace ManagementStore.Form
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnProduct = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_Product = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_System = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupProduct = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -56,11 +57,7 @@ namespace ManagementStore.Form
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -81,10 +78,11 @@ namespace ManagementStore.Form
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barBtnProduct});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbon.MaxItemId = 17;
+            this.ribbon.MaxItemId = 18;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_Product,
@@ -146,7 +144,7 @@ namespace ManagementStore.Form
             // 
             this.barBtnCreate.Caption = "Create";
             this.barBtnCreate.Id = 9;
-            this.barBtnCreate.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.barBtnCreate.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnCreate.ImageOptions.SvgImage")));
             this.barBtnCreate.Name = "barBtnCreate";
             this.barBtnCreate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnCreate_ItemClick);
             // 
@@ -185,6 +183,14 @@ namespace ManagementStore.Form
             this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
             this.barButtonItem10.Name = "barButtonItem10";
             // 
+            // barBtnProduct
+            // 
+            this.barBtnProduct.Caption = "Product";
+            this.barBtnProduct.Id = 17;
+            this.barBtnProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnProduct.ImageOptions.SvgImage")));
+            this.barBtnProduct.Name = "barBtnProduct";
+            this.barBtnProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnProduct_ItemClick);
+            // 
             // ribbonPage_Product
             // 
             this.ribbonPage_Product.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -197,7 +203,6 @@ namespace ManagementStore.Form
             // 
             // ribbonPageGroup_System
             // 
-            this.ribbonPageGroup_System.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Profile);
             this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Logout);
             this.ribbonPageGroup_System.Name = "ribbonPageGroup_System";
@@ -205,12 +210,13 @@ namespace ManagementStore.Form
             // 
             // ribbonPageGroupProduct
             // 
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnProduct);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnCreate);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem8);
             this.ribbonPageGroupProduct.Name = "ribbonPageGroupProduct";
-            this.ribbonPageGroupProduct.Text = "Product Management";
+            this.ribbonPageGroupProduct.Text = "Product Task";
             // 
             // ribbonPageGroupExportData
             // 
@@ -271,28 +277,11 @@ namespace ManagementStore.Form
             this.ribbonGroupEmployee.Name = "ribbonGroupEmployee";
             this.ribbonGroupEmployee.Text = "Product Management";
             // 
-            // gridControl1
-            // 
-            this.gridControl1.Location = new System.Drawing.Point(0, 186);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.ribbon;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1192, 446);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 666);
-            this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -302,8 +291,6 @@ namespace ManagementStore.Form
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,7 +324,8 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupExportData;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNotify;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControlProduct;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraBars.BarButtonItem barBtnProduct;
     }
 }

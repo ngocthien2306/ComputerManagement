@@ -14,14 +14,14 @@ namespace ManagementStore.Model
         public string ProductName { get; set; }
         public string Brand { get; set; }
 
-        [Display(Name= "Category Id")]
+        [Display(Name= "Category")]
         public int CategoryId { get; set; }
         public decimal Price { get; set; }
         public string UpdatedBy { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public MemoryStream Picture { get; set; }
+        public byte[] Picture { get; set; }
         public string Mainboard { get; set; }
         public string CPU { get; set; }
         public string RAM { get; set; }

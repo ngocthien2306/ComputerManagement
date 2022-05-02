@@ -21,6 +21,12 @@ namespace ManagementStore.Model
         public DateTime Birthday { get; set; }
         public byte[] Picture { get; set; }
 
+        public string CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public bool UseYN { get; set; }
+
         public AppUser(string id = "", string fname = "", string lname = "", string email = "", string uname = "", string pass = "", byte[] picture = default)
         {
             this.Id = id;

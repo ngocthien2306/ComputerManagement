@@ -38,4 +38,26 @@ namespace ManagementStore
         }
 
     }
+    public class My_Database
+    {
+        SqlConnection connect = new SqlConnection(@"Data Source=26.178.255.191, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=thiennguyen; Password=ngocthien");
+        public SqlConnection GetConnection
+        {
+            get { return this.connect; }
+        }
+        public void Openconnection()
+        {
+            if (connect.State == ConnectionState.Closed)
+            {
+                connect.Open();
+            }
+        }
+        public void Closeconnection()
+        {
+            if (connect.State == ConnectionState.Open)
+            {
+                connect.Close();
+            }
+        }
+    }
 }

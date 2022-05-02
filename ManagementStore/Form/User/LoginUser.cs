@@ -11,12 +11,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagementStore.Form.Production;
-
+using ManagementStore.Model;
 
 namespace ManagementStore.Form.User
 {
     public partial class LoginUser : DevExpress.XtraEditors.XtraForm
     {
+
         public LoginUser()
         {
             InitializeComponent();
@@ -34,12 +35,16 @@ namespace ManagementStore.Form.User
         {
             string username = txtInputUsername.Text;
             string password = txtInputPassword.Text;
-      
+
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
                 var result = userServices.LoginUser(username, password);
+                AppUser appUser = result.Data as AppUser;
+
                 if (result.Success)
                 {
+                    CurrentUser.SetCurrentUser(appUser);
+                    
                     Main main = new Main();
                     main.Show();
                     Hide();
