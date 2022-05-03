@@ -36,6 +36,9 @@ namespace ManagementStore.Form.Production
             this.picturePImage = new DevExpress.XtraEditors.PictureEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPageMain = new DevExpress.XtraTab.XtraTabPage();
+            this.btnFindProduct = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
             this.ccbPBrand = new System.Windows.Forms.ComboBox();
             this.ccbPCategory = new System.Windows.Forms.ComboBox();
             this.labelControlPBrand = new DevExpress.XtraEditors.LabelControl();
@@ -64,7 +67,6 @@ namespace ManagementStore.Form.Production
             this.accordionBtnSaveClose = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionBtnDelete = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlClear = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionBtnClearChanges = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionBtnClear = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlExitForm = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionBtnExit = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -78,6 +80,7 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPageMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPName.Properties)).BeginInit();
             this.xtraTabPageDetail.SuspendLayout();
@@ -140,6 +143,9 @@ namespace ManagementStore.Form.Production
             // 
             // xtraTabPageMain
             // 
+            this.xtraTabPageMain.Controls.Add(this.btnFindProduct);
+            this.xtraTabPageMain.Controls.Add(this.labelControl1);
+            this.xtraTabPageMain.Controls.Add(this.txtInputProductId);
             this.xtraTabPageMain.Controls.Add(this.ccbPBrand);
             this.xtraTabPageMain.Controls.Add(this.ccbPCategory);
             this.xtraTabPageMain.Controls.Add(this.labelControlPBrand);
@@ -152,10 +158,35 @@ namespace ManagementStore.Form.Production
             this.xtraTabPageMain.Size = new System.Drawing.Size(529, 398);
             this.xtraTabPageMain.Text = "Product Info";
             // 
+            // btnFindProduct
+            // 
+            this.btnFindProduct.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFindProduct.ImageOptions.Image")));
+            this.btnFindProduct.Location = new System.Drawing.Point(393, 41);
+            this.btnFindProduct.Name = "btnFindProduct";
+            this.btnFindProduct.Size = new System.Drawing.Size(94, 22);
+            this.btnFindProduct.TabIndex = 16;
+            this.btnFindProduct.Text = "Find";
+            this.btnFindProduct.Click += new System.EventHandler(this.btnFindProduct_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(18, 44);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(64, 16);
+            this.labelControl1.TabIndex = 15;
+            this.labelControl1.Text = "Product ID:";
+            // 
+            // txtInputProductId
+            // 
+            this.txtInputProductId.Location = new System.Drawing.Point(134, 41);
+            this.txtInputProductId.Name = "txtInputProductId";
+            this.txtInputProductId.Size = new System.Drawing.Size(253, 22);
+            this.txtInputProductId.TabIndex = 14;
+            // 
             // ccbPBrand
             // 
             this.ccbPBrand.FormattingEnabled = true;
-            this.ccbPBrand.Location = new System.Drawing.Point(131, 198);
+            this.ccbPBrand.Location = new System.Drawing.Point(134, 230);
             this.ccbPBrand.Name = "ccbPBrand";
             this.ccbPBrand.Size = new System.Drawing.Size(238, 24);
             this.ccbPBrand.TabIndex = 13;
@@ -163,14 +194,14 @@ namespace ManagementStore.Form.Production
             // ccbPCategory
             // 
             this.ccbPCategory.FormattingEnabled = true;
-            this.ccbPCategory.Location = new System.Drawing.Point(131, 264);
+            this.ccbPCategory.Location = new System.Drawing.Point(134, 296);
             this.ccbPCategory.Name = "ccbPCategory";
             this.ccbPCategory.Size = new System.Drawing.Size(238, 24);
             this.ccbPCategory.TabIndex = 12;
             // 
             // labelControlPBrand
             // 
-            this.labelControlPBrand.Location = new System.Drawing.Point(15, 201);
+            this.labelControlPBrand.Location = new System.Drawing.Point(18, 233);
             this.labelControlPBrand.Name = "labelControlPBrand";
             this.labelControlPBrand.Size = new System.Drawing.Size(38, 16);
             this.labelControlPBrand.TabIndex = 9;
@@ -178,7 +209,7 @@ namespace ManagementStore.Form.Production
             // 
             // labelControlPCategory
             // 
-            this.labelControlPCategory.Location = new System.Drawing.Point(15, 267);
+            this.labelControlPCategory.Location = new System.Drawing.Point(18, 299);
             this.labelControlPCategory.Name = "labelControlPCategory";
             this.labelControlPCategory.Size = new System.Drawing.Size(56, 16);
             this.labelControlPCategory.TabIndex = 6;
@@ -186,14 +217,14 @@ namespace ManagementStore.Form.Production
             // 
             // txtPPrice
             // 
-            this.txtPPrice.Location = new System.Drawing.Point(131, 132);
+            this.txtPPrice.Location = new System.Drawing.Point(134, 164);
             this.txtPPrice.Name = "txtPPrice";
             this.txtPPrice.Size = new System.Drawing.Size(356, 22);
             this.txtPPrice.TabIndex = 5;
             // 
             // labelControlPprice
             // 
-            this.labelControlPprice.Location = new System.Drawing.Point(15, 135);
+            this.labelControlPprice.Location = new System.Drawing.Point(18, 167);
             this.labelControlPprice.Name = "labelControlPprice";
             this.labelControlPprice.Size = new System.Drawing.Size(33, 16);
             this.labelControlPprice.TabIndex = 4;
@@ -201,14 +232,14 @@ namespace ManagementStore.Form.Production
             // 
             // txtPName
             // 
-            this.txtPName.Location = new System.Drawing.Point(131, 70);
+            this.txtPName.Location = new System.Drawing.Point(134, 102);
             this.txtPName.Name = "txtPName";
             this.txtPName.Size = new System.Drawing.Size(356, 22);
             this.txtPName.TabIndex = 1;
             // 
             // labelControlPname
             // 
-            this.labelControlPname.Location = new System.Drawing.Point(15, 73);
+            this.labelControlPname.Location = new System.Drawing.Point(18, 105);
             this.labelControlPname.Name = "labelControlPname";
             this.labelControlPname.Size = new System.Drawing.Size(85, 16);
             this.labelControlPname.TabIndex = 0;
@@ -370,6 +401,7 @@ namespace ManagementStore.Form.Production
             this.accordionBtnSaveClose.Name = "accordionBtnSaveClose";
             this.accordionBtnSaveClose.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionBtnSaveClose.Text = "Save & Close";
+            this.accordionBtnSaveClose.Click += new System.EventHandler(this.accordionBtnSaveClose_Click);
             // 
             // accordionBtnDelete
             // 
@@ -377,22 +409,15 @@ namespace ManagementStore.Form.Production
             this.accordionBtnDelete.Name = "accordionBtnDelete";
             this.accordionBtnDelete.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionBtnDelete.Text = "Delete";
+            this.accordionBtnDelete.Click += new System.EventHandler(this.accordionBtnDelete_Click);
             // 
             // accordionControlClear
             // 
             this.accordionControlClear.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionBtnClearChanges,
             this.accordionBtnClear});
             this.accordionControlClear.Expanded = true;
             this.accordionControlClear.Name = "accordionControlClear";
             this.accordionControlClear.Text = "Clear";
-            // 
-            // accordionBtnClearChanges
-            // 
-            this.accordionBtnClearChanges.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionBtnClearChanges.ImageOptions.Image")));
-            this.accordionBtnClearChanges.Name = "accordionBtnClearChanges";
-            this.accordionBtnClearChanges.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.accordionBtnClearChanges.Text = "Clear Changes";
             // 
             // accordionBtnClear
             // 
@@ -400,6 +425,7 @@ namespace ManagementStore.Form.Production
             this.accordionBtnClear.Name = "accordionBtnClear";
             this.accordionBtnClear.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionBtnClear.Text = "Clear Data";
+            this.accordionBtnClear.Click += new System.EventHandler(this.accordionBtnClear_Click);
             // 
             // accordionControlExitForm
             // 
@@ -462,6 +488,7 @@ namespace ManagementStore.Form.Production
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPageMain.ResumeLayout(false);
             this.xtraTabPageMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPName.Properties)).EndInit();
             this.xtraTabPageDetail.ResumeLayout(false);
@@ -487,37 +514,39 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageMain;
-        private DevExpress.XtraEditors.LabelControl labelControlPname;
         private DevExpress.XtraTab.XtraTabPage xtraTabPageDetail;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlStorage;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnSave;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnSaveClose;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnDelete;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlClear;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnClearChanges;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnClear;
         private DevExpress.XtraEditors.SimpleButton btnUpload;
-        private DevExpress.XtraEditors.PictureEdit picturePImage;
-        private DevExpress.XtraEditors.LabelControl labelControlPBrand;
-        private DevExpress.XtraEditors.LabelControl labelControlPCategory;
-        private DevExpress.XtraEditors.TextEdit txtPPrice;
-        private DevExpress.XtraEditors.LabelControl labelControlPprice;
-        private DevExpress.XtraEditors.TextEdit txtPName;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlExitForm;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionBtnExit;
-        private DevExpress.XtraEditors.TextEdit txtHDD;
-        private DevExpress.XtraEditors.LabelControl labelControlHDD;
-        private DevExpress.XtraEditors.TextEdit txtSSD;
-        private DevExpress.XtraEditors.LabelControl labelControlSSD;
-        private DevExpress.XtraEditors.TextEdit txtVGA;
-        private DevExpress.XtraEditors.LabelControl labelControlVGA;
-        private DevExpress.XtraEditors.LabelControl labelControlRam;
-        private DevExpress.XtraEditors.TextEdit txtCPU;
-        private DevExpress.XtraEditors.LabelControl labelControlCPU;
-        private DevExpress.XtraEditors.TextEdit txtMainboard;
-        private DevExpress.XtraEditors.LabelControl labelControlMainboard;
-        private System.Windows.Forms.ComboBox ccbPCategory;
-        private System.Windows.Forms.ComboBox ccbPBrand;
-        private System.Windows.Forms.ComboBox ccbRam;
+        public DevExpress.XtraEditors.LabelControl labelControlPname;
+        public DevExpress.XtraEditors.LabelControl labelControlPBrand;
+        public DevExpress.XtraEditors.LabelControl labelControlPCategory;
+        public DevExpress.XtraEditors.TextEdit txtPPrice;
+        public DevExpress.XtraEditors.LabelControl labelControlPprice;
+        public DevExpress.XtraEditors.TextEdit txtPName;
+        public DevExpress.XtraEditors.TextEdit txtHDD;
+        public DevExpress.XtraEditors.LabelControl labelControlHDD;
+        public DevExpress.XtraEditors.TextEdit txtSSD;
+        public DevExpress.XtraEditors.LabelControl labelControlSSD;
+        public DevExpress.XtraEditors.TextEdit txtVGA;
+        public DevExpress.XtraEditors.LabelControl labelControlVGA;
+        public DevExpress.XtraEditors.LabelControl labelControlRam;
+        public DevExpress.XtraEditors.TextEdit txtCPU;
+        public DevExpress.XtraEditors.LabelControl labelControlCPU;
+        public DevExpress.XtraEditors.TextEdit txtMainboard;
+        public DevExpress.XtraEditors.LabelControl labelControlMainboard;
+        public System.Windows.Forms.ComboBox ccbPCategory;
+        public System.Windows.Forms.ComboBox ccbPBrand;
+        public System.Windows.Forms.ComboBox ccbRam;
+        public DevExpress.XtraEditors.PictureEdit picturePImage;
+        public DevExpress.XtraEditors.TextEdit txtInputProductId;
+        private DevExpress.XtraEditors.SimpleButton btnFindProduct;
+        public DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

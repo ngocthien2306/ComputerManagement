@@ -40,13 +40,15 @@ namespace ManagementStore.Form.User
             this.radioBtnGuest = new System.Windows.Forms.RadioButton();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkRegister = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dxErrorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).BeginInit();
             this.groupControlRole.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProviderPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputUsername
@@ -68,6 +70,7 @@ namespace ManagementStore.Form.User
             this.txtInputPassword.Properties.PasswordChar = '*';
             this.txtInputPassword.Size = new System.Drawing.Size(358, 44);
             this.txtInputPassword.TabIndex = 1;
+            this.txtInputPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtInputPassword_Validating);
             // 
             // groupControlRole
             // 
@@ -131,9 +134,13 @@ namespace ManagementStore.Form.User
             this.hyperLinkRegister.Text = "Click here to create a account!";
             this.hyperLinkRegister.Click += new System.EventHandler(this.hyperLinkRegister_Click);
             // 
-            // errorProvider1
+            // errorProviderUsername
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.errorProviderUsername.ContainerControl = this;
+            // 
+            // dxErrorProviderPassword
+            // 
+            this.dxErrorProviderPassword.ContainerControl = this;
             // 
             // LoginUser
             // 
@@ -154,7 +161,8 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).EndInit();
             this.groupControlRole.ResumeLayout(false);
             this.groupControlRole.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProviderPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,6 +178,7 @@ namespace ManagementStore.Form.User
         private System.Windows.Forms.RadioButton radioBtnGuest;
         private DevExpress.XtraEditors.SimpleButton btnLogin;
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkRegister;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider errorProviderUsername;
+        private System.Windows.Forms.ErrorProvider dxErrorProviderPassword;
     }
 }

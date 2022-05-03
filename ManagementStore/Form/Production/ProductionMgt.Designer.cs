@@ -29,6 +29,7 @@ namespace ManagementStore.Form.Production
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionMgt));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barBtnSearch = new DevExpress.XtraBars.BarButtonItem();
@@ -42,6 +43,10 @@ namespace ManagementStore.Form.Production
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.ccbPrice = new System.Windows.Forms.ComboBox();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -70,17 +75,22 @@ namespace ManagementStore.Form.Production
             this.CreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.errorProviderProductID = new System.Windows.Forms.ErrorProvider(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProductID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -184,6 +194,10 @@ namespace ManagementStore.Form.Production
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnEdit);
+            this.splitContainer1.Panel1.Controls.Add(this.txtInputProductId);
+            this.splitContainer1.Panel1.Controls.Add(this.labelControl8);
+            this.splitContainer1.Panel1.Controls.Add(this.labelControl7);
             this.splitContainer1.Panel1.Controls.Add(this.ccbPrice);
             this.splitContainer1.Panel1.Controls.Add(this.labelControl6);
             this.splitContainer1.Panel1.Controls.Add(this.labelControl5);
@@ -203,10 +217,46 @@ namespace ManagementStore.Form.Production
             this.splitContainer1.SplitterDistance = 508;
             this.splitContainer1.TabIndex = 2;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(379, 88);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(84, 22);
+            this.btnEdit.TabIndex = 19;
+            this.btnEdit.Text = "Go Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // txtInputProductId
+            // 
+            this.txtInputProductId.Location = new System.Drawing.Point(147, 88);
+            this.txtInputProductId.MenuManager = this.ribbonControl1;
+            this.txtInputProductId.Name = "txtInputProductId";
+            this.txtInputProductId.Size = new System.Drawing.Size(226, 22);
+            this.txtInputProductId.TabIndex = 18;
+            this.txtInputProductId.Validating += new System.ComponentModel.CancelEventHandler(this.txtInputProductId_Validating);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(23, 94);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(64, 16);
+            this.labelControl8.TabIndex = 17;
+            this.labelControl8.Text = "Product ID:";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Location = new System.Drawing.Point(23, 42);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(99, 28);
+            this.labelControl7.TabIndex = 16;
+            this.labelControl7.Text = "Open edit";
+            // 
             // ccbPrice
             // 
             this.ccbPrice.FormattingEnabled = true;
-            this.ccbPrice.Location = new System.Drawing.Point(150, 136);
+            this.ccbPrice.Location = new System.Drawing.Point(147, 262);
             this.ccbPrice.Name = "ccbPrice";
             this.ccbPrice.Size = new System.Drawing.Size(316, 24);
             this.ccbPrice.TabIndex = 11;
@@ -215,7 +265,7 @@ namespace ManagementStore.Form.Production
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(26, 24);
+            this.labelControl6.Location = new System.Drawing.Point(23, 158);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(140, 28);
             this.labelControl6.TabIndex = 10;
@@ -223,7 +273,7 @@ namespace ManagementStore.Form.Production
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(26, 321);
+            this.labelControl5.Location = new System.Drawing.Point(23, 447);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(31, 16);
             this.labelControl5.TabIndex = 9;
@@ -232,14 +282,14 @@ namespace ManagementStore.Form.Production
             // ccbRams
             // 
             this.ccbRams.FormattingEnabled = true;
-            this.ccbRams.Location = new System.Drawing.Point(150, 313);
+            this.ccbRams.Location = new System.Drawing.Point(147, 439);
             this.ccbRams.Name = "ccbRams";
             this.ccbRams.Size = new System.Drawing.Size(316, 24);
             this.ccbRams.TabIndex = 8;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(26, 264);
+            this.labelControl4.Location = new System.Drawing.Point(23, 390);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(56, 16);
             this.labelControl4.TabIndex = 7;
@@ -248,14 +298,14 @@ namespace ManagementStore.Form.Production
             // ccbCategory
             // 
             this.ccbCategory.FormattingEnabled = true;
-            this.ccbCategory.Location = new System.Drawing.Point(150, 256);
+            this.ccbCategory.Location = new System.Drawing.Point(147, 382);
             this.ccbCategory.Name = "ccbCategory";
             this.ccbCategory.Size = new System.Drawing.Size(316, 24);
             this.ccbCategory.TabIndex = 6;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(26, 207);
+            this.labelControl3.Location = new System.Drawing.Point(23, 333);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(44, 16);
             this.labelControl3.TabIndex = 5;
@@ -264,14 +314,14 @@ namespace ManagementStore.Form.Production
             // ccbBrands
             // 
             this.ccbBrands.FormattingEnabled = true;
-            this.ccbBrands.Location = new System.Drawing.Point(150, 199);
+            this.ccbBrands.Location = new System.Drawing.Point(147, 325);
             this.ccbBrands.Name = "ccbBrands";
             this.ccbBrands.Size = new System.Drawing.Size(316, 24);
             this.ccbBrands.TabIndex = 4;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(26, 144);
+            this.labelControl2.Location = new System.Drawing.Point(23, 270);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(33, 16);
             this.labelControl2.TabIndex = 2;
@@ -279,7 +329,7 @@ namespace ManagementStore.Form.Production
             // 
             // txtInputPName
             // 
-            this.txtInputPName.Location = new System.Drawing.Point(150, 85);
+            this.txtInputPName.Location = new System.Drawing.Point(147, 211);
             this.txtInputPName.MenuManager = this.ribbonControl1;
             this.txtInputPName.Name = "txtInputPName";
             this.txtInputPName.Size = new System.Drawing.Size(316, 22);
@@ -287,7 +337,7 @@ namespace ManagementStore.Form.Production
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(26, 88);
+            this.labelControl1.Location = new System.Drawing.Point(23, 214);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(85, 16);
             this.labelControl1.TabIndex = 0;
@@ -335,7 +385,9 @@ namespace ManagementStore.Form.Production
             this.PId.FieldName = "PId";
             this.PId.MinWidth = 25;
             this.PId.Name = "PId";
-            this.PId.Width = 94;
+            this.PId.Visible = true;
+            this.PId.VisibleIndex = 0;
+            this.PId.Width = 47;
             // 
             // ProductName
             // 
@@ -345,8 +397,8 @@ namespace ManagementStore.Form.Production
             this.ProductName.Name = "ProductName";
             this.ProductName.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.ProductName.Visible = true;
-            this.ProductName.VisibleIndex = 0;
-            this.ProductName.Width = 102;
+            this.ProductName.VisibleIndex = 1;
+            this.ProductName.Width = 97;
             // 
             // Price
             // 
@@ -356,8 +408,8 @@ namespace ManagementStore.Form.Production
             this.Price.MinWidth = 25;
             this.Price.Name = "Price";
             this.Price.Visible = true;
-            this.Price.VisibleIndex = 1;
-            this.Price.Width = 102;
+            this.Price.VisibleIndex = 2;
+            this.Price.Width = 97;
             // 
             // Brand
             // 
@@ -366,8 +418,8 @@ namespace ManagementStore.Form.Production
             this.Brand.MinWidth = 25;
             this.Brand.Name = "Brand";
             this.Brand.Visible = true;
-            this.Brand.VisibleIndex = 2;
-            this.Brand.Width = 102;
+            this.Brand.VisibleIndex = 3;
+            this.Brand.Width = 97;
             // 
             // Category
             // 
@@ -376,8 +428,8 @@ namespace ManagementStore.Form.Production
             this.Category.MinWidth = 25;
             this.Category.Name = "Category";
             this.Category.Visible = true;
-            this.Category.VisibleIndex = 3;
-            this.Category.Width = 106;
+            this.Category.VisibleIndex = 4;
+            this.Category.Width = 101;
             // 
             // Picture
             // 
@@ -387,8 +439,8 @@ namespace ManagementStore.Form.Production
             this.Picture.MinWidth = 25;
             this.Picture.Name = "Picture";
             this.Picture.Visible = true;
-            this.Picture.VisibleIndex = 4;
-            this.Picture.Width = 74;
+            this.Picture.VisibleIndex = 5;
+            this.Picture.Width = 70;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -401,8 +453,8 @@ namespace ManagementStore.Form.Production
             this.Mainboard.MinWidth = 25;
             this.Mainboard.Name = "Mainboard";
             this.Mainboard.Visible = true;
-            this.Mainboard.VisibleIndex = 5;
-            this.Mainboard.Width = 104;
+            this.Mainboard.VisibleIndex = 6;
+            this.Mainboard.Width = 99;
             // 
             // CPU
             // 
@@ -411,8 +463,8 @@ namespace ManagementStore.Form.Production
             this.CPU.MinWidth = 25;
             this.CPU.Name = "CPU";
             this.CPU.Visible = true;
-            this.CPU.VisibleIndex = 6;
-            this.CPU.Width = 110;
+            this.CPU.VisibleIndex = 7;
+            this.CPU.Width = 105;
             // 
             // VGA
             // 
@@ -421,8 +473,8 @@ namespace ManagementStore.Form.Production
             this.VGA.MinWidth = 25;
             this.VGA.Name = "VGA";
             this.VGA.Visible = true;
-            this.VGA.VisibleIndex = 7;
-            this.VGA.Width = 120;
+            this.VGA.VisibleIndex = 8;
+            this.VGA.Width = 114;
             // 
             // RAM
             // 
@@ -431,8 +483,8 @@ namespace ManagementStore.Form.Production
             this.RAM.MinWidth = 25;
             this.RAM.Name = "RAM";
             this.RAM.Visible = true;
-            this.RAM.VisibleIndex = 8;
-            this.RAM.Width = 57;
+            this.RAM.VisibleIndex = 9;
+            this.RAM.Width = 53;
             // 
             // SSD
             // 
@@ -441,8 +493,8 @@ namespace ManagementStore.Form.Production
             this.SSD.MinWidth = 25;
             this.SSD.Name = "SSD";
             this.SSD.Visible = true;
-            this.SSD.VisibleIndex = 9;
-            this.SSD.Width = 51;
+            this.SSD.VisibleIndex = 10;
+            this.SSD.Width = 48;
             // 
             // CreatedBy
             // 
@@ -450,9 +502,7 @@ namespace ManagementStore.Form.Production
             this.CreatedBy.FieldName = "CreatedBy";
             this.CreatedBy.MinWidth = 25;
             this.CreatedBy.Name = "CreatedBy";
-            this.CreatedBy.Visible = true;
-            this.CreatedBy.VisibleIndex = 10;
-            this.CreatedBy.Width = 136;
+            this.CreatedBy.Width = 130;
             // 
             // CreatedAt
             // 
@@ -463,7 +513,7 @@ namespace ManagementStore.Form.Production
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.Visible = true;
             this.CreatedAt.VisibleIndex = 11;
-            this.CreatedAt.Width = 165;
+            this.CreatedAt.Width = 171;
             // 
             // repositoryItemDateEdit1
             // 
@@ -473,6 +523,10 @@ namespace ManagementStore.Form.Production
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // errorProviderProductID
+            // 
+            this.errorProviderProductID.ContainerControl = this;
             // 
             // ProductionMgt
             // 
@@ -493,12 +547,15 @@ namespace ManagementStore.Form.Production
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderProductID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -528,7 +585,6 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraEditors.TextEdit txtInputPName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridControlProduct;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
         private DevExpress.XtraBars.BarButtonItem barBtnClose;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraGrid.Columns.GridColumn PId;
@@ -546,5 +602,12 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraGrid.Columns.GridColumn CreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn CreatedAt;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        public DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.TextEdit txtInputProductId;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        private System.Windows.Forms.ErrorProvider errorProviderProductID;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

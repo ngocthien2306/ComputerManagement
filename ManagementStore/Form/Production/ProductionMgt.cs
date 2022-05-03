@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,60 +51,21 @@ namespace ManagementStore.Form.Production
             ccbPrice.DisplayMember = "Name";
             ccbPrice.ValueMember = "ID";
 
-            ccbCategory.Text = "";
-            ccbBrands.Text = "";
-            ccbRams.Text = "";
-            ccbPrice.Text = "";
 
+            ClearOptionSearch();
 
             GetListProduct();
         }
 
-        public void PriceOptionSearch()
+        public void ClearOptionSearch()
         {
-            string price = ccbPrice.Text;
-            if(price != "")
-            {
-                price = ccbPrice.SelectedValue.ToString();
-            }
-            
-            if (ccbPrice.Text == "")
-            {
-                startPrice = 0;
-                endPrice = max;
-            }
-            else if (price == "PRIP01")
-            {
-                startPrice = 0;
-                endPrice = 5000000;
-            }
-            else if (price == "PRIP02")
-            {
-                startPrice = 5000000;
-                endPrice = 1000000;
-            }
-            else if (price == "PRIP03")
-            {
-                startPrice = 10000000;
-                endPrice = 15000000;
-            }
-            else if (price == "PRIP04")
-            {
-                startPrice = 15000000;
-                endPrice = 20000000;
-            }
-            else if (price == "PRIP05")
-            {
-                startPrice = 20000000;
-                endPrice = 30000000;
-            }
-            else if (price == "PRIP06")
-            {
-                startPrice = 30000000;
-                endPrice = max;
-            }
-
+            ccbCategory.Text = "";
+            ccbBrands.Text = "";
+            ccbRams.Text = "";
+            ccbPrice.Text = "";
+            txtInputPName.Text = "";
         }
+
         public void GetListProduct()
         {
             
@@ -151,8 +113,114 @@ namespace ManagementStore.Form.Production
 
         private void gridViewProduct_DoubleClick(object sender, EventArgs e)
         {
+
             CreateProduct createProduct = new CreateProduct();
+            
             createProduct.ShowDialog();
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string productId = txtInputProductId.Text;
+            if(productId.Equals(""))
+            {
+                XtraMessageBox.Show("Please input Product ID to open edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else
+            {
+                
+                Product product = productServices.GetOneProduct(Convert.ToInt32(productId));
+                if(product == null)
+                {
+                    XtraMessageBox.Show("The product not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                else
+                {
+
+                    CreateProduct createProduct = new CreateProduct();
+                    createProduct.Show();
+                    MemoryStream pic = new MemoryStream(product.Picture);
+                    createProduct.txtPName.Text = product.ProductName;
+                    createProduct.txtPPrice.Text = product.Price.ToString();
+                    createProduct.txtMainboard.Text = product.Mainboard;
+                    createProduct.txtCPU.Text = product.CPU;
+                    createProduct.txtHDD.Text = product.HDD;
+                    createProduct.txtSSD.Text = product.SSD;
+                    createProduct.txtVGA.Text = product.VGA;
+                    createProduct.ccbPBrand.SelectedValue = product.Brand;
+                    createProduct.ccbPCategory.SelectedValue = product.CategoryId;
+                    createProduct.ccbRam.SelectedValue = product.RAM;
+                    createProduct.picturePImage.Image = Image.FromStream(pic);
+                    createProduct.txtInputProductId.Text = product.PId.ToString();
+                    //this.Hide();
+                }
+
+            }
+        }
+        private void barBtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GetListProduct();
+        }
+
+        private void txtInputProductId_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtInputProductId.Text))
+            {      
+                errorProviderProductID.SetError(txtInputProductId, "Please input product id!");
+            }
+            else
+            {             
+                errorProviderProductID.SetError(txtInputProductId, null);
+            }
+        }
+        public void PriceOptionSearch()
+        {
+            string price = ccbPrice.Text;
+            if (price != "")
+            {
+                price = ccbPrice.SelectedValue.ToString();
+            }
+
+            if (ccbPrice.Text == "")
+            {
+                startPrice = 0;
+                endPrice = max;
+            }
+            else if (price == "PRIP01")
+            {
+                startPrice = 0;
+                endPrice = 5000000;
+            }
+            else if (price == "PRIP02")
+            {
+                startPrice = 5000000;
+                endPrice = 1000000;
+            }
+            else if (price == "PRIP03")
+            {
+                startPrice = 10000000;
+                endPrice = 15000000;
+            }
+            else if (price == "PRIP04")
+            {
+                startPrice = 15000000;
+                endPrice = 20000000;
+            }
+            else if (price == "PRIP05")
+            {
+                startPrice = 20000000;
+                endPrice = 30000000;
+            }
+            else if (price == "PRIP06")
+            {
+                startPrice = 30000000;
+                endPrice = max;
+            }
+
+        }
+
+   
     }
 }

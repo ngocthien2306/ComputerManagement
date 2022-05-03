@@ -68,12 +68,28 @@ namespace ManagementStore.Form.User
                 e.Cancel = true;
 
                 txtInputUsername.Focus();
-                errorProvider1.SetError(txtInputUsername, "Please input username!");
+                errorProviderUsername.SetError(txtInputUsername, "Please input username!");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider1.SetError(txtInputUsername, null);
+                errorProviderUsername.SetError(txtInputUsername, null);
+            }
+        }
+
+        private void txtInputPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtInputPassword.Text))
+            {
+                e.Cancel = true;
+
+                txtInputPassword.Focus();
+                dxErrorProviderPassword.SetError(txtInputPassword, "Please input password!");
+            }
+            else
+            {
+                e.Cancel = false;
+                dxErrorProviderPassword.SetError(txtInputPassword, null);
             }
         }
     }

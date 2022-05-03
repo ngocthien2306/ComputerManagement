@@ -16,9 +16,9 @@ namespace ManagementStore.Services
     {
         
         private string SP_Name = "SP_PRODUCT";
-        public List<Product> GetListProduct(int Id)
+        public Product GetOneProduct(int Id)
         {
-            List<Product> products = new List<Product>();
+            Product products = new Product();
   
             try
             {
@@ -26,11 +26,11 @@ namespace ManagementStore.Services
                 {
                     string[] arrParams = new string[2];
                     arrParams[0] = "@Method";
-                    arrParams[1] = "@Id";
+                    arrParams[1] = "@ProductId";
                     object[] arrParamsValue = new object[2];
-                    arrParamsValue[0] = "GetData";
+                    arrParamsValue[0] = "GetDataProduct";
                     arrParamsValue[1] = Id;
-                    products = connection.ExecuteQuery<Product>(SP_Name, arrParams, arrParamsValue).ToList();
+                    products = connection.ExecuteQuery<Product>(SP_Name, arrParams, arrParamsValue).FirstOrDefault();
                     return products;
                 }
             }
@@ -41,49 +41,7 @@ namespace ManagementStore.Services
             return products; 
         }
 
-        public Result CreateProduct(Product product, string userId)
-        {
-            try
-            {
-                var resultString = "Error";
-                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
-                {
-                    using(var trans = connection.BeginTransaction())
-                    {
-                        string[] arrParams = new string[13];
-                        arrParams[0] = "@Method"; arrParams[1] = "@ProductName"; arrParams[2] = "@Price";
-                        arrParams[3] = "@Brand"; arrParams[4] = "@CategoryId"; arrParams[5] = "@UserId";
-                        arrParams[6] = "@Pricture"; arrParams[7] = "@Mainboard"; arrParams[8] = "@CPU";
-                        arrParams[9] = "@RAM"; arrParams[10] = "@VGA"; arrParams[11] = "@SSD"; arrParams[12] = "@HDD";
-                        object[] arrParamsValue = new object[13];
-                        arrParamsValue[0] = "InsertData"; arrParamsValue[1] = product.ProductName;
-                        arrParamsValue[2] = product.Price; arrParamsValue[3] = product.Brand;
-                        arrParamsValue[4] = product.CategoryId; arrParamsValue[5] = userId;
-                        arrParamsValue[6] = product.Picture; arrParamsValue[7] = product.Mainboard;
-                        arrParamsValue[8] = product.CPU; arrParamsValue[9] = product.RAM;
-                        arrParamsValue[10] = product.VGA; arrParamsValue[11] = product.SSD;
-                        arrParamsValue[12] = product.HDD;
-                        resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue, trans);
-                        trans.Commit();
-                        if (resultString != "Error")
-                        {
-                            return new Result { Success = true, Data = resultString, Message = "Create product successfull" };
-                        }
-                        else
-                        {
-                            trans.Rollback();
-                            return new Result { Success = false, Message = "Create product failed" };
-                        }
-                    }
 
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return new Result { Success = false, Message = ex.Message };
-            }
-        }
         public List<Category> GetListCategory()
         {
             List<Category> categorys = new List<Category>();
@@ -109,18 +67,6 @@ namespace ManagementStore.Services
             return categorys;
         }
 
-        public List<Brands> GetListBrand()
-        {
-            List<Brands> brands = new List<Brands>();
-            brands.Add(new Brands { Id = 1, Name = "ASUS" });
-            brands.Add(new Brands { Id = 2, Name = "LENOVO" });
-            brands.Add(new Brands { Id = 3, Name = "ACER" });
-            brands.Add(new Brands { Id = 4, Name = "MSI" });
-            brands.Add(new Brands { Id = 5, Name = "HP" });
-            brands.Add(new Brands { Id = 6, Name = "MACBOOK" });
-            brands.Add(new Brands { Id = 7, Name = "DELL" });
-            return brands;
-        }
 
 
         public DataTable GetListData(string query, object[] comCode, string[] param)
@@ -144,7 +90,81 @@ namespace ManagementStore.Services
         }
 
 
+        public Result CreateProduct(Product product, string userId)
+        {
+            try
+            {
+                var resultString = "Error";
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
 
+                    string[] arrParams = new string[14];
+                    arrParams[0] = "@Method"; arrParams[1] = "@ProductName"; arrParams[2] = "@Price";
+                    arrParams[3] = "@Brand"; arrParams[4] = "@CategoryId"; arrParams[5] = "@UserId";
+                    arrParams[6] = "@Pricture"; arrParams[7] = "@Mainboard"; arrParams[8] = "@CPU";
+                    arrParams[9] = "@RAM"; arrParams[10] = "@VGA"; arrParams[11] = "@SSD"; arrParams[12] = "@HDD";
+                    arrParams[13] = "@ProductId";
+                    object[] arrParamsValue = new object[14];
+                    arrParamsValue[0] = "SaveData"; arrParamsValue[1] = product.ProductName;
+                    arrParamsValue[2] = product.Price; arrParamsValue[3] = product.Brand;
+                    arrParamsValue[4] = product.CategoryId; arrParamsValue[5] = userId;
+                    arrParamsValue[6] = product.Picture; arrParamsValue[7] = product.Mainboard;
+                    arrParamsValue[8] = product.CPU; arrParamsValue[9] = product.RAM;
+                    arrParamsValue[10] = product.VGA; arrParamsValue[11] = product.SSD;
+                    arrParamsValue[12] = product.HDD; arrParamsValue[13] = product.PId;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+                      
+                    if (resultString != "Error")
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Save product successfull" };
+                    }
+                    else
+                    {
+                    
+                        return new Result { Success = false, Message = "Save product failed" };
+                    }
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
+
+        public Result DeleteProduct(int id)
+        {
+            var resultString = "Error";
+            try
+            {
+                using(var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[2];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@ProductId";
+                    object[] arrParamsValue = new object[2];
+                    arrParamsValue[0] = "DeleteDataProduct";
+                    arrParamsValue[1] = id;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+
+                    if (resultString != "Error")
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Delete product successfull" };
+                    }
+                    else
+                    {
+
+                        return new Result { Success = false, Message = "Delete product failed" };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
 
     }
 }
