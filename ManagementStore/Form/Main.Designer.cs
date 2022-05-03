@@ -39,8 +39,8 @@ namespace ManagementStore.Form
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnCreate = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnSearchProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnStatisticProduct = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
@@ -74,8 +74,8 @@ namespace ManagementStore.Form
             this.barButtonItem2,
             this.barButtonItem3,
             this.barBtnCreate,
-            this.barButtonItem6,
-            this.barButtonItem7,
+            this.barBtnSearchProduct,
+            this.barBtnStatisticProduct,
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
@@ -148,19 +148,21 @@ namespace ManagementStore.Form
             this.barBtnCreate.Name = "barBtnCreate";
             this.barBtnCreate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnCreate_ItemClick);
             // 
-            // barButtonItem6
+            // barBtnSearchProduct
             // 
-            this.barButtonItem6.Caption = "Search";
-            this.barButtonItem6.Id = 10;
-            this.barButtonItem6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
-            this.barButtonItem6.Name = "barButtonItem6";
+            this.barBtnSearchProduct.Caption = "Search";
+            this.barBtnSearchProduct.Id = 10;
+            this.barBtnSearchProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
+            this.barBtnSearchProduct.Name = "barBtnSearchProduct";
+            this.barBtnSearchProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnSearchProduct_ItemClick);
             // 
-            // barButtonItem7
+            // barBtnStatisticProduct
             // 
-            this.barButtonItem7.Caption = "Statistic";
-            this.barButtonItem7.Id = 11;
-            this.barButtonItem7.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
-            this.barButtonItem7.Name = "barButtonItem7";
+            this.barBtnStatisticProduct.Caption = "Statistic";
+            this.barBtnStatisticProduct.Id = 11;
+            this.barBtnStatisticProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
+            this.barBtnStatisticProduct.Name = "barBtnStatisticProduct";
+            this.barBtnStatisticProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnStatisticProduct_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -211,8 +213,8 @@ namespace ManagementStore.Form
             // ribbonPageGroupProduct
             // 
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnProduct);
-            this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnSearchProduct);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnStatisticProduct);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem8);
             this.ribbonPageGroupProduct.Name = "ribbonPageGroupProduct";
             this.ribbonPageGroupProduct.Text = "Product Task";
@@ -312,8 +314,8 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barBtnCreate;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barBtnSearchProduct;
+        private DevExpress.XtraBars.BarButtonItem barBtnStatisticProduct;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProduct;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageEmployee;

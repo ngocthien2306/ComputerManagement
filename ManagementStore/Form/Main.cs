@@ -43,5 +43,16 @@ namespace ManagementStore.Form
             ProductionMgt productionMgt = new ProductionMgt();
             productionMgt.ShowDialog();
         }
+
+        private void barBtnSearchProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barBtnStatisticProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Statistic statistic = new Statistic();
+            statistic.ShowDialog();
+        }
     }
 }

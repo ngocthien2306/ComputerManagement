@@ -27,7 +27,7 @@ namespace ManagementStore.Form.User
         private void LoginUser_Load(object sender, EventArgs e)
         {
             txtInputPassword.Text = "user123456";
-            txtInputUsername.Text = "thien123";
+            txtInputUsername.Text = "ngocthien";
             radioBtnStaff.Checked = true;
         }
 

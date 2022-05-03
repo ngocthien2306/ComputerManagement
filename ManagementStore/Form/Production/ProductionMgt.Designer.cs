@@ -234,6 +234,7 @@ namespace ManagementStore.Form.Production
             this.txtInputProductId.Name = "txtInputProductId";
             this.txtInputProductId.Size = new System.Drawing.Size(226, 22);
             this.txtInputProductId.TabIndex = 18;
+            this.txtInputProductId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputProductId_KeyPress);
             this.txtInputProductId.Validating += new System.ComponentModel.CancelEventHandler(this.txtInputProductId_Validating);
             // 
             // labelControl8
@@ -256,6 +257,8 @@ namespace ManagementStore.Form.Production
             // 
             // ccbPrice
             // 
+            this.ccbPrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.ccbPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbPrice.FormattingEnabled = true;
             this.ccbPrice.Location = new System.Drawing.Point(147, 262);
             this.ccbPrice.Name = "ccbPrice";
@@ -282,6 +285,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbRams
             // 
+            this.ccbRams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbRams.FormattingEnabled = true;
             this.ccbRams.Location = new System.Drawing.Point(147, 439);
             this.ccbRams.Name = "ccbRams";
@@ -298,6 +302,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbCategory
             // 
+            this.ccbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbCategory.FormattingEnabled = true;
             this.ccbCategory.Location = new System.Drawing.Point(147, 382);
             this.ccbCategory.Name = "ccbCategory";
@@ -314,6 +319,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbBrands
             // 
+            this.ccbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbBrands.FormattingEnabled = true;
             this.ccbBrands.Location = new System.Drawing.Point(147, 325);
             this.ccbBrands.Name = "ccbBrands";

@@ -28,34 +28,13 @@ namespace ManagementStore.Form.Production
 
         private void ProductionMgt_Load(object sender, EventArgs e)
         {
-            string query = "";
-            var categorys = productServices.GetListCategory();
 
-            query = @"select * from[dbo].[GetListComCode](@GroupCode)";
-            var brands = productServices.GetListData(query, new object[1] {"BRAS00"}, new string[1] { "@GroupCode" });
-            var rams = productServices.GetListData(query, new object[1] { "RAMS00" }, new string[1] { "@GroupCode" });
-            var prices = productServices.GetListData(query, new object[1] { "PRIP00" }, new string[1] { "@GroupCode" });
 
-            ccbCategory.DataSource = categorys;
-            ccbCategory.DisplayMember = "Name";
-            ccbCategory.ValueMember = "Id";
-
-            ccbBrands.DataSource = brands;
-            ccbBrands.DisplayMember = "Name";
-            ccbBrands.ValueMember = "ID";
-
-            ccbRams.DataSource = rams;
-            ccbRams.DisplayMember = "Name";
-            ccbRams.ValueMember = "ID";
-
-            ccbPrice.DataSource = prices;
-            ccbPrice.DisplayMember = "Name";
-            ccbPrice.ValueMember = "ID";
+            LoadOptionSearch();
 
 
 
-
-            ClearOptionSearch();
+            //ClearOptionSearch();
 
             gridControlProduct.DataSource =  GetListProduct();
         }
@@ -67,6 +46,36 @@ namespace ManagementStore.Form.Production
             ccbRams.Text = "";
             ccbPrice.Text = "";
             txtInputPName.Text = "";
+        }
+        public void LoadOptionSearch()
+        {
+            string query = "";
+            var categorys = productServices.GetListCategory();
+
+            query = @"select * from[dbo].[GetListComCode](@GroupCode)";
+            var brands = productServices.GetListData(query, new object[1] { "BRAS00" }, new string[1] { "@GroupCode" });
+            var rams = productServices.GetListData(query, new object[1] { "RAMS00" }, new string[1] { "@GroupCode" });
+            var prices = productServices.GetListData(query, new object[1] { "PRIP00" }, new string[1] { "@GroupCode" });
+
+            ccbCategory.DataSource = categorys;
+            ccbCategory.DisplayMember = "Name";
+            ccbCategory.ValueMember = "Id";
+            ccbCategory.SelectedValue = 1002;
+
+            ccbBrands.DataSource = brands;
+            ccbBrands.DisplayMember = "Name";
+            ccbBrands.ValueMember = "ID";
+            ccbBrands.SelectedValue = "BRAS01";
+
+            ccbRams.DataSource = rams;
+            ccbRams.DisplayMember = "Name";
+            ccbRams.ValueMember = "ID";
+            ccbRams.SelectedValue = "RAMS01";
+
+            ccbPrice.DataSource = prices;
+            ccbPrice.DisplayMember = "Name";
+            ccbPrice.ValueMember = "ID";
+            ccbPrice.SelectedValue = "PRIP01";
         }
 
         public DataTable GetListProduct()
@@ -85,9 +94,9 @@ namespace ManagementStore.Form.Production
 
             object[] arrParamsValue = new object[7];
             arrParamsValue[0] = txtInputPName.Text;
-            arrParamsValue[1] = ccbBrands.Text == "" ? "" : ccbBrands.SelectedValue.ToString();
-            arrParamsValue[2] = ccbCategory.Text == "" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
-            arrParamsValue[3] = ccbRams.Text == "" ? "" : ccbRams.SelectedValue.ToString();
+            arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
+            arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
+            arrParamsValue[3] = ccbRams.Text == "All" ? "" : ccbRams.SelectedValue.ToString();
             arrParamsValue[4] = startPrice;
             arrParamsValue[5] = endPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
@@ -185,43 +194,39 @@ namespace ManagementStore.Form.Production
         {
             try
             {
-                string price = ccbPrice.Text;
-                if (price != "")
-                {
-                    price = ccbPrice.SelectedValue.ToString();
-                }
+                string price = price = ccbPrice.SelectedValue.ToString();
 
-                if (ccbPrice.Text == "")
+                if (price == "PRIP01")
                 {
                     startPrice = 0;
                     endPrice = max;
                 }
-                else if (price == "PRIP01")
+                else if (price == "PRIP02")
                 {
                     startPrice = 0;
                     endPrice = 5000000;
                 }
-                else if (price == "PRIP02")
+                else if (price == "PRIP03")
                 {
                     startPrice = 5000000;
                     endPrice = 10000000;
                 }
-                else if (price == "PRIP03")
+                else if (price == "PRIP04")
                 {
                     startPrice = 10000000;
                     endPrice = 15000000;
                 }
-                else if (price == "PRIP04")
+                else if (price == "PRIP05")
                 {
                     startPrice = 15000000;
                     endPrice = 20000000;
                 }
-                else if (price == "PRIP05")
+                else if (price == "PRIP06")
                 {
                     startPrice = 20000000;
                     endPrice = 30000000;
                 }
-                else if (price == "PRIP06")
+                else if (price == "PRIP07")
                 {
                     startPrice = 30000000;
                     endPrice = max;
@@ -242,5 +247,21 @@ namespace ManagementStore.Form.Production
             gridViewProduct.ExportToXlsx(path);
             Process.Start(path);
         }
+
+        private void txtInputProductId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextEdit).Text.IndexOf('.') > -1))
+            {   
+                e.Handled = true;
+            }
+        }
+
+
     }
 }

@@ -185,6 +185,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbPBrand
             // 
+            this.ccbPBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbPBrand.FormattingEnabled = true;
             this.ccbPBrand.Location = new System.Drawing.Point(134, 230);
             this.ccbPBrand.Name = "ccbPBrand";
@@ -193,6 +194,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbPCategory
             // 
+            this.ccbPCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbPCategory.FormattingEnabled = true;
             this.ccbPCategory.Location = new System.Drawing.Point(134, 296);
             this.ccbPCategory.Name = "ccbPCategory";
@@ -265,6 +267,7 @@ namespace ManagementStore.Form.Production
             // 
             // ccbRam
             // 
+            this.ccbRam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbRam.FormattingEnabled = true;
             this.ccbRam.Location = new System.Drawing.Point(112, 161);
             this.ccbRam.Name = "ccbRam";
