@@ -65,7 +65,7 @@ namespace ManagementStore.Form.User
             Result r = validate.Validate("", user.Email, user.Password, RePass);
             if (r.Success)
             {
-                var result = userServices.RegisterUser(user);
+                var result = userServices.RegisterUser(user, "");
 
                 if(result.Success)
                 {
@@ -94,6 +94,10 @@ namespace ManagementStore.Form.User
             txtInputPassword.Text = "user123456";
             txtInputRePassword.Text = "user123456";
             birthdayDate.EditValue = "1/1/2000";
+            
+
+            // set connection string for guest role
+            ConnectionDB.SetConnectionString("guest", "guest01");
         }
 
 
