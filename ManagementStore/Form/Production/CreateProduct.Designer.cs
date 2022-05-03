@@ -127,6 +127,7 @@ namespace ManagementStore.Form.Production
             this.picturePImage.Location = new System.Drawing.Point(556, 44);
             this.picturePImage.Name = "picturePImage";
             this.picturePImage.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.picturePImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.picturePImage.Size = new System.Drawing.Size(301, 300);
             this.picturePImage.TabIndex = 1;
             // 
