@@ -52,7 +52,7 @@ namespace ManagementStore.Form.User
             user.Picture = pic.ToArray();
             user.Username = txtInputUsername.Text;
             user.Password = txtInputPassword.Text;
-
+            user.TypeId = 4;
             return user;
         }
 

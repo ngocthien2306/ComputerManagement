@@ -142,6 +142,7 @@ namespace ManagementStore.Form.Production
             this.barBtnExport.Id = 4;
             this.barBtnExport.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnExport.ImageOptions.SvgImage")));
             this.barBtnExport.Name = "barBtnExport";
+            this.barBtnExport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnExport_ItemClick);
             // 
             // barBtnClose
             // 
@@ -373,10 +374,10 @@ namespace ManagementStore.Form.Production
             this.SSD,
             this.CreatedBy,
             this.CreatedAt});
+            this.gridViewProduct.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gridViewProduct.GridControl = this.gridControlProduct;
             this.gridViewProduct.Name = "gridViewProduct";
             this.gridViewProduct.OptionsPrint.EnableAppearanceEvenRow = true;
-            this.gridViewProduct.OptionsPrint.PrintSelectedRowsOnly = true;
             this.gridViewProduct.DoubleClick += new System.EventHandler(this.gridViewProduct_DoubleClick);
             // 
             // PId
@@ -387,7 +388,7 @@ namespace ManagementStore.Form.Production
             this.PId.Name = "PId";
             this.PId.Visible = true;
             this.PId.VisibleIndex = 0;
-            this.PId.Width = 47;
+            this.PId.Width = 70;
             // 
             // ProductName
             // 
@@ -398,7 +399,7 @@ namespace ManagementStore.Form.Production
             this.ProductName.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 97;
+            this.ProductName.Width = 106;
             // 
             // Price
             // 
@@ -409,7 +410,7 @@ namespace ManagementStore.Form.Production
             this.Price.Name = "Price";
             this.Price.Visible = true;
             this.Price.VisibleIndex = 2;
-            this.Price.Width = 97;
+            this.Price.Width = 106;
             // 
             // Brand
             // 
@@ -419,7 +420,7 @@ namespace ManagementStore.Form.Production
             this.Brand.Name = "Brand";
             this.Brand.Visible = true;
             this.Brand.VisibleIndex = 3;
-            this.Brand.Width = 97;
+            this.Brand.Width = 106;
             // 
             // Category
             // 
@@ -429,7 +430,7 @@ namespace ManagementStore.Form.Production
             this.Category.Name = "Category";
             this.Category.Visible = true;
             this.Category.VisibleIndex = 4;
-            this.Category.Width = 101;
+            this.Category.Width = 110;
             // 
             // Picture
             // 
@@ -440,7 +441,7 @@ namespace ManagementStore.Form.Production
             this.Picture.Name = "Picture";
             this.Picture.Visible = true;
             this.Picture.VisibleIndex = 5;
-            this.Picture.Width = 70;
+            this.Picture.Width = 76;
             // 
             // repositoryItemPictureEdit1
             // 
@@ -454,7 +455,7 @@ namespace ManagementStore.Form.Production
             this.Mainboard.Name = "Mainboard";
             this.Mainboard.Visible = true;
             this.Mainboard.VisibleIndex = 6;
-            this.Mainboard.Width = 99;
+            this.Mainboard.Width = 108;
             // 
             // CPU
             // 
@@ -464,7 +465,7 @@ namespace ManagementStore.Form.Production
             this.CPU.Name = "CPU";
             this.CPU.Visible = true;
             this.CPU.VisibleIndex = 7;
-            this.CPU.Width = 105;
+            this.CPU.Width = 115;
             // 
             // VGA
             // 
@@ -474,7 +475,7 @@ namespace ManagementStore.Form.Production
             this.VGA.Name = "VGA";
             this.VGA.Visible = true;
             this.VGA.VisibleIndex = 8;
-            this.VGA.Width = 114;
+            this.VGA.Width = 125;
             // 
             // RAM
             // 
@@ -484,7 +485,7 @@ namespace ManagementStore.Form.Production
             this.RAM.Name = "RAM";
             this.RAM.Visible = true;
             this.RAM.VisibleIndex = 9;
-            this.RAM.Width = 53;
+            this.RAM.Width = 58;
             // 
             // SSD
             // 
@@ -494,7 +495,7 @@ namespace ManagementStore.Form.Production
             this.SSD.Name = "SSD";
             this.SSD.Visible = true;
             this.SSD.VisibleIndex = 10;
-            this.SSD.Width = 48;
+            this.SSD.Width = 52;
             // 
             // CreatedBy
             // 
@@ -513,7 +514,7 @@ namespace ManagementStore.Form.Production
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.Visible = true;
             this.CreatedAt.VisibleIndex = 11;
-            this.CreatedAt.Width = 171;
+            this.CreatedAt.Width = 197;
             // 
             // repositoryItemDateEdit1
             // 

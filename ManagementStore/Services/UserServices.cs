@@ -25,16 +25,17 @@ namespace ManagementStore.Services
                 {
                     using (var transaction = connect.BeginTransaction())
                     {                       
-                        string[] arrParams = new string[11];
+                        string[] arrParams = new string[13];
                         arrParams[0] = "@Method";
                         arrParams[1] = "@Firstname";
                         arrParams[2] = "@Lastname";
                         arrParams[3] = "@Email"; arrParams[4] = "@Username";
                         arrParams[5] = "@PasswordHash"; arrParams[6] = "@Picture";
                         arrParams[7] = "@Phone"; arrParams[8] = "@Address";
-                        arrParams[9] = "@Birthday"; arrParams[10] = "@UserId";
+                        arrParams[9] = "@Birthday"; arrParams[10] = "@Id"; 
+                        arrParams[11] = "@TypeId"; arrParams[12] = "@UserId";
 
-                        object[] arrParamsValue = new object[11];
+                        object[] arrParamsValue = new object[13];
                         arrParamsValue[0] = "InsertUser";
                         arrParamsValue[1] = user.Firstname;
                         arrParamsValue[2] = user.Lastname;
@@ -46,6 +47,8 @@ namespace ManagementStore.Services
                         arrParamsValue[8] = user.Address;
                         arrParamsValue[9] = user.Birthday;
                         arrParamsValue[10] = user.Id;
+                        arrParamsValue[11] = user.TypeId;
+                        arrParamsValue[12] = CurrentUser.AppUser.Id;
 
                         resultString = connect.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue, transaction);
                         transaction.Commit();
@@ -69,7 +72,7 @@ namespace ManagementStore.Services
             }
 
         }
-        public Result LoginUser(string uname, string password)
+        public Result LoginUser(string uname, string password, string role)
         {
             Result result = new Result();        
 
@@ -78,7 +81,7 @@ namespace ManagementStore.Services
                 using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
               
-                    var user = GetUserByUsername(uname);
+                    var user = GetUserByUsername(uname, role);
                     if (user == null)
                     {
                         return new Result { Success = false, Message = "Not found account!" };
@@ -104,7 +107,7 @@ namespace ManagementStore.Services
             return result;
         }
 
-        public AppUser GetUserByUsername(string username)
+        public AppUser GetUserByUsername(string username, string role)
         {
             AppUser user = null;
             try
@@ -112,14 +115,15 @@ namespace ManagementStore.Services
                 
                 using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
-                    string[] arrParams = new string[2];
+                    string[] arrParams = new string[3];
                     arrParams[0] = "@Method";
                     arrParams[1] = "@Username";
-  
+                    arrParams[2] = "@TypeId";
 
-                    object[] arrParamsValue = new object[2];
+                    object[] arrParamsValue = new object[3];
                     arrParamsValue[0] = "GetUserByName";
                     arrParamsValue[1] = username;
+                    arrParamsValue[2] = Convert.ToInt32(role);
         
                     var result = connect.ExecuteQuery<AppUser>(SP_Name, arrParams, arrParamsValue);
                     

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace ManagementStore.Form.Production
         ProductServices productServices = new ProductServices();
         decimal startPrice = 0;
         decimal endPrice = 0;
-        decimal max = 999999999;
+        decimal max = 200000000;
         public ProductionMgt()
         {
             InitializeComponent();
@@ -52,9 +53,11 @@ namespace ManagementStore.Form.Production
             ccbPrice.ValueMember = "ID";
 
 
+
+
             ClearOptionSearch();
 
-            GetListProduct();
+            gridControlProduct.DataSource =  GetListProduct();
         }
 
         public void ClearOptionSearch()
@@ -66,9 +69,9 @@ namespace ManagementStore.Form.Production
             txtInputPName.Text = "";
         }
 
-        public void GetListProduct()
+        public DataTable GetListProduct()
         {
-            
+            // using function to select product data
             string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId)";
             PriceOptionSearch();
             string[] arrParams = new string[7];
@@ -90,9 +93,9 @@ namespace ManagementStore.Form.Production
             arrParamsValue[6] = CurrentUser.AppUser.Id;
 
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
-
-            gridControlProduct.DataSource = products;
-            gridViewProduct.EditingValue = false;
+            return products;
+            //gridControlProduct.DataSource = products;
+            //gridViewProduct.EditingValue = false;
        
         }
         private void barBtnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -102,7 +105,10 @@ namespace ManagementStore.Form.Production
 
         private void barBtnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetListProduct();
+
+             gridControlProduct.DataSource = GetListProduct();
+
+
         }
 
         private void barBtnCreate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -177,50 +183,64 @@ namespace ManagementStore.Form.Production
         }
         public void PriceOptionSearch()
         {
-            string price = ccbPrice.Text;
-            if (price != "")
+            try
             {
-                price = ccbPrice.SelectedValue.ToString();
-            }
+                string price = ccbPrice.Text;
+                if (price != "")
+                {
+                    price = ccbPrice.SelectedValue.ToString();
+                }
 
-            if (ccbPrice.Text == "")
-            {
-                startPrice = 0;
-                endPrice = max;
+                if (ccbPrice.Text == "")
+                {
+                    startPrice = 0;
+                    endPrice = max;
+                }
+                else if (price == "PRIP01")
+                {
+                    startPrice = 0;
+                    endPrice = 5000000;
+                }
+                else if (price == "PRIP02")
+                {
+                    startPrice = 5000000;
+                    endPrice = 10000000;
+                }
+                else if (price == "PRIP03")
+                {
+                    startPrice = 10000000;
+                    endPrice = 15000000;
+                }
+                else if (price == "PRIP04")
+                {
+                    startPrice = 15000000;
+                    endPrice = 20000000;
+                }
+                else if (price == "PRIP05")
+                {
+                    startPrice = 20000000;
+                    endPrice = 30000000;
+                }
+                else if (price == "PRIP06")
+                {
+                    startPrice = 30000000;
+                    endPrice = max;
+                }
             }
-            else if (price == "PRIP01")
+            catch(Exception ex)
             {
-                startPrice = 0;
-                endPrice = 5000000;
-            }
-            else if (price == "PRIP02")
-            {
-                startPrice = 5000000;
-                endPrice = 1000000;
-            }
-            else if (price == "PRIP03")
-            {
-                startPrice = 10000000;
-                endPrice = 15000000;
-            }
-            else if (price == "PRIP04")
-            {
-                startPrice = 15000000;
-                endPrice = 20000000;
-            }
-            else if (price == "PRIP05")
-            {
-                startPrice = 20000000;
-                endPrice = 30000000;
-            }
-            else if (price == "PRIP06")
-            {
-                startPrice = 30000000;
-                endPrice = max;
+                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
 
         }
 
-   
+        private void barBtnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string path = "production.xlsx";
+            //gridViewProduct.Focused = false;
+            gridViewProduct.ExportToXlsx(path);
+            Process.Start(path);
+        }
     }
 }

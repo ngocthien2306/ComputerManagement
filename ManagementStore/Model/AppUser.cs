@@ -15,17 +15,16 @@ namespace ManagementStore.Model
         public string Email { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-
         public string Phone { get; set; }
         public string Address { get; set; }
         public DateTime Birthday { get; set; }
         public byte[] Picture { get; set; }
-
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public bool UseYN { get; set; }
+        public int TypeId { get; set; }
 
         public AppUser(string id = "", string fname = "", string lname = "", string email = "", string uname = "", string pass = "", byte[] picture = default)
         {

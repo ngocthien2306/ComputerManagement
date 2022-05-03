@@ -35,20 +35,42 @@ namespace ManagementStore.Form.User
         {
             string username = txtInputUsername.Text;
             string password = txtInputPassword.Text;
-
-            if(ValidateChildren(ValidationConstraints.Enabled))
+            string role = radioBtnGuest.Checked == true ? "GUEST" : radioBtnStaff.Checked == true ? "EMPLOYEE" : "MANAGER";
+            string roleId = SetConnectionStringByRole(role);
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                var result = userServices.LoginUser(username, password);
+                var result = userServices.LoginUser(username, password, roleId);
                 AppUser appUser = result.Data as AppUser;
 
-                if (result.Success)
+                if(!result.Success)
+                {
+                    XtraMessageBox.Show(result.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                else if (result.Success && appUser.TypeId == 2)
                 {
                     CurrentUser.SetCurrentUser(appUser);
-                    
                     Main main = new Main();
                     main.Show();
                     Hide();
                 }
+                else if (result.Success && appUser.TypeId == 3)
+                {
+                    CurrentUser.SetCurrentUser(appUser);                    
+                    Main main = new Main();
+                    main.Show();
+                    Hide();
+                }
+
+                else if (result.Success && appUser.TypeId == 4)
+                {
+                    CurrentUser.SetCurrentUser(appUser);
+                    Guest guest = new Guest();
+                    guest.Show();
+                    Hide();
+                }
+
+                
 
             }
         }
@@ -91,6 +113,26 @@ namespace ManagementStore.Form.User
                 e.Cancel = false;
                 dxErrorProviderPassword.SetError(txtInputPassword, null);
             }
+        }
+
+        public string SetConnectionStringByRole(string role)
+        {
+
+            if (role.Equals("GUEST"))
+            {
+                ConnectionDB.SetConnectionString("guest", "guest01");
+            }
+            else if (role.Equals("EMPLOYEE"))
+            {
+                ConnectionDB.SetConnectionString("employee", "employee01");
+            }
+            else
+            {
+                ConnectionDB.SetConnectionString("manager", "manager01");
+            }
+
+            string roleId = role == "GUEST" ? "4" : role == "EMPLOYEE" ? "3" : "2";
+            return roleId;
         }
     }
 }

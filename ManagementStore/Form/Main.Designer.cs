@@ -185,7 +185,7 @@ namespace ManagementStore.Form
             // 
             // barBtnProduct
             // 
-            this.barBtnProduct.Caption = "Product";
+            this.barBtnProduct.Caption = "Product Management";
             this.barBtnProduct.Id = 17;
             this.barBtnProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnProduct.ImageOptions.SvgImage")));
             this.barBtnProduct.Name = "barBtnProduct";
@@ -211,7 +211,6 @@ namespace ManagementStore.Form
             // ribbonPageGroupProduct
             // 
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnProduct);
-            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnCreate);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem7);
             this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem8);

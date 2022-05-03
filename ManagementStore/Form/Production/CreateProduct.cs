@@ -125,7 +125,7 @@ namespace ManagementStore.Form.Production
                 if (product == null)
                 {
                     XtraMessageBox.Show("The product not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                    ClearInputData();
                 }
                 else
                 {       
