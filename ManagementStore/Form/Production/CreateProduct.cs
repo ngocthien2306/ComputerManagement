@@ -17,6 +17,7 @@ namespace ManagementStore.Form.Production
     public partial class CreateProduct : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         ProductServices productServices = new ProductServices();
+        WarehouseServices warehouseServices = new WarehouseServices();
         public CreateProduct()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace ManagementStore.Form.Production
             accordionControlExitForm.Expanded = true;
 
             var categorys = productServices.GetListCategory();
+            var warehouses = warehouseServices.GetListWarehouse();
 
             query = @"select * from[dbo].[GetListComCode](@GroupCode)";
             var brands = productServices.GetListData(query, new object[1] { "BRAS00" }, new string[1] { "@GroupCode" });
@@ -53,11 +55,18 @@ namespace ManagementStore.Form.Production
             ccbPBrand.DataSource = brands;
             ccbPBrand.DisplayMember = "Name";
             ccbPBrand.ValueMember = "ID";
+            ccbPBrand.SelectedValue = "BRAS02";
 
             ccbRam.DataSource = rams;
             ccbRam.DisplayMember = "Name";
             ccbRam.ValueMember = "ID";
-         
+            ccbRam.SelectedValue = "RAMS04";
+
+            ccbWarehouse.DataSource = warehouses;
+            ccbWarehouse.DisplayMember = "WHName";
+            ccbWarehouse.ValueMember = "WHCode";
+
+
         }
 
         private void accordionBtnSave_Click(object sender, EventArgs e)
@@ -142,6 +151,7 @@ namespace ManagementStore.Form.Production
                     ccbRam.SelectedValue = product.RAM;
                     picturePImage.Image = Image.FromStream(pic);
                     txtInputProductId.Text = product.PId.ToString();
+                    groupWH.Enabled = false;
                     //this.Hide();
                 }
 
@@ -191,8 +201,9 @@ namespace ManagementStore.Form.Production
         public void SaveDataProduct()
         {
             var product = GetDataProduct();
-
-            var result = productServices.CreateProduct(product, CurrentUser.AppUser.Id);
+            int quantity = Convert.ToInt32(numericQuantity.Value);
+            string whCode = ccbWarehouse.SelectedValue.ToString();
+            var result = productServices.CreateProduct(product, quantity, whCode, CurrentUser.AppUser.Id);
             if (result.Success)
             {
                 XtraMessageBox.Show(result.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -205,5 +216,33 @@ namespace ManagementStore.Form.Production
             }
         }
         #endregion
+
+        private void numericQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as NumericUpDown).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // If you want, you can allow decimal (float) numbers
+            if ((e.KeyChar == '.') && ((sender as TextEdit).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

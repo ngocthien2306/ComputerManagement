@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ManagementStore.Model
 {
-    public class Brands
+    public class CommonModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public Brands(int id = 0, string name = "")
+        public CommonModel(int id = 0, string name = "")
         {
             this.Id = id;
             this.Name = name;
         }
-        public Brands()
+        public CommonModel()
         {
 
         }
@@ -37,5 +37,6 @@ namespace ManagementStore.Model
 
         }
     }
+
 
 }

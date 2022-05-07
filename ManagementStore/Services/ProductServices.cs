@@ -90,7 +90,7 @@ namespace ManagementStore.Services
         }
 
 
-        public Result CreateProduct(Product product, string userId)
+        public Result CreateProduct(Product product, int quantity, string whCode , string userId)
         {
             try
             {
@@ -98,13 +98,14 @@ namespace ManagementStore.Services
                 using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
                 {
 
-                    string[] arrParams = new string[14];
+                    string[] arrParams = new string[16];
                     arrParams[0] = "@Method"; arrParams[1] = "@ProductName"; arrParams[2] = "@Price";
                     arrParams[3] = "@Brand"; arrParams[4] = "@CategoryId"; arrParams[5] = "@UserId";
                     arrParams[6] = "@Pricture"; arrParams[7] = "@Mainboard"; arrParams[8] = "@CPU";
                     arrParams[9] = "@RAM"; arrParams[10] = "@VGA"; arrParams[11] = "@SSD"; arrParams[12] = "@HDD";
-                    arrParams[13] = "@ProductId";
-                    object[] arrParamsValue = new object[14];
+                    arrParams[13] = "@ProductId"; arrParams[14] = "@Quantity"; arrParams[15] = "@WHCode";
+
+                    object[] arrParamsValue = new object[16];
                     arrParamsValue[0] = "SaveData"; arrParamsValue[1] = product.ProductName;
                     arrParamsValue[2] = product.Price; arrParamsValue[3] = product.Brand;
                     arrParamsValue[4] = product.CategoryId; arrParamsValue[5] = userId;
@@ -112,16 +113,16 @@ namespace ManagementStore.Services
                     arrParamsValue[8] = product.CPU; arrParamsValue[9] = product.RAM;
                     arrParamsValue[10] = product.VGA; arrParamsValue[11] = product.SSD;
                     arrParamsValue[12] = product.HDD; arrParamsValue[13] = product.PId;
+                    arrParamsValue[14] = quantity; arrParamsValue[15] = whCode;
                     resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
                       
-                    if (resultString != "Error")
+                    if (resultString == null)
                     {
                         return new Result { Success = true, Data = resultString, Message = "Save product successfull" };
                     }
                     else
-                    {
-                    
-                        return new Result { Success = false, Message = "Save product failed" };
+                    {                   
+                        return new Result { Success = false, Message = "Save product failed!" + resultString };
                     }
                     
 

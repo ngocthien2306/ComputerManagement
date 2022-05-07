@@ -18,6 +18,7 @@ namespace ManagementStore.Form.Production
     public partial class ProductionMgt : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         ProductServices productServices = new ProductServices();
+        WarehouseServices warehouseServices = new WarehouseServices();
         decimal startPrice = 0;
         decimal endPrice = 0;
         decimal max = 200000000;
@@ -37,6 +38,7 @@ namespace ManagementStore.Form.Production
             //ClearOptionSearch();
 
             gridControlProduct.DataSource =  GetListProduct();
+
         }
 
         public void ClearOptionSearch()
@@ -50,8 +52,9 @@ namespace ManagementStore.Form.Production
         public void LoadOptionSearch()
         {
             string query = "";
-            var categorys = productServices.GetListCategory();
 
+            var categorys = productServices.GetListCategory();
+            var warehouses = warehouseServices.GetListWarehouse();
             query = @"select * from[dbo].[GetListComCode](@GroupCode)";
             var brands = productServices.GetListData(query, new object[1] { "BRAS00" }, new string[1] { "@GroupCode" });
             var rams = productServices.GetListData(query, new object[1] { "RAMS00" }, new string[1] { "@GroupCode" });
@@ -76,6 +79,11 @@ namespace ManagementStore.Form.Production
             ccbPrice.DisplayMember = "Name";
             ccbPrice.ValueMember = "ID";
             ccbPrice.SelectedValue = "PRIP01";
+
+            ccbWarehouse.DataSource = warehouses;
+            ccbWarehouse.DisplayMember = "WHName";
+            ccbWarehouse.ValueMember = "WHCode";
+            
         }
 
         public DataTable GetListProduct()
@@ -104,8 +112,7 @@ namespace ManagementStore.Form.Production
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
             return products;
             //gridControlProduct.DataSource = products;
-            //gridViewProduct.EditingValue = false;
-       
+            //gridViewProduct.EditingValue = false;      
         }
         private void barBtnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -169,6 +176,7 @@ namespace ManagementStore.Form.Production
                     createProduct.ccbRam.SelectedValue = product.RAM;
                     createProduct.picturePImage.Image = Image.FromStream(pic);
                     createProduct.txtInputProductId.Text = product.PId.ToString();
+                    createProduct.groupWH.Enabled = false;
                     //this.Hide();
                 }
 
@@ -262,6 +270,10 @@ namespace ManagementStore.Form.Production
             }
         }
 
-
+        private void btnStockIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            StockIn stockIn = new StockIn();
+            stockIn.ShowDialog();
+        }
     }
 }
