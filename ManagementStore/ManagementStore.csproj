@@ -108,12 +108,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComputerStoreDataSet.cs">
+      <DependentUpon>ComputerStoreDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ComputerStoreDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ComputerStoreDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConnectionDB.cs" />
+    <Compile Include="Extensions\OptionSearchExtensions.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
     <Compile Include="Form\Production\CreateProduct.cs">
@@ -270,6 +274,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Form\Employee\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

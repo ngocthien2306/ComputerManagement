@@ -31,9 +31,21 @@ namespace ManagementStore.Form.Production
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockIn));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.btnSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUpdateWH = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageStockIn = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.ccbPrice = new System.Windows.Forms.ComboBox();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.groupStockInItem = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.labelControlWarehouse = new DevExpress.XtraEditors.LabelControl();
+            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
+            this.labelControlQuantity = new DevExpress.XtraEditors.LabelControl();
             this.ccbWarehouse = new System.Windows.Forms.ComboBox();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -43,26 +55,20 @@ namespace ManagementStore.Form.Production
             this.ccbBrands = new System.Windows.Forms.ComboBox();
             this.txtInputPName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.groupStockInItem = new DevExpress.XtraEditors.GroupControl();
-            this.dataGridViewProduct = new System.Windows.Forms.DataGridView();
-            this.btnSearch = new DevExpress.XtraBars.BarButtonItem();
-            this.btnUpdateWH = new DevExpress.XtraBars.BarButtonItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelControlWarehouse = new DevExpress.XtraEditors.LabelControl();
-            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
-            this.labelControlQuantity = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
+            this.gridControlProduct = new DevExpress.XtraGrid.GridControl();
+            this.gridViewProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.PId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).BeginInit();
             this.groupStockInItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -81,12 +87,33 @@ namespace ManagementStore.Form.Production
             this.ribbon.Size = new System.Drawing.Size(1484, 181);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Caption = "Search";
+            this.btnSearch.Id = 1;
+            this.btnSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSearch.ImageOptions.SvgImage")));
+            this.btnSearch.Name = "btnSearch";
+            // 
+            // btnUpdateWH
+            // 
+            this.btnUpdateWH.Caption = "Update Warehouse";
+            this.btnUpdateWH.Id = 2;
+            this.btnUpdateWH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUpdateWH.ImageOptions.SvgImage")));
+            this.btnUpdateWH.Name = "btnUpdateWH";
+            // 
             // ribbonPageStockIn
             // 
             this.ribbonPageStockIn.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
             this.ribbonPageStockIn.Name = "ribbonPageStockIn";
             this.ribbonPageStockIn.Text = "Warehouse";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnSearch);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnUpdateWH);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Task";
             // 
             // ribbonStatusBar
             // 
@@ -99,6 +126,8 @@ namespace ManagementStore.Form.Production
             // 
             this.splitContainerControl1.Location = new System.Drawing.Point(12, 187);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.ccbPrice);
+            this.splitContainerControl1.Panel1.Controls.Add(this.labelControl5);
             this.splitContainerControl1.Panel1.Controls.Add(this.groupStockInItem);
             this.splitContainerControl1.Panel1.Controls.Add(this.ccbWarehouse);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl9);
@@ -110,95 +139,29 @@ namespace ManagementStore.Form.Production
             this.splitContainerControl1.Panel1.Controls.Add(this.txtInputPName);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.dataGridViewProduct);
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridControlProduct);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1469, 533);
             this.splitContainerControl1.SplitterPosition = 466;
             this.splitContainerControl1.TabIndex = 2;
             // 
-            // ccbWarehouse
+            // ccbPrice
             // 
-            this.ccbWarehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.ccbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ccbWarehouse.FormattingEnabled = true;
-            this.ccbWarehouse.Location = new System.Drawing.Point(160, 125);
-            this.ccbWarehouse.Name = "ccbWarehouse";
-            this.ccbWarehouse.Size = new System.Drawing.Size(273, 24);
-            this.ccbWarehouse.TabIndex = 47;
+            this.ccbPrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.ccbPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ccbPrice.FormattingEnabled = true;
+            this.ccbPrice.Location = new System.Drawing.Point(160, 254);
+            this.ccbPrice.Name = "ccbPrice";
+            this.ccbPrice.Size = new System.Drawing.Size(273, 24);
+            this.ccbPrice.TabIndex = 50;
             // 
-            // labelControl9
+            // labelControl5
             // 
-            this.labelControl9.Location = new System.Drawing.Point(36, 133);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(70, 16);
-            this.labelControl9.TabIndex = 46;
-            this.labelControl9.Text = "Warehouse:";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(18, 13);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(140, 28);
-            this.labelControl6.TabIndex = 44;
-            this.labelControl6.Text = "Option search";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(36, 248);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(56, 16);
-            this.labelControl4.TabIndex = 41;
-            this.labelControl4.Text = "Category:";
-            // 
-            // ccbCategory
-            // 
-            this.ccbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ccbCategory.FormattingEnabled = true;
-            this.ccbCategory.Location = new System.Drawing.Point(160, 240);
-            this.ccbCategory.Name = "ccbCategory";
-            this.ccbCategory.Size = new System.Drawing.Size(273, 24);
-            this.ccbCategory.TabIndex = 40;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(36, 191);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 16);
-            this.labelControl3.TabIndex = 39;
-            this.labelControl3.Text = "Brands:";
-            // 
-            // ccbBrands
-            // 
-            this.ccbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ccbBrands.FormattingEnabled = true;
-            this.ccbBrands.Location = new System.Drawing.Point(160, 183);
-            this.ccbBrands.Name = "ccbBrands";
-            this.ccbBrands.Size = new System.Drawing.Size(273, 24);
-            this.ccbBrands.TabIndex = 38;
-            // 
-            // txtInputPName
-            // 
-            this.txtInputPName.Location = new System.Drawing.Point(160, 66);
-            this.txtInputPName.Name = "txtInputPName";
-            this.txtInputPName.Size = new System.Drawing.Size(273, 22);
-            this.txtInputPName.TabIndex = 36;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(36, 69);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(85, 16);
-            this.labelControl1.TabIndex = 35;
-            this.labelControl1.Text = "Product Name:";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnSearch);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnUpdateWH);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Task";
+            this.labelControl5.Location = new System.Drawing.Point(36, 257);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(33, 16);
+            this.labelControl5.TabIndex = 49;
+            this.labelControl5.Text = "Price:";
             // 
             // groupStockInItem
             // 
@@ -214,30 +177,20 @@ namespace ManagementStore.Form.Production
             this.groupStockInItem.TabIndex = 48;
             this.groupStockInItem.Text = "Stock In Information";
             // 
-            // dataGridViewProduct
+            // labelControl2
             // 
-            this.dataGridViewProduct.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridViewProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProduct.Location = new System.Drawing.Point(6, 3);
-            this.dataGridViewProduct.Name = "dataGridViewProduct";
-            this.dataGridViewProduct.RowHeadersWidth = 51;
-            this.dataGridViewProduct.RowTemplate.Height = 24;
-            this.dataGridViewProduct.Size = new System.Drawing.Size(968, 522);
-            this.dataGridViewProduct.TabIndex = 0;
+            this.labelControl2.Location = new System.Drawing.Point(18, 51);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(64, 16);
+            this.labelControl2.TabIndex = 36;
+            this.labelControl2.Text = "Product ID:";
             // 
-            // btnSearch
+            // txtInputProductId
             // 
-            this.btnSearch.Caption = "Search";
-            this.btnSearch.Id = 1;
-            this.btnSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.btnSearch.Name = "btnSearch";
-            // 
-            // btnUpdateWH
-            // 
-            this.btnUpdateWH.Caption = "Update Warehouse";
-            this.btnUpdateWH.Id = 2;
-            this.btnUpdateWH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.btnUpdateWH.Name = "btnUpdateWH";
+            this.txtInputProductId.Location = new System.Drawing.Point(142, 48);
+            this.txtInputProductId.Name = "txtInputProductId";
+            this.txtInputProductId.Size = new System.Drawing.Size(273, 22);
+            this.txtInputProductId.TabIndex = 35;
             // 
             // comboBox1
             // 
@@ -271,20 +224,126 @@ namespace ManagementStore.Form.Production
             this.labelControlQuantity.TabIndex = 31;
             this.labelControlQuantity.Text = "Quantity: ";
             // 
-            // labelControl2
+            // ccbWarehouse
             // 
-            this.labelControl2.Location = new System.Drawing.Point(18, 51);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(64, 16);
-            this.labelControl2.TabIndex = 36;
-            this.labelControl2.Text = "Product ID:";
+            this.ccbWarehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.ccbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ccbWarehouse.FormattingEnabled = true;
+            this.ccbWarehouse.Location = new System.Drawing.Point(160, 110);
+            this.ccbWarehouse.Name = "ccbWarehouse";
+            this.ccbWarehouse.Size = new System.Drawing.Size(273, 24);
+            this.ccbWarehouse.TabIndex = 47;
             // 
-            // txtInputProductId
+            // labelControl9
             // 
-            this.txtInputProductId.Location = new System.Drawing.Point(142, 48);
-            this.txtInputProductId.Name = "txtInputProductId";
-            this.txtInputProductId.Size = new System.Drawing.Size(273, 22);
-            this.txtInputProductId.TabIndex = 35;
+            this.labelControl9.Location = new System.Drawing.Point(36, 118);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(70, 16);
+            this.labelControl9.TabIndex = 46;
+            this.labelControl9.Text = "Warehouse:";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.Options.UseFont = true;
+            this.labelControl6.Location = new System.Drawing.Point(18, 13);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(140, 28);
+            this.labelControl6.TabIndex = 44;
+            this.labelControl6.Text = "Option search";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(36, 212);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(56, 16);
+            this.labelControl4.TabIndex = 41;
+            this.labelControl4.Text = "Category:";
+            // 
+            // ccbCategory
+            // 
+            this.ccbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ccbCategory.FormattingEnabled = true;
+            this.ccbCategory.Location = new System.Drawing.Point(160, 204);
+            this.ccbCategory.Name = "ccbCategory";
+            this.ccbCategory.Size = new System.Drawing.Size(273, 24);
+            this.ccbCategory.TabIndex = 40;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(36, 163);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(44, 16);
+            this.labelControl3.TabIndex = 39;
+            this.labelControl3.Text = "Brands:";
+            // 
+            // ccbBrands
+            // 
+            this.ccbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ccbBrands.FormattingEnabled = true;
+            this.ccbBrands.Location = new System.Drawing.Point(160, 155);
+            this.ccbBrands.Name = "ccbBrands";
+            this.ccbBrands.Size = new System.Drawing.Size(273, 24);
+            this.ccbBrands.TabIndex = 38;
+            // 
+            // txtInputPName
+            // 
+            this.txtInputPName.Location = new System.Drawing.Point(160, 66);
+            this.txtInputPName.Name = "txtInputPName";
+            this.txtInputPName.Size = new System.Drawing.Size(273, 22);
+            this.txtInputPName.TabIndex = 36;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(36, 69);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(85, 16);
+            this.labelControl1.TabIndex = 35;
+            this.labelControl1.Text = "Product Name:";
+            // 
+            // gridControlProduct
+            // 
+            this.gridControlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlProduct.Location = new System.Drawing.Point(0, 0);
+            this.gridControlProduct.MainView = this.gridViewProduct;
+            this.gridControlProduct.MenuManager = this.ribbon;
+            this.gridControlProduct.Name = "gridControlProduct";
+            this.gridControlProduct.Size = new System.Drawing.Size(988, 533);
+            this.gridControlProduct.TabIndex = 0;
+            this.gridControlProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewProduct});
+            // 
+            // gridViewProduct
+            // 
+            this.gridViewProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.PId,
+            this.ProductName});
+            this.gridViewProduct.GridControl = this.gridControlProduct;
+            this.gridViewProduct.Name = "gridViewProduct";
+            this.gridViewProduct.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewProduct_RowClick);
+            this.gridViewProduct.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewProduct_FocusedRowChanged);
+            // 
+            // PId
+            // 
+            this.PId.Caption = "Product ID";
+            this.PId.FieldName = "PId";
+            this.PId.MinWidth = 25;
+            this.PId.Name = "PId";
+            this.PId.OptionsColumn.ReadOnly = true;
+            this.PId.Visible = true;
+            this.PId.VisibleIndex = 0;
+            this.PId.Width = 94;
+            // 
+            // ProductName
+            // 
+            this.ProductName.Caption = "Product Name";
+            this.ProductName.FieldName = "ProductName";
+            this.ProductName.MinWidth = 25;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.OptionsColumn.ReadOnly = true;
+            this.ProductName.Visible = true;
+            this.ProductName.VisibleIndex = 1;
+            this.ProductName.Width = 94;
             // 
             // StockIn
             // 
@@ -302,13 +361,14 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).EndInit();
             this.groupStockInItem.ResumeLayout(false);
             this.groupStockInItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,7 +391,6 @@ namespace ManagementStore.Form.Production
         private System.Windows.Forms.ComboBox ccbBrands;
         private DevExpress.XtraEditors.TextEdit txtInputPName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private System.Windows.Forms.DataGridView dataGridViewProduct;
         private DevExpress.XtraBars.BarButtonItem btnSearch;
         private DevExpress.XtraBars.BarButtonItem btnUpdateWH;
         public System.Windows.Forms.ComboBox comboBox1;
@@ -340,5 +399,11 @@ namespace ManagementStore.Form.Production
         public DevExpress.XtraEditors.LabelControl labelControlQuantity;
         public DevExpress.XtraEditors.LabelControl labelControl2;
         public DevExpress.XtraEditors.TextEdit txtInputProductId;
+        private System.Windows.Forms.ComboBox ccbPrice;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraGrid.GridControl gridControlProduct;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
+        private DevExpress.XtraGrid.Columns.GridColumn PId;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductName;
     }
 }

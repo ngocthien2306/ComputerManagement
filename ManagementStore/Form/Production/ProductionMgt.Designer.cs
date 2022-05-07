@@ -31,8 +31,6 @@ namespace ManagementStore.Form.Production
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
-            DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductionMgt));
             this.gridViewProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControlProduct = new DevExpress.XtraGrid.GridControl();
@@ -43,6 +41,7 @@ namespace ManagementStore.Form.Production
             this.Brand = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Category = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Picture = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.itemPictureEditProduct = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.Mainboard = new DevExpress.XtraGrid.Columns.GridColumn();
             this.WarehouseName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Quantity = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,6 +51,7 @@ namespace ManagementStore.Form.Production
             this.SSD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barBtnSearch = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnReload = new DevExpress.XtraBars.BarButtonItem();
@@ -90,9 +90,9 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardViewProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemPictureEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemPictureEditProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -128,7 +128,7 @@ namespace ManagementStore.Form.Production
             // cardViewProduct
             // 
             this.cardViewProduct.Appearance.FieldCaption.BackColor = System.Drawing.Color.White;
-            this.cardViewProduct.Appearance.FieldCaption.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Information;
+            this.cardViewProduct.Appearance.FieldCaption.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
             this.cardViewProduct.Appearance.FieldCaption.Options.UseBackColor = true;
             this.cardViewProduct.Appearance.FieldCaption.Options.UseForeColor = true;
             this.cardViewProduct.CardWidth = 270;
@@ -153,6 +153,8 @@ namespace ManagementStore.Form.Production
             this.cardViewProduct.Name = "cardViewProduct";
             this.cardViewProduct.OptionsPrint.AutoHorzWidth = true;
             this.cardViewProduct.OptionsPrint.PrintCardCaption = false;
+            this.cardViewProduct.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.cardViewProduct_FocusedRowChanged);
+            this.cardViewProduct.Click += new System.EventHandler(this.cardViewProduct_Click);
             // 
             // PId
             // 
@@ -218,11 +220,7 @@ namespace ManagementStore.Form.Production
             // Picture
             // 
             this.Picture.Caption = "Picture";
-            repositoryItemPictureEdit1.CustomHeight = 50;
-            repositoryItemPictureEdit1.Name = "itemPictureEditProduct";
-            repositoryItemPictureEdit1.ReadOnly = true;
-            repositoryItemPictureEdit1.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.Picture.ColumnEdit = repositoryItemPictureEdit1;
+            this.Picture.ColumnEdit = this.itemPictureEditProduct;
             this.Picture.FieldName = "Picture";
             this.Picture.MinWidth = 25;
             this.Picture.Name = "Picture";
@@ -230,6 +228,13 @@ namespace ManagementStore.Form.Production
             this.Picture.Visible = true;
             this.Picture.VisibleIndex = 5;
             this.Picture.Width = 76;
+            // 
+            // itemPictureEditProduct
+            // 
+            this.itemPictureEditProduct.CustomHeight = 50;
+            this.itemPictureEditProduct.Name = "itemPictureEditProduct";
+            this.itemPictureEditProduct.ReadOnly = true;
+            this.itemPictureEditProduct.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             // 
             // Mainboard
             // 
@@ -318,18 +323,21 @@ namespace ManagementStore.Form.Production
             // CreatedAt
             // 
             this.CreatedAt.Caption = "Created At";
-            repositoryItemDateEdit1.AutoHeight = false;
-            repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
-            this.CreatedAt.ColumnEdit = repositoryItemDateEdit1;
+            this.CreatedAt.ColumnEdit = this.repositoryItemDateEdit1;
             this.CreatedAt.FieldName = "CreatedAt";
             this.CreatedAt.MinWidth = 25;
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.OptionsColumn.ReadOnly = true;
             this.CreatedAt.Width = 197;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // ribbonControl1
             // 
@@ -662,9 +670,9 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardViewProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemPictureEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemPictureEditProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -735,5 +743,7 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraGrid.Columns.GridColumn WarehouseName;
         private DevExpress.XtraGrid.Columns.GridColumn Quantity;
         private DevExpress.XtraBars.BarButtonItem btnHistoryStock;
+        private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit itemPictureEditProduct;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

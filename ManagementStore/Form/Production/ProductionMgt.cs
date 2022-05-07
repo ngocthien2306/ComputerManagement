@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraEditors;
+using ManagementStore.Extensions;
 using ManagementStore.Model;
 using ManagementStore.Services;
 using System;
@@ -19,9 +20,7 @@ namespace ManagementStore.Form.Production
     {
         ProductServices productServices = new ProductServices();
         WarehouseServices warehouseServices = new WarehouseServices();
-        decimal startPrice = 0;
-        decimal endPrice = 0;
-        decimal max = 200000000;
+
         public ProductionMgt()
         {
             InitializeComponent();
@@ -90,7 +89,8 @@ namespace ManagementStore.Form.Production
         {
             // using function to select product data
             string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId)";
-            PriceOptionSearch();
+            string price = ccbPrice.SelectedValue.ToString();
+            OptionSearchExtensions.PriceOptionSearch(price);
             string[] arrParams = new string[7];
             arrParams[0] = "@ProductName";       
             arrParams[1] = "@Brands";
@@ -105,8 +105,8 @@ namespace ManagementStore.Form.Production
             arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
             arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
             arrParamsValue[3] = ccbRams.Text == "All" ? "" : ccbRams.SelectedValue.ToString();
-            arrParamsValue[4] = startPrice;
-            arrParamsValue[5] = endPrice;
+            arrParamsValue[4] = OptionSearchExtensions.StartPrice;
+            arrParamsValue[5] = OptionSearchExtensions.EndPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
 
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
@@ -198,55 +198,7 @@ namespace ManagementStore.Form.Production
                 errorProviderProductID.SetError(txtInputProductId, null);
             }
         }
-        public void PriceOptionSearch()
-        {
-            try
-            {
-                string price = price = ccbPrice.SelectedValue.ToString();
 
-                if (price == "PRIP01")
-                {
-                    startPrice = 0;
-                    endPrice = max;
-                }
-                else if (price == "PRIP02")
-                {
-                    startPrice = 0;
-                    endPrice = 5000000;
-                }
-                else if (price == "PRIP03")
-                {
-                    startPrice = 5000000;
-                    endPrice = 10000000;
-                }
-                else if (price == "PRIP04")
-                {
-                    startPrice = 10000000;
-                    endPrice = 15000000;
-                }
-                else if (price == "PRIP05")
-                {
-                    startPrice = 15000000;
-                    endPrice = 20000000;
-                }
-                else if (price == "PRIP06")
-                {
-                    startPrice = 20000000;
-                    endPrice = 30000000;
-                }
-                else if (price == "PRIP07")
-                {
-                    startPrice = 30000000;
-                    endPrice = max;
-                }
-            }
-            catch(Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
-
-        }
 
         private void barBtnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -274,6 +226,56 @@ namespace ManagementStore.Form.Production
         {
             StockIn stockIn = new StockIn();
             stockIn.ShowDialog();
+        }
+
+        private void cardViewProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            //int selectedRows = cardViewProduct.GetSelectedRows()[0];
+
+            //if (selectedRows >= 0)
+            //{
+            //    var cellValue = cardViewProduct.GetRowCellValue(selectedRows, "PId");
+            //    txtInputProductId.Text = cellValue.ToString();
+            //}
+        }
+
+        private void cardViewProduct_Click(object sender, EventArgs e)
+        {
+            int selectedRows = cardViewProduct.GetSelectedRows()[0];
+
+            if (selectedRows >= 0)
+            {
+                var cellValue = cardViewProduct.GetRowCellValue(selectedRows, "PId");
+                txtInputProductId.Text = cellValue.ToString();
+                Product product = productServices.GetOneProduct(Convert.ToInt32(cellValue));
+                if (product == null)
+                {
+                    XtraMessageBox.Show("The product not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                else
+                {
+
+                    CreateProduct createProduct = new CreateProduct();
+                    createProduct.Show();
+                    MemoryStream pic = new MemoryStream(product.Picture);
+                    createProduct.txtPName.Text = product.ProductName;
+                    createProduct.txtPPrice.Text = product.Price.ToString();
+                    createProduct.txtMainboard.Text = product.Mainboard;
+                    createProduct.txtCPU.Text = product.CPU;
+                    createProduct.txtHDD.Text = product.HDD;
+                    createProduct.txtSSD.Text = product.SSD;
+                    createProduct.txtVGA.Text = product.VGA;
+                    createProduct.ccbPBrand.SelectedValue = product.Brand;
+                    createProduct.ccbPCategory.SelectedValue = product.CategoryId;
+                    createProduct.ccbRam.SelectedValue = product.RAM;
+                    createProduct.picturePImage.Image = Image.FromStream(pic);
+                    createProduct.txtInputProductId.Text = product.PId.ToString();
+                    createProduct.groupWH.Enabled = false;
+                    
+                    //this.Hide();
+                }
+            }
         }
     }
 }
