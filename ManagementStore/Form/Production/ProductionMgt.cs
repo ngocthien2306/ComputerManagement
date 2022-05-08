@@ -92,7 +92,7 @@ namespace ManagementStore.Form.Production
             // using function to select product data
             string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId, @WHCode)";
             string price = ccbPrice.SelectedValue.ToString();
-            OptionSearchExtensions.PriceOptionSearch(price);
+            SearchExtensions.PriceOptionSearch(price);
             string[] arrParams = new string[8];
             arrParams[0] = "@ProductName";       
             arrParams[1] = "@Brands";
@@ -108,8 +108,8 @@ namespace ManagementStore.Form.Production
             arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
             arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
             arrParamsValue[3] = ccbRams.Text == "All" ? "" : ccbRams.SelectedValue.ToString();
-            arrParamsValue[4] = OptionSearchExtensions.StartPrice;
-            arrParamsValue[5] = OptionSearchExtensions.EndPrice;
+            arrParamsValue[4] = SearchExtensions.StartPrice;
+            arrParamsValue[5] = SearchExtensions.EndPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
             arrParamsValue[7] = ccbWarehouse.Text == "All" ? "" : ccbWarehouse.SelectedValue.ToString();
 

@@ -468,7 +468,7 @@ namespace ManagementStore.Form.Production
             // ItemOutStock
             // 
             this.ItemOutStock.Caption = "Out Stock";
-            this.ItemOutStock.FieldName = "ItemInWh";
+            this.ItemOutStock.FieldName = "ItemOutWh";
             this.ItemOutStock.MinWidth = 25;
             this.ItemOutStock.Name = "ItemOutStock";
             this.ItemOutStock.OptionsColumn.ReadOnly = true;

@@ -37,7 +37,7 @@ namespace ManagementStore.Services
             return wareHouses;
         }
 
-        public Result UpdateItemWareHouse(int storedId, int quantity, string whCode, int pId, string userId)
+        public Result UpdateItemStockInWareHouse(int storedId, int quantity, string whCode, int pId, string userId)
         {
             try
             {
@@ -53,6 +53,43 @@ namespace ManagementStore.Services
                     arrParams[5] = "@UserId";
                     object[] arrParamsValue = new object[6];
                     arrParamsValue[0] = "SaveItemStock";
+                    arrParamsValue[1] = storedId;
+                    arrParamsValue[2] = quantity;
+                    arrParamsValue[3] = whCode;
+                    arrParamsValue[4] = pId;
+                    arrParamsValue[5] = userId;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, arrParams, arrParamsValue);
+                    if (resultString == null)
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Save product successfull" };
+                    }
+                    else
+                    {
+                        return new Result { Success = false, Message = "Save item in stock failed! " + resultString };
+                    }
+                } 
+            }
+            catch(Exception ex)
+            {
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
+        public Result UpdateItemStockOutWareHouse(int storedId, int quantity, string whCode, int pId, string userId)
+        {
+            try
+            {
+                var resultString = "Error";
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[6];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@StoredId";
+                    arrParams[2] = "@Quantity";
+                    arrParams[3] = "@WHCode";
+                    arrParams[4] = "@PId";
+                    arrParams[5] = "@UserId";
+                    object[] arrParamsValue = new object[6];
+                    arrParamsValue[0] = "SaveItemOutsStock";
                     arrParamsValue[1] = storedId;
                     arrParamsValue[2] = quantity;
                     arrParamsValue[3] = whCode;

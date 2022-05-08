@@ -23,6 +23,7 @@ namespace ManagementStore.Form.Production
     {
         ProductServices productServices = new ProductServices();
         WarehouseServices warehouseServices = new WarehouseServices();
+        int storedId = 0;
         public StockIn()
         {
             InitializeComponent();
@@ -73,7 +74,7 @@ namespace ManagementStore.Form.Production
             // using function to select product data
             string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId, @WHCode)";
             string price = ccbPrice.SelectedValue.ToString();
-            OptionSearchExtensions.PriceOptionSearch(price);
+            SearchExtensions.PriceOptionSearch(price);
             string[] arrParams = new string[8];
             arrParams[0] = "@ProductName";
             arrParams[1] = "@Brands";
@@ -89,8 +90,8 @@ namespace ManagementStore.Form.Production
             arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
             arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
             arrParamsValue[3] = "";
-            arrParamsValue[4] = OptionSearchExtensions.StartPrice;
-            arrParamsValue[5] = OptionSearchExtensions.EndPrice;
+            arrParamsValue[4] = SearchExtensions.StartPrice;
+            arrParamsValue[5] = SearchExtensions.EndPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
             arrParamsValue[7] = ccbWarehouse.Text == "All" ? "" : ccbWarehouse.SelectedValue.ToString();
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
@@ -125,14 +126,18 @@ namespace ManagementStore.Form.Production
 
         private void gridViewProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            int selectedRows = gridViewProduct.GetSelectedRows()[0];
+            int[] selectedRows = gridViewProduct.GetSelectedRows();
 
-            if (selectedRows >= 0)
+            foreach(var hande in selectedRows)
             {
-                var PId = gridViewProduct.GetRowCellValue(selectedRows, "PId");
-                var WHCode = gridViewProduct.GetRowCellValue(selectedRows, "WHCode");
-                txtInputProductId.Text = PId.ToString();
-                ccbWHSave.SelectedValue = WHCode.ToString();
+                if (hande >= 0)
+                {
+                    var PId = gridViewProduct.GetRowCellValue(hande, "PId");
+                    var WHCode = gridViewProduct.GetRowCellValue(hande, "WHCode");
+                    storedId = (int) gridViewProduct.GetRowCellValue(hande, "StoredId");
+                    txtInputProductId.Text = PId.ToString();
+                    ccbWHSave.SelectedValue = WHCode.ToString();
+                }
             }
             btnUpdateWH.Enabled = true;
         }
@@ -156,7 +161,7 @@ namespace ManagementStore.Form.Production
                 int PId = Convert.ToInt32(txtInputProductId.Text);
                 string WHCode = ccbWHSave.SelectedValue.ToString();
                 int quantity = (int)numericQuantity.Value;
-                var result = warehouseServices.UpdateItemWareHouse(0, quantity, WHCode, PId, CurrentUser.AppUser.Id);
+                var result = warehouseServices.UpdateItemStockInWareHouse(storedId, quantity, WHCode, PId, CurrentUser.AppUser.Id);
                 if (result.Success)
                 {
                     XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);

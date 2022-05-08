@@ -117,7 +117,7 @@
       <DependentUpon>ComputerStoreDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConnectionDB.cs" />
-    <Compile Include="Extensions\OptionSearchExtensions.cs" />
+    <Compile Include="Extensions\SearchExtensions.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
     <Compile Include="Form\Production\CreateProduct.cs">
