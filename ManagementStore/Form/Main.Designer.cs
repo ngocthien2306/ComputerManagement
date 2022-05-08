@@ -152,7 +152,7 @@ namespace ManagementStore.Form
             // 
             this.barBtnSearchProduct.Caption = "Search";
             this.barBtnSearchProduct.Id = 10;
-            this.barBtnSearchProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
+            this.barBtnSearchProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnSearchProduct.ImageOptions.SvgImage")));
             this.barBtnSearchProduct.Name = "barBtnSearchProduct";
             this.barBtnSearchProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnSearchProduct_ItemClick);
             // 
@@ -160,7 +160,7 @@ namespace ManagementStore.Form
             // 
             this.barBtnStatisticProduct.Caption = "Statistic";
             this.barBtnStatisticProduct.Id = 11;
-            this.barBtnStatisticProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
+            this.barBtnStatisticProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnStatisticProduct.ImageOptions.SvgImage")));
             this.barBtnStatisticProduct.Name = "barBtnStatisticProduct";
             this.barBtnStatisticProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnStatisticProduct_ItemClick);
             // 
@@ -318,8 +318,6 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.BarButtonItem barBtnStatisticProduct;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProduct;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageEmployee;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupEmployee;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupEmployee;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupExportData;
@@ -328,5 +326,7 @@ namespace ManagementStore.Form
         private DevExpress.XtraGrid.GridControl gridControlProduct;
         private DevExpress.XtraGrid.Views.Card.CardView cardView1;
         private DevExpress.XtraBars.BarButtonItem barBtnProduct;
+        public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupEmployee;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageEmployee;
     }
 }

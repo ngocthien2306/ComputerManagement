@@ -48,6 +48,8 @@ namespace ManagementStore.Form.Production
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControlFocus = new DevExpress.XtraEditors.LabelControl();
             this.btnFindProduct = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
             this.ccbPBrand = new System.Windows.Forms.ComboBox();
             this.ccbPCategory = new System.Windows.Forms.ComboBox();
             this.labelControlPBrand = new DevExpress.XtraEditors.LabelControl();
@@ -82,8 +84,6 @@ namespace ManagementStore.Form.Production
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.txtInputProductId = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -94,6 +94,7 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPageMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPName.Properties)).BeginInit();
             this.xtraTabPageDetail.SuspendLayout();
@@ -104,7 +105,6 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.txtMainboard.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // fluentDesignFormContainer1
@@ -303,6 +303,21 @@ namespace ManagementStore.Form.Production
             this.btnFindProduct.TabIndex = 16;
             this.btnFindProduct.Text = "Find";
             this.btnFindProduct.Click += new System.EventHandler(this.btnFindProduct_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(18, 39);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(64, 16);
+            this.labelControl1.TabIndex = 15;
+            this.labelControl1.Text = "Product ID:";
+            // 
+            // txtInputProductId
+            // 
+            this.txtInputProductId.Location = new System.Drawing.Point(134, 36);
+            this.txtInputProductId.Name = "txtInputProductId";
+            this.txtInputProductId.Size = new System.Drawing.Size(253, 22);
+            this.txtInputProductId.TabIndex = 14;
             // 
             // ccbPBrand
             // 
@@ -593,21 +608,6 @@ namespace ManagementStore.Form.Production
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Element2";
             // 
-            // txtInputProductId
-            // 
-            this.txtInputProductId.Location = new System.Drawing.Point(134, 36);
-            this.txtInputProductId.Name = "txtInputProductId";
-            this.txtInputProductId.Size = new System.Drawing.Size(253, 22);
-            this.txtInputProductId.TabIndex = 14;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(18, 39);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(64, 16);
-            this.labelControl1.TabIndex = 15;
-            this.labelControl1.Text = "Product ID:";
-            // 
             // CreateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -634,6 +634,7 @@ namespace ManagementStore.Form.Production
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPageMain.ResumeLayout(false);
             this.xtraTabPageMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPName.Properties)).EndInit();
             this.xtraTabPageDetail.ResumeLayout(false);
@@ -645,7 +646,6 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.txtMainboard.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -691,7 +691,6 @@ namespace ManagementStore.Form.Production
         public System.Windows.Forms.ComboBox ccbPBrand;
         public System.Windows.Forms.ComboBox ccbRam;
         public DevExpress.XtraEditors.PictureEdit picturePImage;
-        private DevExpress.XtraEditors.SimpleButton btnFindProduct;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -705,5 +704,6 @@ namespace ManagementStore.Form.Production
         public DevExpress.XtraEditors.GroupControl groupWH;
         public DevExpress.XtraEditors.LabelControl labelControl1;
         public DevExpress.XtraEditors.TextEdit txtInputProductId;
+        public DevExpress.XtraEditors.SimpleButton btnFindProduct;
     }
 }

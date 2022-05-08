@@ -185,7 +185,7 @@ namespace ManagementStore.Form.Production
             this.Price.AppearanceCell.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.Question;
             this.Price.AppearanceCell.Options.UseForeColor = true;
             this.Price.Caption = "Price";
-            this.Price.DisplayFormat.FormatString = "{0:#,0#VND}";
+            this.Price.DisplayFormat.FormatString = "{0:#,0# VND}";
             this.Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Price.FieldName = "Price";
             this.Price.MinWidth = 25;
@@ -258,7 +258,7 @@ namespace ManagementStore.Form.Production
             // Quantity
             // 
             this.Quantity.Caption = "Quantity";
-            this.Quantity.FieldName = "Quantity";
+            this.Quantity.FieldName = "Total";
             this.Quantity.MinWidth = 25;
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
@@ -407,6 +407,7 @@ namespace ManagementStore.Form.Production
             this.btnStockOut.Id = 6;
             this.btnStockOut.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnStockOut.ImageOptions.SvgImage")));
             this.btnStockOut.Name = "btnStockOut";
+            this.btnStockOut.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStockOut_ItemClick);
             // 
             // btnStockIn
             // 

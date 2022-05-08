@@ -122,7 +122,7 @@ namespace ManagementStore.Services
                     }
                     else
                     {                   
-                        return new Result { Success = false, Message = "Save product failed!" + resultString };
+                        return new Result { Success = false, Message = "Save product failed! " + resultString };
                     }
                     
 

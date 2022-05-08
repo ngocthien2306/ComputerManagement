@@ -29,6 +29,9 @@ namespace ManagementStore.Model
         public string SSD { get; set; }
         public string HDD { get; set; }
 
+        //Attr warehouse
+
+
 
     }
 }

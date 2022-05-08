@@ -1,7 +1,7 @@
 ﻿
 namespace ManagementStore.Form.Production
 {
-    partial class StockIn
+    partial class StockOut
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +29,16 @@ namespace ManagementStore.Form.Production
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockIn));
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockOut));
+            this.W = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnSearch = new DevExpress.XtraBars.BarButtonItem();
             this.btnUpdateWH = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnClose = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.btnExportExcel = new DevExpress.XtraBars.BarButtonItem();
-            this.btnExportPdf = new DevExpress.XtraBars.BarButtonItem();
-            this.btnExportDocx = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageStockIn = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.btnClose = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rbGroupSystem = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.ccbPrice = new System.Windows.Forms.ComboBox();
@@ -79,8 +73,9 @@ namespace ManagementStore.Form.Production
             this.CreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            ((System.ComponentModel.ISupportInitialize)(this.W)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).BeginInit();
@@ -94,28 +89,24 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
-            // ribbon
+            // W
             // 
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
-            this.ribbon.SearchEditItem,
+            this.W.ExpandCollapseItem.Id = 0;
+            this.W.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.W.ExpandCollapseItem,
             this.btnSearch,
             this.btnUpdateWH,
-            this.barBtnClose,
-            this.barButtonItem1,
-            this.barSubItem1,
-            this.btnExportExcel,
-            this.btnExportPdf,
-            this.btnExportDocx,
-            this.barButtonItem5});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 10;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageStockIn});
-            this.ribbon.Size = new System.Drawing.Size(1803, 181);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.barButtonItem3,
+            this.barSubItem2,
+            this.btnClose,
+            this.W.SearchEditItem});
+            this.W.Location = new System.Drawing.Point(0, 0);
+            this.W.MaxItemId = 6;
+            this.W.Name = "W";
+            this.W.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.W.Size = new System.Drawing.Size(1804, 181);
+            this.W.StatusBar = this.ribbonStatusBar;
             // 
             // btnSearch
             // 
@@ -127,108 +118,65 @@ namespace ManagementStore.Form.Production
             // 
             // btnUpdateWH
             // 
-            this.btnUpdateWH.Caption = "Update Stock In";
-            this.btnUpdateWH.Enabled = false;
+            this.btnUpdateWH.Caption = "Update Out Stock";
             this.btnUpdateWH.Id = 2;
             this.btnUpdateWH.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUpdateWH.ImageOptions.SvgImage")));
             this.btnUpdateWH.Name = "btnUpdateWH";
             this.btnUpdateWH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUpdateWH_ItemClick);
             // 
-            // barBtnClose
+            // barButtonItem3
             // 
-            this.barBtnClose.Caption = "Close";
-            this.barBtnClose.Id = 3;
-            this.barBtnClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnClose.ImageOptions.SvgImage")));
-            this.barBtnClose.Name = "barBtnClose";
-            this.barBtnClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnClose_ItemClick);
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 3;
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
-            // barButtonItem1
+            // barSubItem2
             // 
-            this.barButtonItem1.ActAsDropDown = true;
-            this.barButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.barButtonItem1.Caption = "Export";
-            this.barButtonItem1.DropDownControl = this.popupMenu1;
-            this.barButtonItem1.Id = 4;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barSubItem2.Caption = "Export Warehouse";
+            this.barSubItem2.Id = 4;
+            this.barSubItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem2.ImageOptions.SvgImage")));
+            this.barSubItem2.Name = "barSubItem2";
             // 
-            // popupMenu1
+            // btnClose
             // 
-            this.popupMenu1.Name = "popupMenu1";
-            this.popupMenu1.Ribbon = this.ribbon;
+            this.btnClose.Caption = "Close";
+            this.btnClose.Id = 5;
+            this.btnClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnClose.ImageOptions.SvgImage")));
+            this.btnClose.Name = "btnClose";
+            this.btnClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClose_ItemClick);
             // 
-            // barSubItem1
+            // ribbonPage1
             // 
-            this.barSubItem1.Caption = "Export Warehouse";
-            this.barSubItem1.Id = 5;
-            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportExcel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportPdf, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnExportDocx, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barSubItem1.Name = "barSubItem1";
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.Caption = "Export Excel";
-            this.btnExportExcel.Id = 6;
-            this.btnExportExcel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExportExcel.ImageOptions.SvgImage")));
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportExcel_ItemClick);
-            // 
-            // btnExportPdf
-            // 
-            this.btnExportPdf.Caption = "Export PDF";
-            this.btnExportPdf.Id = 7;
-            this.btnExportPdf.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExportPdf.ImageOptions.SvgImage")));
-            this.btnExportPdf.Name = "btnExportPdf";
-            this.btnExportPdf.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportPdf_ItemClick);
-            // 
-            // btnExportDocx
-            // 
-            this.btnExportDocx.Caption = "Export Docx";
-            this.btnExportDocx.Id = 8;
-            this.btnExportDocx.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExportDocx.ImageOptions.SvgImage")));
-            this.btnExportDocx.Name = "btnExportDocx";
-            this.btnExportDocx.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExportDocx_ItemClick);
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "barButtonItem5";
-            this.barButtonItem5.Id = 9;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // ribbonPageStockIn
-            // 
-            this.ribbonPageStockIn.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.rbGroupSystem});
-            this.ribbonPageStockIn.Name = "ribbonPageStockIn";
-            this.ribbonPageStockIn.Text = "Warehouse";
+            this.ribbonPageGroup3});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Warehouse";
             // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnSearch);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUpdateWH);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barSubItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barSubItem2);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Task";
             // 
-            // rbGroupSystem
+            // ribbonPageGroup3
             // 
-            this.rbGroupSystem.ItemLinks.Add(this.barBtnClose);
-            this.rbGroupSystem.Name = "rbGroupSystem";
-            this.rbGroupSystem.Text = "System";
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnClose);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "System";
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 734);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 742);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1803, 29);
+            this.ribbonStatusBar.Ribbon = this.W;
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1804, 29);
             // 
             // splitContainerControl1
             // 
-            this.splitContainerControl1.Location = new System.Drawing.Point(12, 187);
+            this.splitContainerControl1.Location = new System.Drawing.Point(12, 196);
             this.splitContainerControl1.Name = "splitContainerControl1";
             this.splitContainerControl1.Panel1.Controls.Add(this.ccbPrice);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl5);
@@ -247,7 +195,7 @@ namespace ManagementStore.Form.Production
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1779, 533);
             this.splitContainerControl1.SplitterPosition = 466;
-            this.splitContainerControl1.TabIndex = 2;
+            this.splitContainerControl1.TabIndex = 3;
             // 
             // ccbPrice
             // 
@@ -279,7 +227,7 @@ namespace ManagementStore.Form.Production
             this.groupStockInItem.Name = "groupStockInItem";
             this.groupStockInItem.Size = new System.Drawing.Size(447, 222);
             this.groupStockInItem.TabIndex = 48;
-            this.groupStockInItem.Text = "Stock In Information";
+            this.groupStockInItem.Text = "Stock Out Information";
             // 
             // ccbWHSave
             // 
@@ -425,7 +373,7 @@ namespace ManagementStore.Form.Production
             this.gridControlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlProduct.Location = new System.Drawing.Point(0, 0);
             this.gridControlProduct.MainView = this.gridViewProduct;
-            this.gridControlProduct.MenuManager = this.ribbon;
+            this.gridControlProduct.MenuManager = this.W;
             this.gridControlProduct.Name = "gridControlProduct";
             this.gridControlProduct.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
@@ -459,8 +407,6 @@ namespace ManagementStore.Form.Production
             this.gridViewProduct.OptionsView.ShowFooter = true;
             this.gridViewProduct.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.WHName, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.gridViewProduct.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridViewProduct_RowClick);
-            this.gridViewProduct.CustomDrawFooterCell += new DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventHandler(this.gridViewProduct_CustomDrawFooterCell);
             this.gridViewProduct.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewProduct_FocusedRowChanged);
             // 
             // PId
@@ -597,21 +543,32 @@ namespace ManagementStore.Form.Production
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
-            // StockIn
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Task";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Export Warehouse";
+            this.barSubItem1.Id = 5;
+            this.barSubItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItem1.ImageOptions.SvgImage")));
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // StockOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1803, 763);
+            this.ClientSize = new System.Drawing.Size(1804, 771);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.ribbon);
-            this.Name = "StockIn";
-            this.Ribbon = this.ribbon;
+            this.Controls.Add(this.W);
+            this.Name = "StockOut";
+            this.Ribbon = this.W;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Stock In";
-            this.Load += new System.EventHandler(this.StockIn_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            this.Text = "Stock Out";
+            this.Load += new System.EventHandler(this.StockOut_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.W)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).EndInit();
@@ -631,12 +588,20 @@ namespace ManagementStore.Form.Production
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageStockIn;
+        private DevExpress.XtraBars.Ribbon.RibbonControl W;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private System.Windows.Forms.ComboBox ccbPrice;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.GroupControl groupStockInItem;
+        private System.Windows.Forms.ComboBox ccbWHSave;
+        public DevExpress.XtraEditors.LabelControl labelControl2;
+        public DevExpress.XtraEditors.TextEdit txtInputProductId;
+        public DevExpress.XtraEditors.LabelControl labelControlWarehouse;
+        private System.Windows.Forms.NumericUpDown numericQuantity;
+        public DevExpress.XtraEditors.LabelControl labelControlQuantity;
         private System.Windows.Forms.ComboBox ccbWarehouse;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.LabelControl labelControl6;
@@ -646,15 +611,6 @@ namespace ManagementStore.Form.Production
         private System.Windows.Forms.ComboBox ccbBrands;
         private DevExpress.XtraEditors.TextEdit txtInputPName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraBars.BarButtonItem btnSearch;
-        private DevExpress.XtraBars.BarButtonItem btnUpdateWH;
-        public DevExpress.XtraEditors.LabelControl labelControlWarehouse;
-        private System.Windows.Forms.NumericUpDown numericQuantity;
-        public DevExpress.XtraEditors.LabelControl labelControlQuantity;
-        public DevExpress.XtraEditors.LabelControl labelControl2;
-        public DevExpress.XtraEditors.TextEdit txtInputProductId;
-        private System.Windows.Forms.ComboBox ccbPrice;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraGrid.GridControl gridControlProduct;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
         private DevExpress.XtraGrid.Columns.GridColumn PId;
@@ -666,18 +622,16 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraGrid.Columns.GridColumn Price;
         private DevExpress.XtraGrid.Columns.GridColumn Brand;
         private DevExpress.XtraGrid.Columns.GridColumn CategoryId;
-        private DevExpress.XtraBars.BarButtonItem barBtnClose;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbGroupSystem;
         private DevExpress.XtraGrid.Columns.GridColumn CreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn CreatedAt;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
-        private System.Windows.Forms.ComboBox ccbWHSave;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem btnExportExcel;
-        private DevExpress.XtraBars.BarButtonItem btnExportPdf;
-        private DevExpress.XtraBars.BarButtonItem btnExportDocx;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem btnSearch;
+        private DevExpress.XtraBars.BarButtonItem btnUpdateWH;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarButtonItem btnClose;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

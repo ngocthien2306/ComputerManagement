@@ -132,6 +132,12 @@
     <Compile Include="Form\Production\ProductionMgt.Designer.cs">
       <DependentUpon>ProductionMgt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Production\StockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Production\StockOut.Designer.cs">
+      <DependentUpon>StockOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Production\SearchProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Production\ProductionMgt.resx">
       <DependentUpon>ProductionMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Production\StockOut.resx">
+      <DependentUpon>StockOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Production\SearchProduct.resx">
       <DependentUpon>SearchProduct.cs</DependentUpon>

@@ -1,6 +1,4 @@
-﻿using DevExpress.Utils;
-using DevExpress.Utils.Drawing;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using ManagementStore.Extensions;
 using ManagementStore.Model;
@@ -9,9 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +15,14 @@ using System.Windows.Forms;
 
 namespace ManagementStore.Form.Production
 {
-    public partial class StockIn : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class StockOut : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         ProductServices productServices = new ProductServices();
         WarehouseServices warehouseServices = new WarehouseServices();
-        public StockIn()
+        public StockOut()
         {
             InitializeComponent();
         }
-
-        #region
         public void LoadOptionSearch()
         {
             string query = "";
@@ -96,31 +90,14 @@ namespace ManagementStore.Form.Production
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
             return products;
         }
-        #endregion
 
-        private void StockIn_Load(object sender, EventArgs e)
+        private void StockOut_Load(object sender, EventArgs e)
         {
             LoadOptionSearch();
 
             btnUpdateWH.Enabled = false;
 
             gridControlProduct.DataSource = GetListProduct();
- 
-
-        }
-
-
-
-        private void gridViewProduct_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            //int selectedRows = gridViewProduct.GetSelectedRows()[0];
-
-            //if (selectedRows >= 0)
-            //{
-            //    var cellValue = gridViewProduct.GetRowCellValue(selectedRows, "PId");
-            //    txtInputProductId.Text = cellValue.ToString();
-            //}
-            
         }
 
         private void gridViewProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -137,21 +114,20 @@ namespace ManagementStore.Form.Production
             btnUpdateWH.Enabled = true;
         }
 
-        private void barBtnClose_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Hide();
-        }
-
         private void btnSearch_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridControlProduct.DataSource = GetListProduct();
+        }
 
+        private void btnClose_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Hide();
         }
 
         private void btnUpdateWH_ItemClick(object sender, ItemClickEventArgs e)
         {
             string wh = ccbWHSave.Text;
-            if(wh != "")
+            if (wh != "")
             {
                 int PId = Convert.ToInt32(txtInputProductId.Text);
                 string WHCode = ccbWHSave.SelectedValue.ToString();
@@ -173,54 +149,6 @@ namespace ManagementStore.Form.Production
                 XtraMessageBox.Show("Please select warehouse stock in item!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
-
         }
-
-        private void btnExportExcel_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            string path = "production.xlsx";
-            //gridViewProduct.Focused = false;
-            gridViewProduct.ExportToXlsx(path);
-            Process.Start(path);
-        }
-
-        private void btnExportPdf_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            string path = "production.pdf";
-            //gridViewProduct.Focused = false;
-            gridViewProduct.ExportToPdf(path);
-            Process.Start(path);
-        }
-
-        private void btnExportDocx_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            string path = "production.docx";
-            //gridViewProduct.Focused = false;
-            gridViewProduct.ExportToDocx(path);
-            Process.Start(path);
-        }
-
-        #region custom view grid
-        private void gridViewProduct_CustomDrawFooterCell(object sender, DevExpress.XtraGrid.Views.Grid.FooterCellCustomDrawEventArgs e)
-        {
-            //int dx = e.Bounds.Height;
-            //Brush brush = e.Cache.GetGradientBrush(e.Bounds, Color.Wheat, Color.FloralWhite, LinearGradientMode.Vertical);
-            //Rectangle r = e.Bounds;
-            ////Draw a 3D border
-            //BorderPainter painter = BorderHelper.GetPainter(DevExpress.XtraEditors.Controls.BorderStyles.Style3D);
-            //AppearanceObject borderAppearance = new AppearanceObject(e.Appearance);
-            //borderAppearance.BorderColor = Color.DarkGray;
-            //painter.DrawObject(new BorderObjectInfoArgs(e.Cache, borderAppearance, r));
-            ////Fill the inner region of the cell
-            //r.Inflate(-1, -1);
-            //e.Cache.FillRectangle(brush, r);
-            ////Draw a summary value
-            //r.Inflate(-2, 0);
-            //e.Appearance.DrawString(e.Cache, e.Info.DisplayText, r);
-            ////Prevent default drawing of the cell
-            //e.Handled = true;
-        }
-        #endregion
-
     }
 }

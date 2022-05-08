@@ -54,6 +54,7 @@ namespace ManagementStore.Form.Production
 
             var categorys = productServices.GetListCategory();
             var warehouses = warehouseServices.GetListWarehouse();
+            warehouses.Add(new WareHouse {WHId = 1, WHName = "All", Capacity = -1, WHCode = "All" });
             query = @"select * from[dbo].[GetListComCode](@GroupCode)";
             var brands = productServices.GetListData(query, new object[1] { "BRAS00" }, new string[1] { "@GroupCode" });
             var rams = productServices.GetListData(query, new object[1] { "RAMS00" }, new string[1] { "@GroupCode" });
@@ -82,16 +83,17 @@ namespace ManagementStore.Form.Production
             ccbWarehouse.DataSource = warehouses;
             ccbWarehouse.DisplayMember = "WHName";
             ccbWarehouse.ValueMember = "WHCode";
+            ccbWarehouse.SelectedValue = "All";
             
         }
 
         public DataTable GetListProduct()
         {
             // using function to select product data
-            string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId)";
+            string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId, @WHCode)";
             string price = ccbPrice.SelectedValue.ToString();
             OptionSearchExtensions.PriceOptionSearch(price);
-            string[] arrParams = new string[7];
+            string[] arrParams = new string[8];
             arrParams[0] = "@ProductName";       
             arrParams[1] = "@Brands";
             arrParams[2] = "@Category";
@@ -99,8 +101,9 @@ namespace ManagementStore.Form.Production
             arrParams[4] = "@StartPrice";
             arrParams[5] = "@EndPrice";
             arrParams[6] = "@UserId";
+            arrParams[7] = "@WHCode";
 
-            object[] arrParamsValue = new object[7];
+            object[] arrParamsValue = new object[8];
             arrParamsValue[0] = txtInputPName.Text;
             arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
             arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
@@ -108,6 +111,7 @@ namespace ManagementStore.Form.Production
             arrParamsValue[4] = OptionSearchExtensions.StartPrice;
             arrParamsValue[5] = OptionSearchExtensions.EndPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
+            arrParamsValue[7] = ccbWarehouse.Text == "All" ? "" : ccbWarehouse.SelectedValue.ToString();
 
             var products = productServices.GetListData(query, arrParamsValue, arrParams);
             return products;
@@ -272,10 +276,18 @@ namespace ManagementStore.Form.Production
                     createProduct.picturePImage.Image = Image.FromStream(pic);
                     createProduct.txtInputProductId.Text = product.PId.ToString();
                     createProduct.groupWH.Enabled = false;
+                    createProduct.txtInputProductId.Enabled = false;
+                    createProduct.btnFindProduct.Enabled = false;
                     
                     //this.Hide();
                 }
             }
+        }
+
+        private void btnStockOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            StockOut stockOut = new StockOut();
+            stockOut.ShowDialog();
         }
     }
 }

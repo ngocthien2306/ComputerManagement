@@ -21,6 +21,10 @@ namespace ManagementStore.Model
         public int Total { get; set; }
         public int ItemInWH { get; set; }
         public int ItemOutWh { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
     public class HistoryInAndOutProduct
     {

@@ -58,6 +58,7 @@ namespace ManagementStore.Form.User
                 {
                     CurrentUser.SetCurrentUser(appUser);                    
                     Main main = new Main();
+                    main.ribbonPageGroupEmployee.Enabled = false;
                     main.Show();
                     Hide();
                 }
