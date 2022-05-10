@@ -1,6 +1,8 @@
 ﻿using DevExpress.XtraBars;
 using ManagementStore.Form.Production;
 using ManagementStore.Form.User;
+using ManagementStore.Model;
+using ManagementStore.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +21,8 @@ namespace ManagementStore.Form
         {
             InitializeComponent();
         }
+
+        UserServices userServices = new UserServices();
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -57,8 +61,15 @@ namespace ManagementStore.Form
 
         private void barBtn_Profile_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Profile pr = new Profile();
-            pr.ShowDialog();
+            Profile profile = new Profile();
+            var user = userServices.GetUserByUsername(CurrentUser.AppUser.Username, CurrentUser.AppUser.TypeId.ToString());
+            profile.txtFirstName.Text = user.Firstname;
+            profile.txtLastName.Text = user.Lastname;
+            profile.txtEmail.Text = user.Email;
+            profile.txtAddress.Text = user.Address;
+            profile.txtPhone.Text = user.Phone;
+            profile.txtUsername.Text = user.Username;
+            profile.ShowDialog();
         }
     }
 }
