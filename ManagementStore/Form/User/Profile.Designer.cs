@@ -44,26 +44,29 @@ namespace ManagementStore.Form.User
             this.labelEmail = new System.Windows.Forms.Label();
             this.labelLastName = new System.Windows.Forms.Label();
             this.labelFirstName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.picProfile = new System.Windows.Forms.PictureBox();
+            this.btnUpload = new System.Windows.Forms.Button();
+            this.labelBirthday = new System.Windows.Forms.Label();
+            this.dateTimePickerBirthday = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.picProfile)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSave.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(171, 328);
+            this.btnSave.Location = new System.Drawing.Point(171, 374);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(185, 32);
             this.btnSave.TabIndex = 17;
             this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(209, 270);
+            this.txtPassword.Location = new System.Drawing.Point(209, 310);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(290, 32);
             this.txtPassword.TabIndex = 10;
@@ -71,7 +74,7 @@ namespace ManagementStore.Form.User
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(209, 230);
+            this.txtUsername.Location = new System.Drawing.Point(209, 270);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(290, 32);
             this.txtUsername.TabIndex = 11;
@@ -79,7 +82,7 @@ namespace ManagementStore.Form.User
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(209, 189);
+            this.txtPhone.Location = new System.Drawing.Point(209, 229);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(290, 32);
             this.txtPhone.TabIndex = 12;
@@ -87,7 +90,7 @@ namespace ManagementStore.Form.User
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(209, 147);
+            this.txtAddress.Location = new System.Drawing.Point(209, 187);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(290, 32);
             this.txtAddress.TabIndex = 13;
@@ -95,7 +98,7 @@ namespace ManagementStore.Form.User
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(209, 107);
+            this.txtEmail.Location = new System.Drawing.Point(209, 147);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(290, 32);
             this.txtEmail.TabIndex = 14;
@@ -120,7 +123,7 @@ namespace ManagementStore.Form.User
             // 
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(42, 278);
+            this.labelPassword.Location = new System.Drawing.Point(42, 318);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(94, 24);
             this.labelPassword.TabIndex = 3;
@@ -130,7 +133,7 @@ namespace ManagementStore.Form.User
             // 
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(42, 238);
+            this.labelUsername.Location = new System.Drawing.Point(42, 278);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(100, 24);
             this.labelUsername.TabIndex = 4;
@@ -140,7 +143,7 @@ namespace ManagementStore.Form.User
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhone.Location = new System.Drawing.Point(42, 197);
+            this.labelPhone.Location = new System.Drawing.Point(42, 237);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(65, 24);
             this.labelPhone.TabIndex = 5;
@@ -150,7 +153,7 @@ namespace ManagementStore.Form.User
             // 
             this.labelAddress.AutoSize = true;
             this.labelAddress.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddress.Location = new System.Drawing.Point(42, 155);
+            this.labelAddress.Location = new System.Drawing.Point(42, 195);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(80, 24);
             this.labelAddress.TabIndex = 6;
@@ -160,7 +163,7 @@ namespace ManagementStore.Form.User
             // 
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(42, 115);
+            this.labelEmail.Location = new System.Drawing.Point(42, 155);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(59, 24);
             this.labelEmail.TabIndex = 7;
@@ -186,32 +189,51 @@ namespace ManagementStore.Form.User
             this.labelFirstName.TabIndex = 9;
             this.labelFirstName.Text = "First Name";
             // 
-            // pictureBox1
+            // picProfile
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(643, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 278);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.picProfile.Location = new System.Drawing.Point(640, 51);
+            this.picProfile.Name = "picProfile";
+            this.picProfile.Size = new System.Drawing.Size(251, 278);
+            this.picProfile.TabIndex = 18;
+            this.picProfile.TabStop = false;
             // 
-            // button1
+            // btnUpload
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(675, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 32);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Upload Image";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnUpload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnUpload.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpload.Location = new System.Drawing.Point(675, 374);
+            this.btnUpload.Name = "btnUpload";
+            this.btnUpload.Size = new System.Drawing.Size(185, 32);
+            this.btnUpload.TabIndex = 17;
+            this.btnUpload.Text = "Upload Image";
+            this.btnUpload.UseVisualStyleBackColor = false;
+            // 
+            // labelBirthday
+            // 
+            this.labelBirthday.AutoSize = true;
+            this.labelBirthday.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBirthday.Location = new System.Drawing.Point(42, 114);
+            this.labelBirthday.Name = "labelBirthday";
+            this.labelBirthday.Size = new System.Drawing.Size(84, 24);
+            this.labelBirthday.TabIndex = 7;
+            this.labelBirthday.Text = "Birthday";
+            // 
+            // dateTimePickerBirthday
+            // 
+            this.dateTimePickerBirthday.CalendarFont = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerBirthday.Location = new System.Drawing.Point(209, 112);
+            this.dateTimePickerBirthday.Name = "dateTimePickerBirthday";
+            this.dateTimePickerBirthday.Size = new System.Drawing.Size(290, 23);
+            this.dateTimePickerBirthday.TabIndex = 19;
             // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 402);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1001, 427);
+            this.Controls.Add(this.dateTimePickerBirthday);
+            this.Controls.Add(this.picProfile);
+            this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -223,13 +245,14 @@ namespace ManagementStore.Form.User
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.labelPhone);
+            this.Controls.Add(this.labelBirthday);
             this.Controls.Add(this.labelAddress);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.labelLastName);
             this.Controls.Add(this.labelFirstName);
             this.Name = "Profile";
             this.Text = "Profile";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,13 +261,6 @@ namespace ManagementStore.Form.User
         #endregion
 
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label labelPhone;
@@ -252,7 +268,16 @@ namespace ManagementStore.Form.User
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.Label labelLastName;
         private System.Windows.Forms.Label labelFirstName;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox picProfile;
+        private System.Windows.Forms.Button btnUpload;
+        public System.Windows.Forms.TextBox txtPassword;
+        public System.Windows.Forms.TextBox txtUsername;
+        public System.Windows.Forms.TextBox txtPhone;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.TextBox txtEmail;
+        public System.Windows.Forms.TextBox txtLastName;
+        public System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label labelBirthday;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBirthday;
     }
 }
