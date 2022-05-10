@@ -30,8 +30,26 @@ namespace ManagementStore.Model
         public string HDD { get; set; }
 
         //Attr warehouse
+    }
 
 
+    public class StockOutWarehouse
+    {
+        public int PId { get; set; }
+        public string ProductName { get; set; }
+        public string WHName { get; set; }
+        public decimal Price { get; set; }
+        public int ItemInWH { get; set; }
+        public int ItemOutWh { get; set; }
+        public int Total { get; set; }
+        public string WHCode { get; set; }
+        public int StoredId { get; set; }
+        public string CategoryName { get; set; }
+        public string Brand { get; set; }
+        public string RAM { get; set; }
+        public string CreatedBy { get; set; }
+        public decimal TotalPrice { get; set; }
+        public DateTime CreatedAt { get; set; }
 
     }
 }

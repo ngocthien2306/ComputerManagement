@@ -73,6 +73,7 @@ namespace ManagementStore.Form.Production
             this.CreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CreatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.TotalPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.W)).BeginInit();
@@ -94,12 +95,12 @@ namespace ManagementStore.Form.Production
             this.W.ExpandCollapseItem.Id = 0;
             this.W.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.W.ExpandCollapseItem,
+            this.W.SearchEditItem,
             this.btnSearch,
             this.btnUpdateWH,
             this.barButtonItem3,
             this.barSubItem2,
-            this.btnClose,
-            this.W.SearchEditItem});
+            this.btnClose});
             this.W.Location = new System.Drawing.Point(0, 0);
             this.W.MaxItemId = 6;
             this.W.Name = "W";
@@ -399,7 +400,8 @@ namespace ManagementStore.Form.Production
             this.Brand,
             this.CategoryId,
             this.CreatedBy,
-            this.CreatedAt});
+            this.CreatedAt,
+            this.TotalPrice});
             this.gridViewProduct.GridControl = this.gridControlProduct;
             this.gridViewProduct.GroupCount = 1;
             this.gridViewProduct.Name = "gridViewProduct";
@@ -426,7 +428,7 @@ namespace ManagementStore.Form.Production
             this.ProductName.Name = "ProductName";
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 0;
-            this.ProductName.Width = 109;
+            this.ProductName.Width = 110;
             // 
             // WHName
             // 
@@ -438,7 +440,7 @@ namespace ManagementStore.Form.Production
             this.WHName.Name = "WHName";
             this.WHName.OptionsColumn.ReadOnly = true;
             this.WHName.Visible = true;
-            this.WHName.VisibleIndex = 1;
+            this.WHName.VisibleIndex = 10;
             this.WHName.Width = 112;
             // 
             // TotalQuantity
@@ -452,7 +454,7 @@ namespace ManagementStore.Form.Production
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "SUM={0:0.##}")});
             this.TotalQuantity.Visible = true;
             this.TotalQuantity.VisibleIndex = 1;
-            this.TotalQuantity.Width = 70;
+            this.TotalQuantity.Width = 71;
             // 
             // ItemInStock
             // 
@@ -461,6 +463,8 @@ namespace ManagementStore.Form.Production
             this.ItemInStock.MinWidth = 25;
             this.ItemInStock.Name = "ItemInStock";
             this.ItemInStock.OptionsColumn.ReadOnly = true;
+            this.ItemInStock.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemInWH", "SUM={0:0.##}")});
             this.ItemInStock.Visible = true;
             this.ItemInStock.VisibleIndex = 2;
             this.ItemInStock.Width = 59;
@@ -472,9 +476,11 @@ namespace ManagementStore.Form.Production
             this.ItemOutStock.MinWidth = 25;
             this.ItemOutStock.Name = "ItemOutStock";
             this.ItemOutStock.OptionsColumn.ReadOnly = true;
+            this.ItemOutStock.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemOutWh", "SUM={0:0.##}")});
             this.ItemOutStock.Visible = true;
             this.ItemOutStock.VisibleIndex = 3;
-            this.ItemOutStock.Width = 70;
+            this.ItemOutStock.Width = 71;
             // 
             // Price
             // 
@@ -487,7 +493,7 @@ namespace ManagementStore.Form.Production
             this.Price.OptionsColumn.ReadOnly = true;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 4;
-            this.Price.Width = 100;
+            this.Price.Width = 101;
             // 
             // Brand
             // 
@@ -497,8 +503,8 @@ namespace ManagementStore.Form.Production
             this.Brand.Name = "Brand";
             this.Brand.OptionsColumn.ReadOnly = true;
             this.Brand.Visible = true;
-            this.Brand.VisibleIndex = 5;
-            this.Brand.Width = 101;
+            this.Brand.VisibleIndex = 6;
+            this.Brand.Width = 90;
             // 
             // CategoryId
             // 
@@ -508,8 +514,8 @@ namespace ManagementStore.Form.Production
             this.CategoryId.Name = "CategoryId";
             this.CategoryId.OptionsColumn.ReadOnly = true;
             this.CategoryId.Visible = true;
-            this.CategoryId.VisibleIndex = 6;
-            this.CategoryId.Width = 90;
+            this.CategoryId.VisibleIndex = 7;
+            this.CategoryId.Width = 80;
             // 
             // CreatedBy
             // 
@@ -519,8 +525,8 @@ namespace ManagementStore.Form.Production
             this.CreatedBy.Name = "CreatedBy";
             this.CreatedBy.OptionsColumn.ReadOnly = true;
             this.CreatedBy.Visible = true;
-            this.CreatedBy.VisibleIndex = 7;
-            this.CreatedBy.Width = 87;
+            this.CreatedBy.VisibleIndex = 8;
+            this.CreatedBy.Width = 77;
             // 
             // CreatedAt
             // 
@@ -531,8 +537,8 @@ namespace ManagementStore.Form.Production
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.OptionsColumn.ReadOnly = true;
             this.CreatedAt.Visible = true;
-            this.CreatedAt.VisibleIndex = 8;
-            this.CreatedAt.Width = 477;
+            this.CreatedAt.VisibleIndex = 9;
+            this.CreatedAt.Width = 431;
             // 
             // repositoryItemDateEdit1
             // 
@@ -542,6 +548,18 @@ namespace ManagementStore.Form.Production
             this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.Caption = "Total Price";
+            this.TotalPrice.FieldName = "TotalPrice";
+            this.TotalPrice.MinWidth = 25;
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalPrice", "SUM={0:#,0# VND}")});
+            this.TotalPrice.Visible = true;
+            this.TotalPrice.VisibleIndex = 5;
+            this.TotalPrice.Width = 185;
             // 
             // ribbonPageGroup2
             // 
@@ -633,5 +651,6 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarButtonItem btnClose;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalPrice;
     }
 }

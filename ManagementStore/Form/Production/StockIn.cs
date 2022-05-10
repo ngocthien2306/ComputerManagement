@@ -134,12 +134,18 @@ namespace ManagementStore.Form.Production
                 {
                     var PId = gridViewProduct.GetRowCellValue(hande, "PId");
                     var WHCode = gridViewProduct.GetRowCellValue(hande, "WHCode");
-                    storedId = (int) gridViewProduct.GetRowCellValue(hande, "StoredId");
+                    var id = gridViewProduct.GetRowCellValue(hande, "StoredId");
+                    if(id.ToString() != "")
+                    {
+                        storedId = Convert.ToInt32(id);
+                    }
+                    
                     txtInputProductId.Text = PId.ToString();
                     ccbWHSave.SelectedValue = WHCode.ToString();
+                    btnUpdateWH.Enabled = true;
                 }
             }
-            btnUpdateWH.Enabled = true;
+            
         }
 
         private void barBtnClose_ItemClick(object sender, ItemClickEventArgs e)

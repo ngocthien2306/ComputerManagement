@@ -149,7 +149,7 @@ namespace ManagementStore.Form.Production
             this.CreatedBy,
             this.CreatedAt});
             this.cardViewProduct.GridControl = this.gridControlProduct;
-            this.cardViewProduct.MaximumCardColumns = 5;
+            this.cardViewProduct.MaximumCardColumns = 4;
             this.cardViewProduct.Name = "cardViewProduct";
             this.cardViewProduct.OptionsPrint.AutoHorzWidth = true;
             this.cardViewProduct.OptionsPrint.PrintCardCaption = false;
@@ -164,6 +164,8 @@ namespace ManagementStore.Form.Production
             this.PId.FieldName = "PId";
             this.PId.MinWidth = 25;
             this.PId.Name = "PId";
+            this.PId.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
             this.PId.Visible = true;
             this.PId.VisibleIndex = 0;
             this.PId.Width = 70;
@@ -423,6 +425,7 @@ namespace ManagementStore.Form.Production
             this.btnHistoryStock.Id = 8;
             this.btnHistoryStock.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHistoryStock.ImageOptions.SvgImage")));
             this.btnHistoryStock.Name = "btnHistoryStock";
+            this.btnHistoryStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHistoryStock_ItemClick);
             // 
             // ribbonPage1
             // 

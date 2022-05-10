@@ -482,6 +482,8 @@ namespace ManagementStore.Form.Production
             this.ProductName.FieldName = "ProductName";
             this.ProductName.MinWidth = 25;
             this.ProductName.Name = "ProductName";
+            this.ProductName.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "ProductName", "{0}")});
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 0;
             this.ProductName.Width = 114;
@@ -520,6 +522,8 @@ namespace ManagementStore.Form.Production
             this.ItemInStock.MinWidth = 25;
             this.ItemInStock.Name = "ItemInStock";
             this.ItemInStock.OptionsColumn.ReadOnly = true;
+            this.ItemInStock.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemInWH", "SUM={0:0.##}")});
             this.ItemInStock.Visible = true;
             this.ItemInStock.VisibleIndex = 2;
             this.ItemInStock.Width = 89;
@@ -531,6 +535,8 @@ namespace ManagementStore.Form.Production
             this.ItemOutStock.MinWidth = 25;
             this.ItemOutStock.Name = "ItemOutStock";
             this.ItemOutStock.OptionsColumn.ReadOnly = true;
+            this.ItemOutStock.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemOutWh", "SUM={0:0.##}")});
             this.ItemOutStock.Visible = true;
             this.ItemOutStock.VisibleIndex = 3;
             this.ItemOutStock.Width = 71;

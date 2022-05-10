@@ -19,6 +19,7 @@ namespace ManagementStore.Form.Production
     {
         ProductServices productServices = new ProductServices();
         WarehouseServices warehouseServices = new WarehouseServices();
+        int storedId = 0;   
         public StockOut()
         {
             InitializeComponent();
@@ -62,13 +63,13 @@ namespace ManagementStore.Form.Production
 
         }
 
-        public DataTable GetListProduct()
+        public List<StockOutWarehouse> GetListProduct()
         {
             // using function to select product data
-            string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId, @WHCode)";
+            //string query = @"select * from[dbo].[GetListProduct](@ProductName, @Brands, @Category, @Rams, @StartPrice, @EndPrice, @UserId, @WHCode)";
             string price = ccbPrice.SelectedValue.ToString();
             SearchExtensions.PriceOptionSearch(price);
-            string[] arrParams = new string[8];
+            string[] arrParams = new string[9];
             arrParams[0] = "@ProductName";
             arrParams[1] = "@Brands";
             arrParams[2] = "@Category";
@@ -77,8 +78,9 @@ namespace ManagementStore.Form.Production
             arrParams[5] = "@EndPrice";
             arrParams[6] = "@UserId";
             arrParams[7] = "@WHCode";
+            arrParams[8] = "@Method";
 
-            object[] arrParamsValue = new object[8];
+            object[] arrParamsValue = new object[9];
             arrParamsValue[0] = txtInputPName.Text;
             arrParamsValue[1] = ccbBrands.Text == "All" ? "" : ccbBrands.SelectedValue.ToString();
             arrParamsValue[2] = ccbCategory.Text == "All" ? 0 : Convert.ToInt32(ccbCategory.SelectedValue.ToString());
@@ -87,7 +89,8 @@ namespace ManagementStore.Form.Production
             arrParamsValue[5] = SearchExtensions.EndPrice;
             arrParamsValue[6] = CurrentUser.AppUser.Id;
             arrParamsValue[7] = ccbWarehouse.Text == "All" ? "" : ccbWarehouse.SelectedValue.ToString();
-            var products = productServices.GetListData(query, arrParamsValue, arrParams);
+            arrParamsValue[8] = "GetDataStockOut";
+            var products = productServices.GetListStockOut(arrParams, arrParamsValue);
             return products;
         }
 
@@ -104,17 +107,19 @@ namespace ManagementStore.Form.Production
         {
             int[] selectedRows = gridViewProduct.GetSelectedRows();
 
-            foreach (var hanlde in selectedRows)
+            foreach (var hande in selectedRows)
             {
-                if (hanlde >= 0)
+                if (hande >= 0)
                 {
-                    var PId = gridViewProduct.GetRowCellValue(hanlde, "PId");
-                    var WHCode = gridViewProduct.GetRowCellValue(hanlde, "WHCode");
+                    var PId = gridViewProduct.GetRowCellValue(hande, "PId");
+                    var WHCode = gridViewProduct.GetRowCellValue(hande, "WHCode");
+                    storedId = (int)gridViewProduct.GetRowCellValue(hande, "StoredId");
                     txtInputProductId.Text = PId.ToString();
                     ccbWHSave.SelectedValue = WHCode.ToString();
+                    btnUpdateWH.Enabled = true;
                 }
             }
-            btnUpdateWH.Enabled = true;
+          
         }
 
         private void btnSearch_ItemClick(object sender, ItemClickEventArgs e)
@@ -135,7 +140,7 @@ namespace ManagementStore.Form.Production
                 int PId = Convert.ToInt32(txtInputProductId.Text);
                 string WHCode = ccbWHSave.SelectedValue.ToString();
                 int quantity = (int)numericQuantity.Value;
-                var result = warehouseServices.UpdateItemStockOutWareHouse(0, quantity, WHCode, PId, CurrentUser.AppUser.Id);
+                var result = warehouseServices.UpdateItemStockOutWareHouse(storedId, quantity, WHCode, PId, CurrentUser.AppUser.Id);
                 if (result.Success)
                 {
                     XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);

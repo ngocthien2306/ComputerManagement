@@ -29,9 +29,15 @@ namespace ManagementStore.Model
     public class HistoryInAndOutProduct
     {
         public int HId { get; set; }
-        public int WHItemId { get; set; }
         public int Amount { get; set; }
+        public int ItemInWH { get; set; }
+        public int ItemOutWh { get; set; }
         public string InOrOut { get; set; }
+        public string ProductName { get; set; }
+        public string CategoryName { get; set; }
+        public string RAM { get; set; }
+        public string Brand { get; set; }
+        public string WHName { get; set; }
         public string UpdatedBy { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

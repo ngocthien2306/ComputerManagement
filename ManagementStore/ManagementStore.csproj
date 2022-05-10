@@ -126,6 +126,12 @@
     <Compile Include="Form\Production\CreateProduct.Designer.cs">
       <DependentUpon>CreateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\Production\HistoryStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Production\HistoryStock.Designer.cs">
+      <DependentUpon>HistoryStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Production\ProductionMgt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Production\CreateProduct.resx">
       <DependentUpon>CreateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Production\HistoryStock.resx">
+      <DependentUpon>HistoryStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\Production\ProductionMgt.resx">
       <DependentUpon>ProductionMgt.cs</DependentUpon>

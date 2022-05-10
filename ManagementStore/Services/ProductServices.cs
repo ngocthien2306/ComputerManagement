@@ -15,7 +15,9 @@ namespace ManagementStore.Services
     public class ProductServices
     {
         
-        private string SP_Name = "SP_PRODUCT";
+        private readonly string  SP_PRODUCT = "SP_PRODUCT";
+        private readonly string SP_WAREHOUSE = "SP_WAREHOUSE";
+
         public Product GetOneProduct(int Id)
         {
             Product products = new Product();
@@ -30,7 +32,7 @@ namespace ManagementStore.Services
                     object[] arrParamsValue = new object[2];
                     arrParamsValue[0] = "GetDataProduct";
                     arrParamsValue[1] = Id;
-                    products = connection.ExecuteQuery<Product>(SP_Name, arrParams, arrParamsValue).FirstOrDefault();
+                    products = connection.ExecuteQuery<Product>(SP_PRODUCT, arrParams, arrParamsValue).FirstOrDefault();
                     return products;
                 }
             }
@@ -56,7 +58,7 @@ namespace ManagementStore.Services
                     object[] arrParamsValue = new object[1];
                     arrParamsValue[0] = "GetDataCategory";
 
-                    categorys = connection.ExecuteQuery<Category>(SP_Name, arrParams, arrParamsValue).ToList();
+                    categorys = connection.ExecuteQuery<Category>(SP_PRODUCT, arrParams, arrParamsValue).ToList();
                     return categorys;
                 }
             }
@@ -67,6 +69,25 @@ namespace ManagementStore.Services
             return categorys;
         }
 
+        public List<StockOutWarehouse> GetListStockOut(string[] arrParams, object[] arrParamsValue)
+        {
+            List<StockOutWarehouse> categorys = new List<StockOutWarehouse>();
+
+            try
+            {
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+
+                    categorys = connection.ExecuteQuery<StockOutWarehouse>(SP_WAREHOUSE, arrParams, arrParamsValue).ToList();
+                    return categorys;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return categorys;
+        }
 
 
         public DataTable GetListData(string query, object[] comCode, string[] param)
@@ -114,7 +135,7 @@ namespace ManagementStore.Services
                     arrParamsValue[10] = product.VGA; arrParamsValue[11] = product.SSD;
                     arrParamsValue[12] = product.HDD; arrParamsValue[13] = product.PId;
                     arrParamsValue[14] = quantity; arrParamsValue[15] = whCode;
-                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+                    resultString = connection.ExecuteScalar<string>(SP_PRODUCT, CommandType.StoredProcedure, arrParams, arrParamsValue);
                       
                     if (resultString == null)
                     {
@@ -148,7 +169,7 @@ namespace ManagementStore.Services
                     object[] arrParamsValue = new object[2];
                     arrParamsValue[0] = "DeleteDataProduct";
                     arrParamsValue[1] = id;
-                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+                    resultString = connection.ExecuteScalar<string>(SP_PRODUCT, CommandType.StoredProcedure, arrParams, arrParamsValue);
 
                     if (resultString != "Error")
                     {

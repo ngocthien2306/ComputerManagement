@@ -289,5 +289,11 @@ namespace ManagementStore.Form.Production
             StockOut stockOut = new StockOut();
             stockOut.ShowDialog();
         }
+
+        private void btnHistoryStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            HistoryStock historyStock = new HistoryStock();
+            historyStock.ShowDialog();
+        }
     }
 }
