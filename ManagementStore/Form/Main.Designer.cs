@@ -107,6 +107,7 @@ namespace ManagementStore.Form
             this.barBtn_Profile.Id = 2;
             this.barBtn_Profile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Profile.ImageOptions.SvgImage")));
             this.barBtn_Profile.Name = "barBtn_Profile";
+            this.barBtn_Profile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Profile_ItemClick);
             // 
             // skinRibbonTheme
             // 

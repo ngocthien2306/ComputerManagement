@@ -54,5 +54,11 @@ namespace ManagementStore.Form
             Statistic statistic = new Statistic();
             statistic.ShowDialog();
         }
+
+        private void barBtn_Profile_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Profile pr = new Profile();
+            pr.ShowDialog();
+        }
     }
 }
