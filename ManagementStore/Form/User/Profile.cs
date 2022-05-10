@@ -45,5 +45,18 @@ namespace ManagementStore.Form.User
                 XtraMessageBox.Show(result.Message, "Changed Not Successful", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                picProfile.Image = new Bitmap(open.FileName);
+            }
+        }
     }
 }

@@ -194,6 +194,7 @@ namespace ManagementStore.Form.User
             this.picProfile.Location = new System.Drawing.Point(640, 51);
             this.picProfile.Name = "picProfile";
             this.picProfile.Size = new System.Drawing.Size(251, 278);
+            this.picProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picProfile.TabIndex = 18;
             this.picProfile.TabStop = false;
             // 
@@ -207,6 +208,7 @@ namespace ManagementStore.Form.User
             this.btnUpload.TabIndex = 17;
             this.btnUpload.Text = "Upload Image";
             this.btnUpload.UseVisualStyleBackColor = false;
+            this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // labelBirthday
             // 
