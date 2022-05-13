@@ -32,12 +32,15 @@ namespace ManagementStore.Form.Production
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryStock));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExportExcel = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStatistics = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnReload = new DevExpress.XtraBars.BarButtonItem();
             this.History = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.groupOptionSearch = new DevExpress.XtraEditors.GroupControl();
@@ -59,6 +62,19 @@ namespace ManagementStore.Form.Production
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridControlHistory = new DevExpress.XtraGrid.GridControl();
             this.gridViewHistory = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.HId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Amount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ItemInWH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ItemOutWh = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.InOrOut = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProductName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CategoryName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RAM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Brand = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.WHName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.UpdatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.UpdatedAt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.realTimeSource1 = new DevExpress.Data.RealTimeSource();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -73,6 +89,8 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -81,65 +99,91 @@ namespace ManagementStore.Form.Production
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.ribbon.SearchEditItem,
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3});
+            this.btnSearch,
+            this.btnExportExcel,
+            this.btnStatistics,
+            this.barButtonItem4,
+            this.btnReload});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.History});
-            this.ribbon.Size = new System.Drawing.Size(1382, 181);
+            this.ribbon.Size = new System.Drawing.Size(1507, 181);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
-            // barButtonItem1
+            // btnSearch
             // 
-            this.barButtonItem1.Caption = "Search";
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.btnSearch.Caption = "Search";
+            this.btnSearch.Id = 1;
+            this.btnSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSearch.ImageOptions.SvgImage")));
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSearch_ItemClick);
             // 
-            // barButtonItem2
+            // btnExportExcel
             // 
-            this.barButtonItem2.Caption = "Export Excel";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnExportExcel.Caption = "Export Excel";
+            this.btnExportExcel.Id = 2;
+            this.btnExportExcel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnExportExcel.ImageOptions.SvgImage")));
+            this.btnExportExcel.Name = "btnExportExcel";
             // 
-            // barButtonItem3
+            // btnStatistics
             // 
-            this.barButtonItem3.Caption = "Statistic Stock";
-            this.barButtonItem3.Id = 3;
-            this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.barButtonItem3.Name = "barButtonItem3";
+            this.btnStatistics.Caption = "Statistic Stock";
+            this.btnStatistics.Id = 3;
+            this.btnStatistics.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnStatistics.ImageOptions.SvgImage")));
+            this.btnStatistics.Name = "btnStatistics";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Close";
+            this.barButtonItem4.Id = 4;
+            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // btnReload
+            // 
+            this.btnReload.Caption = "Reload";
+            this.btnReload.Id = 5;
+            this.btnReload.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnReload.Name = "btnReload";
+            this.btnReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReload_ItemClick);
             // 
             // History
             // 
             this.History.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.History.Name = "History";
             this.History.Text = "History";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnSearch);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnExportExcel);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnReload);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Task";
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnStatistics);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Statistics";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "System";
             // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 709);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1382, 29);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1507, 29);
             // 
             // splitContainerControl1
             // 
@@ -150,8 +194,8 @@ namespace ManagementStore.Form.Production
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.gridControlHistory);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1382, 528);
-            this.splitContainerControl1.SplitterPosition = 416;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1507, 528);
+            this.splitContainerControl1.SplitterPosition = 398;
             this.splitContainerControl1.TabIndex = 2;
             // 
             // groupOptionSearch
@@ -175,7 +219,7 @@ namespace ManagementStore.Form.Production
             this.groupOptionSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupOptionSearch.Location = new System.Drawing.Point(0, 0);
             this.groupOptionSearch.Name = "groupOptionSearch";
-            this.groupOptionSearch.Size = new System.Drawing.Size(416, 528);
+            this.groupOptionSearch.Size = new System.Drawing.Size(398, 528);
             this.groupOptionSearch.TabIndex = 0;
             this.groupOptionSearch.Text = "Option Search";
             // 
@@ -223,6 +267,10 @@ namespace ManagementStore.Form.Production
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.endDateHis.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.endDateHis.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.endDateHis.Properties.MaxValue = new System.DateTime(2022, 5, 10, 0, 0, 0, 0);
+            this.endDateHis.Properties.MinValue = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.endDateHis.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.endDateHis.Size = new System.Drawing.Size(238, 22);
             this.endDateHis.TabIndex = 76;
             // 
@@ -236,6 +284,10 @@ namespace ManagementStore.Form.Production
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.startDateHis.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.startDateHis.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.TouchUI;
+            this.startDateHis.Properties.MaxValue = new System.DateTime(2022, 5, 10, 0, 0, 0, 0);
+            this.startDateHis.Properties.MinValue = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.startDateHis.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.startDateHis.Size = new System.Drawing.Size(238, 22);
             this.startDateHis.TabIndex = 75;
             // 
@@ -329,15 +381,177 @@ namespace ManagementStore.Form.Production
             this.gridControlHistory.MainView = this.gridViewHistory;
             this.gridControlHistory.MenuManager = this.ribbon;
             this.gridControlHistory.Name = "gridControlHistory";
-            this.gridControlHistory.Size = new System.Drawing.Size(951, 528);
+            this.gridControlHistory.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemDateEdit1});
+            this.gridControlHistory.Size = new System.Drawing.Size(1094, 528);
             this.gridControlHistory.TabIndex = 0;
             this.gridControlHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewHistory});
             // 
             // gridViewHistory
             // 
+            this.gridViewHistory.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.HId,
+            this.Amount,
+            this.ItemInWH,
+            this.ItemOutWh,
+            this.InOrOut,
+            this.ProductName,
+            this.CategoryName,
+            this.RAM,
+            this.Brand,
+            this.WHName,
+            this.UpdatedBy,
+            this.UpdatedAt});
             this.gridViewHistory.GridControl = this.gridControlHistory;
             this.gridViewHistory.Name = "gridViewHistory";
+            this.gridViewHistory.OptionsView.ShowFooter = true;
+            // 
+            // HId
+            // 
+            this.HId.Caption = "ID";
+            this.HId.FieldName = "HId";
+            this.HId.MinWidth = 25;
+            this.HId.Name = "HId";
+            this.HId.Width = 94;
+            // 
+            // Amount
+            // 
+            this.Amount.Caption = "Amount";
+            this.Amount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.Amount.FieldName = "Amount";
+            this.Amount.MinWidth = 25;
+            this.Amount.Name = "Amount";
+            this.Amount.OptionsColumn.ReadOnly = true;
+            this.Amount.Visible = true;
+            this.Amount.VisibleIndex = 2;
+            this.Amount.Width = 56;
+            // 
+            // ItemInWH
+            // 
+            this.ItemInWH.Caption = "Stock In";
+            this.ItemInWH.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ItemInWH.FieldName = "ItemInWH";
+            this.ItemInWH.MinWidth = 25;
+            this.ItemInWH.Name = "ItemInWH";
+            this.ItemInWH.OptionsColumn.ReadOnly = true;
+            this.ItemInWH.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemInWH", "SUM={0:0.##}")});
+            this.ItemInWH.Visible = true;
+            this.ItemInWH.VisibleIndex = 3;
+            this.ItemInWH.Width = 57;
+            // 
+            // ItemOutWh
+            // 
+            this.ItemOutWh.Caption = "Stock Out";
+            this.ItemOutWh.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.ItemOutWh.FieldName = "ItemOutWh";
+            this.ItemOutWh.MinWidth = 25;
+            this.ItemOutWh.Name = "ItemOutWh";
+            this.ItemOutWh.OptionsColumn.ReadOnly = true;
+            this.ItemOutWh.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ItemOutWh", "SUM={0:0.##}")});
+            this.ItemOutWh.Visible = true;
+            this.ItemOutWh.VisibleIndex = 4;
+            this.ItemOutWh.Width = 66;
+            // 
+            // InOrOut
+            // 
+            this.InOrOut.Caption = "Stock In/Out";
+            this.InOrOut.FieldName = "InOrOut";
+            this.InOrOut.MinWidth = 25;
+            this.InOrOut.Name = "InOrOut";
+            this.InOrOut.OptionsColumn.ReadOnly = true;
+            this.InOrOut.Visible = true;
+            this.InOrOut.VisibleIndex = 5;
+            this.InOrOut.Width = 84;
+            // 
+            // ProductName
+            // 
+            this.ProductName.Caption = "Product Name";
+            this.ProductName.FieldName = "ProductName";
+            this.ProductName.MinWidth = 25;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.OptionsColumn.ReadOnly = true;
+            this.ProductName.Visible = true;
+            this.ProductName.VisibleIndex = 1;
+            this.ProductName.Width = 93;
+            // 
+            // CategoryName
+            // 
+            this.CategoryName.Caption = "Category";
+            this.CategoryName.FieldName = "CategoryName";
+            this.CategoryName.MinWidth = 25;
+            this.CategoryName.Name = "CategoryName";
+            this.CategoryName.OptionsColumn.ReadOnly = true;
+            this.CategoryName.Visible = true;
+            this.CategoryName.VisibleIndex = 6;
+            this.CategoryName.Width = 84;
+            // 
+            // RAM
+            // 
+            this.RAM.Caption = "RAM";
+            this.RAM.FieldName = "RAM";
+            this.RAM.MinWidth = 25;
+            this.RAM.Name = "RAM";
+            this.RAM.OptionsColumn.ReadOnly = true;
+            this.RAM.Visible = true;
+            this.RAM.VisibleIndex = 7;
+            this.RAM.Width = 84;
+            // 
+            // Brand
+            // 
+            this.Brand.Caption = "Brand";
+            this.Brand.FieldName = "Brand";
+            this.Brand.MinWidth = 25;
+            this.Brand.Name = "Brand";
+            this.Brand.OptionsColumn.ReadOnly = true;
+            this.Brand.Visible = true;
+            this.Brand.VisibleIndex = 8;
+            this.Brand.Width = 84;
+            // 
+            // WHName
+            // 
+            this.WHName.Caption = "Warehouse Name";
+            this.WHName.FieldName = "WHName";
+            this.WHName.MinWidth = 25;
+            this.WHName.Name = "WHName";
+            this.WHName.OptionsColumn.ReadOnly = true;
+            this.WHName.Visible = true;
+            this.WHName.VisibleIndex = 0;
+            this.WHName.Width = 120;
+            // 
+            // UpdatedBy
+            // 
+            this.UpdatedBy.Caption = "Updated By";
+            this.UpdatedBy.FieldName = "UpdatedBy";
+            this.UpdatedBy.MinWidth = 25;
+            this.UpdatedBy.Name = "UpdatedBy";
+            this.UpdatedBy.OptionsColumn.ReadOnly = true;
+            this.UpdatedBy.Visible = true;
+            this.UpdatedBy.VisibleIndex = 9;
+            this.UpdatedBy.Width = 84;
+            // 
+            // UpdatedAt
+            // 
+            this.UpdatedAt.Caption = "Updated At";
+            this.UpdatedAt.ColumnEdit = this.repositoryItemDateEdit1;
+            this.UpdatedAt.FieldName = "UpdatedAt";
+            this.UpdatedAt.MinWidth = 25;
+            this.UpdatedAt.Name = "UpdatedAt";
+            this.UpdatedAt.OptionsColumn.ReadOnly = true;
+            this.UpdatedAt.Visible = true;
+            this.UpdatedAt.VisibleIndex = 10;
+            this.UpdatedAt.Width = 116;
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             // 
             // realTimeSource1
             // 
@@ -347,7 +561,7 @@ namespace ManagementStore.Form.Production
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1382, 738);
+            this.ClientSize = new System.Drawing.Size(1507, 738);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
@@ -369,6 +583,8 @@ namespace ManagementStore.Form.Production
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,9 +599,9 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraGrid.GridControl gridControlHistory;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewHistory;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem btnSearch;
+        private DevExpress.XtraBars.BarButtonItem btnExportExcel;
+        private DevExpress.XtraBars.BarButtonItem btnStatistics;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraEditors.GroupControl groupOptionSearch;
         private DevExpress.XtraEditors.DateEdit endDateHis;
@@ -406,5 +622,21 @@ namespace ManagementStore.Form.Production
         private System.Windows.Forms.ComboBox ccbStockInorOut;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private System.Windows.Forms.ComboBox ccbRams;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem btnReload;
+        private DevExpress.XtraGrid.Columns.GridColumn HId;
+        private DevExpress.XtraGrid.Columns.GridColumn Amount;
+        private DevExpress.XtraGrid.Columns.GridColumn ItemInWH;
+        private DevExpress.XtraGrid.Columns.GridColumn ItemOutWh;
+        private DevExpress.XtraGrid.Columns.GridColumn InOrOut;
+        private DevExpress.XtraGrid.Columns.GridColumn ProductName;
+        private DevExpress.XtraGrid.Columns.GridColumn CategoryName;
+        private DevExpress.XtraGrid.Columns.GridColumn RAM;
+        private DevExpress.XtraGrid.Columns.GridColumn Brand;
+        private DevExpress.XtraGrid.Columns.GridColumn WHName;
+        private DevExpress.XtraGrid.Columns.GridColumn UpdatedBy;
+        private DevExpress.XtraGrid.Columns.GridColumn UpdatedAt;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

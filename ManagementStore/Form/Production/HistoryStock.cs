@@ -26,8 +26,9 @@ namespace ManagementStore.Form.Production
         private void HistoryStock_Load(object sender, EventArgs e)
         {
             LoadOptionSearch();
-            startDateHis.Text = DateTime.Now.ToString();
-            endDateHis.Text = DateTime.Now.ToString();
+            startDateHis.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            endDateHis.Text = DateTime.Now.ToString("MM/dd/yyyy");
+            
             gridControlHistory.DataSource = GetListProduct();
         }
         public void LoadOptionSearch()
@@ -100,6 +101,27 @@ namespace ManagementStore.Form.Production
             arrParamsValue[8] = ccbStockInorOut.Text == "All" ? "" : ccbStockInorOut.SelectedValue.ToString();
             var historyStocks = productServices.GetListData(query, arrParamsValue, arrParams);
             return historyStocks;
+        }
+
+        private void btnSearch_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridControlHistory.DataSource = GetListProduct();
+        }
+        public void ClearOptionSearch()
+        {
+            txtInputPName.Text = "";
+            ccbBrands.SelectedValue = "BRAS01";
+            ccbCategory.SelectedValue = 1002;
+            ccbRams.SelectedValue = "RAMS01";
+            ccbWarehouse.SelectedValue = "All";
+            startDateHis.Text = "";
+            endDateHis.Text = "";
+            ccbStockInorOut.Text = "STOC01";
+        }
+
+        private void btnReload_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ClearOptionSearch();
         }
     }
 }

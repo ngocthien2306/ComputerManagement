@@ -33,6 +33,7 @@ namespace ManagementStore.Model
         public int ItemInWH { get; set; }
         public int ItemOutWh { get; set; }
         public string InOrOut { get; set; }
+        public int Total { get; set; }
         public string ProductName { get; set; }
         public string CategoryName { get; set; }
         public string RAM { get; set; }

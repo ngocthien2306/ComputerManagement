@@ -150,6 +150,7 @@ namespace ManagementStore.Form.Production
             this.CreatedAt});
             this.cardViewProduct.GridControl = this.gridControlProduct;
             this.cardViewProduct.MaximumCardColumns = 4;
+            this.cardViewProduct.MaximumCardRows = 10;
             this.cardViewProduct.Name = "cardViewProduct";
             this.cardViewProduct.OptionsPrint.AutoHorzWidth = true;
             this.cardViewProduct.OptionsPrint.PrintCardCaption = false;
