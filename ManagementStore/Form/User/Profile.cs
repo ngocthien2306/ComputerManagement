@@ -38,11 +38,11 @@ namespace ManagementStore.Form.User
             var result = user.RegisterUser(appUser,CurrentUser.AppUser.Id);
             if(result.Success == true)
             {
-                XtraMessageBox.Show(result.Message, "Changed Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show(result.Message, "Changed Successfully", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                XtraMessageBox.Show(result.Message, "Changed Not Successful", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show(result.Message, "Changed Unsuccessfully", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
