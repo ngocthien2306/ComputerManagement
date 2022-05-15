@@ -110,6 +110,19 @@ namespace ManagementStore.Services
 
         }
 
+        public DataTable GetDataStatistic(string query)
+        {
+            My_Database database = new My_Database();
+            SqlCommand command = new SqlCommand(query, database.GetConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable table = new DataTable();
+            database.Openconnection();
+            adapter.Fill(table);
+            database.Closeconnection();
+            return table;
+        }
+
 
         public Result CreateProduct(Product product, int quantity, string whCode , string userId)
         {
@@ -187,6 +200,8 @@ namespace ManagementStore.Services
                 return new Result { Success = false, Message = ex.Message };
             }
         }
+
+
 
     }
 }
