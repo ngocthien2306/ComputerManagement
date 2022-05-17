@@ -35,7 +35,7 @@ namespace ManagementStore.Services
                     arrParams[11] = "@TypeId"; arrParams[12] = "@UserId";
 
                     object[] arrParamsValue = new object[13];
-                    arrParamsValue[0] = "InsertUser";
+                    arrParamsValue[0] = "SaveDataUser";
                     arrParamsValue[1] = user.Firstname;
                     arrParamsValue[2] = user.Lastname;
                     arrParamsValue[3] = user.Email;
@@ -58,7 +58,7 @@ namespace ManagementStore.Services
                     else
                     {
 
-                        return new Result { Success = false, Message = "Register user failed" };
+                        return new Result { Success = false, Message = "Save user failed! " + resultString };
                     }
 
                     

@@ -58,32 +58,33 @@ namespace ManagementStore.Form.User
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            var user = GetAppUser();
-
-            string RePass = txtInputRePassword.Text;
-            ValidateExtensions validate = new ValidateExtensions();
-            Result r = validate.Validate("", user.Email, user.Password, RePass);
-            if (r.Success)
+            if(CheckDataUser())
             {
-                var result = userServices.RegisterUser(user, "");
-
-                if(result.Success)
+                var user = GetAppUser();
+                string RePass = txtInputRePassword.Text;
+                ValidateExtensions validate = new ValidateExtensions();
+                Result r = validate.Validate("", user.Email, user.Password, RePass);
+                if (r.Success)
                 {
-                    XtraMessageBox.Show(result.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoginUser loginUser = new LoginUser();
-                    loginUser.Show();
-                    Hide();
+                    var result = userServices.RegisterUser(user, "");
+
+                    if (result.Success)
+                    {
+                        XtraMessageBox.Show(result.Message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoginUser loginUser = new LoginUser();
+                        loginUser.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(result.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
                 else
                 {
-                    XtraMessageBox.Show(result.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show(r.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
-            {
-                XtraMessageBox.Show(r.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
         }
 
         private void Register_Load(object sender, EventArgs e)
@@ -133,6 +134,63 @@ namespace ManagementStore.Form.User
             {
                 PictureEditUser.Image = Image.FromFile(open.FileName);
             }
+        }
+
+        public bool CheckDataUser()
+        {
+            if(txtInputFirstname.Text == "")
+            {
+                XtraMessageBox.Show("Please input firstname!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputFirstname.Focus();
+                return false;
+            }
+            else if(txtInputLastname.Text == "")
+            {
+
+                XtraMessageBox.Show("Please input lastname!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputLastname.Focus();
+                return false;
+            }
+            else if(txtInputEmail.Text == "")
+            {
+
+                XtraMessageBox.Show("Please input email!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputEmail.Focus();
+                return false;
+            }
+            else if(birthdayDate.Text == "")
+            {
+
+                XtraMessageBox.Show("Please input birthday!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                birthdayDate.Focus();
+                return false;
+            }
+            else if(txtInputUsername.Text == "")
+            {
+
+                XtraMessageBox.Show("Please input username!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputUsername.Focus();
+                return false;
+            }
+            else if(txtInputPassword.Text == "")
+            {
+                XtraMessageBox.Show("Please input password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputPassword.Focus();
+                return false;
+            }
+            else if(txtInputRePassword.Text == "")
+            {
+                XtraMessageBox.Show("Please input re-password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtInputRePassword.Focus();
+                return false;
+            }
+            else if(PictureEditUser.Image == null)
+            {
+                XtraMessageBox.Show("Please select your picture!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                PictureEditUser.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }

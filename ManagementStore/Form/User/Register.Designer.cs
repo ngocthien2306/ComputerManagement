@@ -63,6 +63,7 @@ namespace ManagementStore.Form.User
             this.PictureEditUser = new DevExpress.XtraEditors.PictureEdit();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkLogin = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).BeginInit();
             this.groupControlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -106,6 +107,7 @@ namespace ManagementStore.Form.User
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.labelControl8);
             this.xtraTabPage1.Controls.Add(this.labelControl7);
             this.xtraTabPage1.Controls.Add(this.labelControl3);
             this.xtraTabPage1.Controls.Add(this.labelControl2);
@@ -402,6 +404,17 @@ namespace ManagementStore.Form.User
             this.hyperLinkLogin.Text = "I have a account! login now";
             this.hyperLinkLogin.Click += new System.EventHandler(this.hyperLinkLogin_Click);
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl8.Appearance.Options.UseForeColor = true;
+            this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl8.Location = new System.Drawing.Point(330, 275);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(8, 16);
+            this.labelControl8.TabIndex = 36;
+            this.labelControl8.Text = "*";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -471,5 +484,6 @@ namespace ManagementStore.Form.User
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
     }
 }
