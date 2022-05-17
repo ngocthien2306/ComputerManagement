@@ -120,6 +120,12 @@
     <Compile Include="Extensions\SearchExtensions.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
+    <Compile Include="Form\Employee\EmployeeMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Employee\EmployeeMgt.Designer.cs">
+      <DependentUpon>EmployeeMgt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Production\CreateProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     <Compile Include="Services\ProductServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="Services\WarehouseServices.cs" />
+    <EmbeddedResource Include="Form\Employee\EmployeeMgt.resx">
+      <DependentUpon>EmployeeMgt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,9 +299,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Form\Employee\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
