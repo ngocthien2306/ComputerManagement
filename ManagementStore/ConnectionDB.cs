@@ -16,8 +16,6 @@ namespace ManagementStore
         static SqlConnection connection = new SqlConnection(SqlString);
         public static string GetConnectionString()
         {
-            SqlString = "Data Source=26.178.255.191, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=group9; Password=123";
-            
             return SqlString;
         }
         public static void SetConnectionString(string login, string password)

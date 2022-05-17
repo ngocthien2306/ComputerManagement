@@ -59,7 +59,7 @@ namespace ManagementStore.Form.User
                 {
                     CurrentUser.SetCurrentUser(appUser);                    
                     Main main = new Main();
-                    main.ribbonPageGroupEmployee.Enabled = false;
+                    main.ribbonPageGroupEmployee.Visible = false;
                     main.Show();
                     Hide();
                 }
@@ -67,8 +67,11 @@ namespace ManagementStore.Form.User
                 else if (result.Success && appUser.TypeId == 4)
                 {
                     CurrentUser.SetCurrentUser(appUser);
-                    Guest guest = new Guest();
-                    guest.Show();
+                    ProductionMgt production = new ProductionMgt();
+                    production.btnStockIn.Enabled = false;
+                    production.btnStockOut.Enabled = false;
+                    production.barBtnCreate.Enabled = false;
+                    production.Show();
                     Hide();
                 }
 

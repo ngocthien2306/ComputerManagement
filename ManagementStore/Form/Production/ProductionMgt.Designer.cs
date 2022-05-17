@@ -703,7 +703,6 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraBars.BarButtonItem barBtnSearch;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private DevExpress.XtraBars.BarButtonItem barBtnReload;
-        private DevExpress.XtraBars.BarButtonItem barBtnCreate;
         private DevExpress.XtraBars.BarButtonItem barBtnExport;
         private System.Windows.Forms.ComboBox ccbPrice;
         private DevExpress.XtraEditors.LabelControl labelControl6;
@@ -742,13 +741,14 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraGrid.Columns.GridColumn CreatedBy;
         private DevExpress.XtraGrid.Columns.GridColumn CreatedAt;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
-        private DevExpress.XtraBars.BarButtonItem btnStockOut;
-        private DevExpress.XtraBars.BarButtonItem btnStockIn;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraGrid.Columns.GridColumn WarehouseName;
         private DevExpress.XtraGrid.Columns.GridColumn Quantity;
         private DevExpress.XtraBars.BarButtonItem btnHistoryStock;
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit itemPictureEditProduct;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        public DevExpress.XtraBars.BarButtonItem barBtnCreate;
+        public DevExpress.XtraBars.BarButtonItem btnStockOut;
+        public DevExpress.XtraBars.BarButtonItem btnStockIn;
     }
 }

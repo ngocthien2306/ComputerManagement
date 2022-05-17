@@ -92,8 +92,8 @@ namespace ManagementStore.Form.User
             txtInputFirstname.Text = "Nguyen";
             txtInputLastname.Text = "Thien";
             txtInputEmail.Text = "example@gmail.com";
-            txtInputPassword.Text = "user123456";
-            txtInputRePassword.Text = "user123456";
+            txtInputPassword.Text = "thien123";
+            txtInputRePassword.Text = "thien123";
             birthdayDate.EditValue = "1/1/2000";
             
 

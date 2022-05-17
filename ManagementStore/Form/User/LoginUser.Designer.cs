@@ -42,6 +42,8 @@ namespace ManagementStore.Form.User
             this.hyperLinkRegister = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
             this.dxErrorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBoxRememberMe = new DevExpress.XtraEditors.CheckEdit();
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
@@ -49,6 +51,7 @@ namespace ManagementStore.Form.User
             this.groupControlRole.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProviderPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkBoxRememberMe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputUsername
@@ -77,7 +80,7 @@ namespace ManagementStore.Form.User
             this.groupControlRole.Controls.Add(this.radioBtnAdmin);
             this.groupControlRole.Controls.Add(this.radioBtnStaff);
             this.groupControlRole.Controls.Add(this.radioBtnGuest);
-            this.groupControlRole.Location = new System.Drawing.Point(93, 190);
+            this.groupControlRole.Location = new System.Drawing.Point(93, 202);
             this.groupControlRole.Name = "groupControlRole";
             this.groupControlRole.Size = new System.Drawing.Size(358, 68);
             this.groupControlRole.TabIndex = 2;
@@ -118,7 +121,7 @@ namespace ManagementStore.Form.User
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(164, 286);
+            this.btnLogin.Location = new System.Drawing.Point(164, 298);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(208, 45);
             this.btnLogin.TabIndex = 3;
@@ -127,7 +130,7 @@ namespace ManagementStore.Form.User
             // 
             // hyperLinkRegister
             // 
-            this.hyperLinkRegister.Location = new System.Drawing.Point(184, 264);
+            this.hyperLinkRegister.Location = new System.Drawing.Point(184, 276);
             this.hyperLinkRegister.Name = "hyperLinkRegister";
             this.hyperLinkRegister.Size = new System.Drawing.Size(174, 16);
             this.hyperLinkRegister.TabIndex = 4;
@@ -142,11 +145,32 @@ namespace ManagementStore.Form.User
             // 
             this.dxErrorProviderPassword.ContainerControl = this;
             // 
+            // checkBoxRememberMe
+            // 
+            this.checkBoxRememberMe.Location = new System.Drawing.Point(341, 176);
+            this.checkBoxRememberMe.Name = "checkBoxRememberMe";
+            this.checkBoxRememberMe.Properties.Caption = "Remember me!";
+            this.checkBoxRememberMe.Size = new System.Drawing.Size(110, 20);
+            this.checkBoxRememberMe.TabIndex = 5;
+            // 
+            // hyperlinkLabelControl1
+            // 
+            this.hyperlinkLabelControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.hyperlinkLabelControl1.LineVisible = true;
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(12, 12);
+            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
+            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(31, 16);
+            this.hyperlinkLabelControl1.TabIndex = 6;
+            this.hyperlinkLabelControl1.Text = "Help?";
+            this.hyperlinkLabelControl1.UseMnemonic = false;
+            // 
             // LoginUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 389);
+            this.Controls.Add(this.hyperlinkLabelControl1);
+            this.Controls.Add(this.checkBoxRememberMe);
             this.Controls.Add(this.hyperLinkRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.groupControlRole);
@@ -163,6 +187,7 @@ namespace ManagementStore.Form.User
             this.groupControlRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProviderPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkBoxRememberMe.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +205,7 @@ namespace ManagementStore.Form.User
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkRegister;
         private System.Windows.Forms.ErrorProvider errorProviderUsername;
         private System.Windows.Forms.ErrorProvider dxErrorProviderPassword;
+        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl1;
+        private DevExpress.XtraEditors.CheckEdit checkBoxRememberMe;
     }
 }
