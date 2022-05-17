@@ -52,7 +52,7 @@ namespace ManagementStore.Services
                     arrParams[4] = "@PId";
                     arrParams[5] = "@UserId";
                     object[] arrParamsValue = new object[6];
-                    arrParamsValue[0] = "SaveItemStock";
+                    arrParamsValue[0] = "SaveItemStockIn";
                     arrParamsValue[1] = storedId;
                     arrParamsValue[2] = quantity;
                     arrParamsValue[3] = whCode;
@@ -89,7 +89,7 @@ namespace ManagementStore.Services
                     arrParams[4] = "@PId";
                     arrParams[5] = "@UserId";
                     object[] arrParamsValue = new object[6];
-                    arrParamsValue[0] = "SaveItemOutsStock";
+                    arrParamsValue[0] = "SaveItemStockOut";
                     arrParamsValue[1] = storedId;
                     arrParamsValue[2] = quantity;
                     arrParamsValue[3] = whCode;
@@ -109,6 +109,41 @@ namespace ManagementStore.Services
             catch(Exception ex)
             {
                 return new Result { Success = false, Message = ex.Message };
+            }
+        }
+
+        public Result CheckItemStockIn(string whCode, int pId,  int quantity)
+        {
+            var resultString = "Y";
+            try
+            {
+                using(var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[4];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@WHCode";
+                    arrParams[2] = "@PId";
+                    arrParams[3] = "@Quantity";
+                    object[] arrParamsValue = new object[4];
+                    arrParamsValue[0] = "CheckItemStockIn";
+                    arrParamsValue[1] = whCode;
+                    arrParamsValue[2] = pId;
+                    arrParamsValue[3] = quantity;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, arrParams, arrParamsValue);
+                    if (resultString == "Y")
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "" };
+                    }
+                    else
+                    {
+                        return new Result { Success = false, Message = resultString };
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                return new Result { Success = false, Message = ex.Message };
+
             }
         }
 

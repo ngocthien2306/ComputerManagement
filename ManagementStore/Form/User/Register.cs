@@ -97,7 +97,7 @@ namespace ManagementStore.Form.User
             
 
             // set connection string for guest role
-            ConnectionDB.SetConnectionString("guest", "guest01");
+            ConnectionDB.SetConnectionString("group9", "123");
         }
 
 

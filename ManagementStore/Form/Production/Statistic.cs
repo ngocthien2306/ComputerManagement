@@ -124,7 +124,7 @@ namespace ManagementStore.Form.Production
 
             ChartTitle chartTitle = new ChartTitle();
             chartControlWH.Titles.Clear();
-            chartTitle.Text = "Statistic Number OF Product In Stock";
+            chartTitle.Text = "Statistic Number Of Product In Stock";
             chartTitle.Alignment = StringAlignment.Center;
             chartControlWH.Titles.AddRange(new ChartTitle[] { chartTitle });
 

@@ -140,17 +140,26 @@ namespace ManagementStore.Form.Production
                 int PId = Convert.ToInt32(txtInputProductId.Text);
                 string WHCode = ccbWHSave.SelectedValue.ToString();
                 int quantity = (int)numericQuantity.Value;
-                var result = warehouseServices.UpdateItemStockOutWareHouse(storedId, quantity, WHCode, PId, CurrentUser.AppUser.Id);
-                if (result.Success)
+                var check = warehouseServices.CheckItemStockIn(WHCode, PId, quantity);
+                if(check.Success == false)
                 {
-                    XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    gridControlProduct.DataSource = GetListProduct();
-
+                    XtraMessageBox.Show(check.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 else
                 {
-                    XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    var result = warehouseServices.UpdateItemStockOutWareHouse(storedId, quantity, WHCode, PId, CurrentUser.AppUser.Id);
+                    if (result.Success)
+                    {
+                        XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        gridControlProduct.DataSource = GetListProduct();
+
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(result.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
+
             }
             else
             {

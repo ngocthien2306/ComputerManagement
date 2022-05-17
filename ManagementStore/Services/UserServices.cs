@@ -17,7 +17,7 @@ namespace ManagementStore.Services
         private static readonly string SP_Name = "SP_USER_MANAGEMENT";
         public Result RegisterUser(AppUser user, string userId)
         {
-            var resultString = "Error";
+            var resultString = "Y";
             Result result = new Result();
             try
             {
@@ -51,7 +51,7 @@ namespace ManagementStore.Services
 
                     resultString = connect.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
 
-                    if (resultString != "Error")
+                    if (resultString == "Y")
                     {
                         return new Result { Success = true, Data = resultString, Message = "Register user successfull" };
                     }
