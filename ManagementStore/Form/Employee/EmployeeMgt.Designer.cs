@@ -31,11 +31,18 @@ namespace ManagementStore.Form.Employee
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeMgt));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.btnSearchUser = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.gridControlProduct = new DevExpress.XtraGrid.GridControl();
-            this.gridViewProduct = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlUser = new DevExpress.XtraGrid.GridControl();
+            this.gridViewUser = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.groupStockInItem = new DevExpress.XtraEditors.GroupControl();
@@ -57,27 +64,22 @@ namespace ManagementStore.Form.Employee
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.btnClose = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
+            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.ccbCategory = new System.Windows.Forms.ComboBox();
             this.ccbBrands = new System.Windows.Forms.ComboBox();
             this.txtInputPName = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).BeginInit();
@@ -85,13 +87,13 @@ namespace ManagementStore.Form.Employee
             ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
             this.splitContainerControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -100,17 +102,55 @@ namespace ManagementStore.Form.Employee
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.ribbon.SearchEditItem,
-            this.barButtonItem1,
+            this.btnSearchUser,
             this.barButtonItem2,
             this.barButtonItem4,
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.barButtonItem6});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 5;
+            this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbon.Size = new System.Drawing.Size(1801, 181);
             this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
+            // 
+            // btnSearchUser
+            // 
+            this.btnSearchUser.Caption = "Search";
+            this.btnSearchUser.Id = 1;
+            this.btnSearchUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSearchUser.ImageOptions.SvgImage")));
+            this.btnSearchUser.Name = "btnSearchUser";
+            this.btnSearchUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSearchUser_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Update Role";
+            this.barButtonItem2.Id = 2;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Create User";
+            this.barButtonItem4.Id = 3;
+            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Delete User";
+            this.barButtonItem5.Id = 4;
+            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Close";
+            this.barButtonItem6.Id = 5;
+            this.barButtonItem6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
+            this.barButtonItem6.Name = "barButtonItem6";
             // 
             // ribbonPage1
             // 
@@ -122,12 +162,18 @@ namespace ManagementStore.Form.Employee
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnSearchUser);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem5);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Task";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "System";
             // 
             // ribbonStatusBar
             // 
@@ -136,29 +182,42 @@ namespace ManagementStore.Form.Employee
             this.ribbonStatusBar.Ribbon = this.ribbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(1801, 29);
             // 
-            // gridControlProduct
+            // gridControlUser
             // 
-            this.gridControlProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlProduct.Location = new System.Drawing.Point(0, 0);
-            this.gridControlProduct.MainView = this.gridViewProduct;
-            this.gridControlProduct.Name = "gridControlProduct";
-            this.gridControlProduct.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.gridControlUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlUser.Location = new System.Drawing.Point(0, 0);
+            this.gridControlUser.MainView = this.gridViewUser;
+            this.gridControlUser.Name = "gridControlUser";
+            this.gridControlUser.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridControlProduct.Size = new System.Drawing.Size(1298, 533);
-            this.gridControlProduct.TabIndex = 0;
-            this.gridControlProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewProduct});
+            this.gridControlUser.Size = new System.Drawing.Size(1298, 533);
+            this.gridControlUser.TabIndex = 0;
+            this.gridControlUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewUser});
             // 
-            // gridViewProduct
+            // gridViewUser
             // 
-            this.gridViewProduct.Appearance.GroupRow.BackColor = System.Drawing.Color.LightGray;
-            this.gridViewProduct.Appearance.GroupRow.Options.UseBackColor = true;
-            this.gridViewProduct.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.LightGray;
-            this.gridViewProduct.AppearancePrint.GroupRow.Options.UseBackColor = true;
-            this.gridViewProduct.GridControl = this.gridControlProduct;
-            this.gridViewProduct.Name = "gridViewProduct";
-            this.gridViewProduct.OptionsPrint.PrintPreview = true;
-            this.gridViewProduct.OptionsView.ShowFooter = true;
+            this.gridViewUser.Appearance.GroupRow.BackColor = System.Drawing.Color.LightGray;
+            this.gridViewUser.Appearance.GroupRow.Options.UseBackColor = true;
+            this.gridViewUser.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.LightGray;
+            this.gridViewUser.AppearancePrint.GroupRow.Options.UseBackColor = true;
+            this.gridViewUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1});
+            this.gridViewUser.GridControl = this.gridControlUser;
+            this.gridViewUser.Name = "gridViewUser";
+            this.gridViewUser.OptionsPrint.PrintPreview = true;
+            this.gridViewUser.OptionsView.ShowFooter = true;
+            this.gridViewUser.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewUser_FocusedRowChanged);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Firstname";
+            this.gridColumn1.FieldName = "Firstname";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.Width = 94;
             // 
             // repositoryItemDateEdit1
             // 
@@ -337,11 +396,82 @@ namespace ManagementStore.Form.Employee
             this.splitContainerControl1.Panel1.Controls.Add(this.txtInputPName);
             this.splitContainerControl1.Panel1.Controls.Add(this.labelControl1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.gridControlProduct);
+            this.splitContainerControl1.Panel2.Controls.Add(this.gridControlUser);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(1779, 533);
             this.splitContainerControl1.SplitterPosition = 466;
             this.splitContainerControl1.TabIndex = 5;
+            // 
+            // textEdit2
+            // 
+            this.textEdit2.Location = new System.Drawing.Point(160, 303);
+            this.textEdit2.Name = "textEdit2";
+            this.textEdit2.Size = new System.Drawing.Size(273, 22);
+            this.textEdit2.TabIndex = 58;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(36, 306);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(36, 16);
+            this.labelControl10.TabIndex = 57;
+            this.labelControl10.Text = "Email:";
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Location = new System.Drawing.Point(36, 311);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(0, 16);
+            this.labelControl11.TabIndex = 56;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(293, 260);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(17, 16);
+            this.labelControl8.TabIndex = 55;
+            this.labelControl8.Text = "TO";
+            // 
+            // dateEdit2
+            // 
+            this.dateEdit2.EditValue = null;
+            this.dateEdit2.Location = new System.Drawing.Point(316, 257);
+            this.dateEdit2.MenuManager = this.ribbon;
+            this.dateEdit2.Name = "dateEdit2";
+            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit2.Size = new System.Drawing.Size(117, 22);
+            this.dateEdit2.TabIndex = 54;
+            // 
+            // dateEdit1
+            // 
+            this.dateEdit1.EditValue = null;
+            this.dateEdit1.Location = new System.Drawing.Point(160, 257);
+            this.dateEdit1.MenuManager = this.ribbon;
+            this.dateEdit1.Name = "dateEdit1";
+            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit1.Size = new System.Drawing.Size(127, 22);
+            this.dateEdit1.TabIndex = 53;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Location = new System.Drawing.Point(160, 110);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Size = new System.Drawing.Size(273, 22);
+            this.textEdit1.TabIndex = 52;
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(36, 113);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(60, 16);
+            this.labelControl7.TabIndex = 51;
+            this.labelControl7.Text = "Lastname:";
             // 
             // labelControl4
             // 
@@ -384,110 +514,6 @@ namespace ManagementStore.Form.Employee
             this.labelControl1.TabIndex = 35;
             this.labelControl1.Text = "Firstname:";
             // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(36, 113);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(60, 16);
-            this.labelControl7.TabIndex = 51;
-            this.labelControl7.Text = "Lastname:";
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Location = new System.Drawing.Point(160, 110);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(273, 22);
-            this.textEdit1.TabIndex = 52;
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(160, 257);
-            this.dateEdit1.MenuManager = this.ribbon;
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Size = new System.Drawing.Size(127, 22);
-            this.dateEdit1.TabIndex = 53;
-            // 
-            // dateEdit2
-            // 
-            this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(316, 257);
-            this.dateEdit2.MenuManager = this.ribbon;
-            this.dateEdit2.Name = "dateEdit2";
-            this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit2.Size = new System.Drawing.Size(117, 22);
-            this.dateEdit2.TabIndex = 54;
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Location = new System.Drawing.Point(293, 260);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(17, 16);
-            this.labelControl8.TabIndex = 55;
-            this.labelControl8.Text = "TO";
-            // 
-            // textEdit2
-            // 
-            this.textEdit2.Location = new System.Drawing.Point(160, 303);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(273, 22);
-            this.textEdit2.TabIndex = 58;
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(36, 306);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(36, 16);
-            this.labelControl10.TabIndex = 57;
-            this.labelControl10.Text = "Email:";
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(36, 311);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(0, 16);
-            this.labelControl11.TabIndex = 56;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Search";
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Update Role";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Create User";
-            this.barButtonItem4.Id = 3;
-            this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Delete User";
-            this.barButtonItem5.Id = 4;
-            this.barButtonItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "System";
-            // 
             // EmployeeMgt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -500,9 +526,10 @@ namespace ManagementStore.Form.Employee
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "EmployeeMgt";
+            this.Load += new System.EventHandler(this.EmployeeMgt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlProduct)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupStockInItem)).EndInit();
@@ -511,13 +538,13 @@ namespace ManagementStore.Form.Employee
             ((System.ComponentModel.ISupportInitialize)(this.txtInputProductId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPName.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,8 +556,8 @@ namespace ManagementStore.Form.Employee
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraGrid.GridControl gridControlProduct;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewProduct;
+        private DevExpress.XtraGrid.GridControl gridControlUser;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewUser;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.GroupControl groupStockInItem;
@@ -557,7 +584,7 @@ namespace ManagementStore.Form.Employee
         private System.Windows.Forms.ComboBox ccbBrands;
         private DevExpress.XtraEditors.TextEdit txtInputPName;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnSearchUser;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
@@ -570,5 +597,7 @@ namespace ManagementStore.Form.Employee
         private DevExpress.XtraEditors.DateEdit dateEdit1;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

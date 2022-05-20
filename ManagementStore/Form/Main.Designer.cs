@@ -57,6 +57,7 @@ namespace ManagementStore.Form
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnUserMgt = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,10 +80,11 @@ namespace ManagementStore.Form
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barBtnProduct});
+            this.barBtnProduct,
+            this.btnUserMgt});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbon.MaxItemId = 18;
+            this.ribbon.MaxItemId = 19;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_Product,
@@ -241,6 +243,7 @@ namespace ManagementStore.Form
             // 
             // ribbonPageGroupEmployee
             // 
+            this.ribbonPageGroupEmployee.ItemLinks.Add(this.btnUserMgt);
             this.ribbonPageGroupEmployee.Name = "ribbonPageGroupEmployee";
             this.ribbonPageGroupEmployee.Text = "Employee Management";
             // 
@@ -278,6 +281,13 @@ namespace ManagementStore.Form
             this.ribbonGroupEmployee.ItemLinks.Add(this.barButtonItem3);
             this.ribbonGroupEmployee.Name = "ribbonGroupEmployee";
             this.ribbonGroupEmployee.Text = "Product Management";
+            // 
+            // btnUserMgt
+            // 
+            this.btnUserMgt.Caption = "User Management";
+            this.btnUserMgt.Id = 18;
+            this.btnUserMgt.Name = "btnUserMgt";
+            this.btnUserMgt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserMgt_ItemClick);
             // 
             // Main
             // 
@@ -329,5 +339,6 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.BarButtonItem barBtnProduct;
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupEmployee;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageEmployee;
+        private DevExpress.XtraBars.BarButtonItem btnUserMgt;
     }
 }

@@ -138,5 +138,65 @@ namespace ManagementStore.Services
             }
             
         }
+
+        public List<AppUser> GetDataUser()
+        {
+            List<AppUser> user = null;
+            try
+            {
+
+                using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[1];
+                    arrParams[0] = "@Method";
+              
+                    object[] arrParamsValue = new object[1];
+                    arrParamsValue[0] = "GetDataUser";
+        
+
+                    var result = connect.ExecuteQuery<AppUser>("SP_ADMIN", arrParams, arrParamsValue);
+
+                    return result.ToList();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return user;
+
+            }
+
+        }
+
+        public List<AppUser> GetDataUserBySearch(string fname, string lname)
+        {
+            List<AppUser> user = null;
+            try
+            {
+
+                using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[2];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@Firstname";
+                    object[] arrParamsValue = new object[2];
+                    arrParamsValue[0] = "GetDataUserBySearch";
+                    arrParamsValue[1] = fname;
+
+                    var result = connect.ExecuteQuery<AppUser>("SP_ADMIN", arrParams, arrParamsValue);
+
+                    return result.ToList();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return user;
+
+            }
+
+        }
     }
 }

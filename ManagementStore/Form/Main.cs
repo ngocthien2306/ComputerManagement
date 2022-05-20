@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using ManagementStore.Form.Employee;
 using ManagementStore.Form.Production;
 using ManagementStore.Form.User;
 using ManagementStore.Model;
@@ -78,6 +79,12 @@ namespace ManagementStore.Form
                 profile.ShowDialog();
 
             }
+        }
+
+        private void btnUserMgt_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            EmployeeMgt employeeMgt = new EmployeeMgt();
+            employeeMgt.ShowDialog();
         }
     }
 }

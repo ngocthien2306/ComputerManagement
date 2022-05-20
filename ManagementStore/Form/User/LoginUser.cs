@@ -59,7 +59,7 @@ namespace ManagementStore.Form.User
                 {
                     CurrentUser.SetCurrentUser(appUser);                    
                     Main main = new Main();
-                    main.ribbonPageGroupEmployee.Visible = false;
+                    //main.ribbonPageGroupEmployee.Visible = false;
                     main.Show();
                     Hide();
                 }
@@ -125,7 +125,7 @@ namespace ManagementStore.Form.User
 
             if (role.Equals("GUEST"))
             {
-                ConnectionDB.SetConnectionString("guest", "guest01");
+                ConnectionDB.SetConnectionString("employee", "employee01");
             }
             else if (role.Equals("EMPLOYEE"))
             {
