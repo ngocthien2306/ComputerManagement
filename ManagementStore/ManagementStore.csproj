@@ -120,6 +120,18 @@
     <Compile Include="Extensions\SearchExtensions.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
+    <Compile Include="Form\Employee\AdminMgt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Employee\AdminMgt.Designer.cs">
+      <DependentUpon>AdminMgt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Employee\UserInfor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Employee\UserInfor.Designer.cs">
+      <DependentUpon>UserInfor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Employee\EmployeeMgt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,17 +210,25 @@
     <Compile Include="Form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Access.cs" />
     <Compile Include="Model\CommonModel.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\CurrentUser.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\AppUser.cs" />
+    <Compile Include="Model\Userrole.cs" />
     <Compile Include="Model\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProductServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="Services\WarehouseServices.cs" />
+    <EmbeddedResource Include="Form\Employee\AdminMgt.resx">
+      <DependentUpon>AdminMgt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Employee\UserInfor.resx">
+      <DependentUpon>UserInfor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Employee\EmployeeMgt.resx">
       <DependentUpon>EmployeeMgt.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +277,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="ComputerStoreDataSet.xsc">
@@ -299,7 +320,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\newemployee.svg" />
+  </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

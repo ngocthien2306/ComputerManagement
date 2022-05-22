@@ -106,20 +106,23 @@ namespace ManagementStore.Form.Production
             // 
             // gridViewProduct
             // 
+            this.gridViewProduct.DetailHeight = 284;
             this.gridViewProduct.GridControl = this.gridControlProduct;
             this.gridViewProduct.Name = "gridViewProduct";
             // 
             // gridControlProduct
             // 
+            this.gridControlProduct.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gridLevelNode1.LevelTemplate = this.gridViewProduct;
             gridLevelNode1.RelationName = "Level1";
             this.gridControlProduct.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControlProduct.Location = new System.Drawing.Point(3, 6);
+            this.gridControlProduct.Location = new System.Drawing.Point(3, 5);
             this.gridControlProduct.MainView = this.cardViewProduct;
+            this.gridControlProduct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlProduct.MenuManager = this.ribbonControl1;
             this.gridControlProduct.Name = "gridControlProduct";
-            this.gridControlProduct.Size = new System.Drawing.Size(1151, 717);
+            this.gridControlProduct.Size = new System.Drawing.Size(987, 583);
             this.gridControlProduct.TabIndex = 0;
             this.gridControlProduct.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardViewProduct,
@@ -131,7 +134,7 @@ namespace ManagementStore.Form.Production
             this.cardViewProduct.Appearance.FieldCaption.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
             this.cardViewProduct.Appearance.FieldCaption.Options.UseBackColor = true;
             this.cardViewProduct.Appearance.FieldCaption.Options.UseForeColor = true;
-            this.cardViewProduct.CardWidth = 270;
+            this.cardViewProduct.CardWidth = 231;
             this.cardViewProduct.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.PId,
             this.ProductName,
@@ -148,6 +151,7 @@ namespace ManagementStore.Form.Production
             this.SSD,
             this.CreatedBy,
             this.CreatedAt});
+            this.cardViewProduct.DetailHeight = 284;
             this.cardViewProduct.GridControl = this.gridControlProduct;
             this.cardViewProduct.MaximumCardColumns = 4;
             this.cardViewProduct.MaximumCardRows = 10;
@@ -163,25 +167,25 @@ namespace ManagementStore.Form.Production
             this.PId.AppearanceCell.Options.UseForeColor = true;
             this.PId.Caption = "Product ID";
             this.PId.FieldName = "PId";
-            this.PId.MinWidth = 25;
+            this.PId.MinWidth = 21;
             this.PId.Name = "PId";
             this.PId.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
             this.PId.Visible = true;
             this.PId.VisibleIndex = 0;
-            this.PId.Width = 70;
+            this.PId.Width = 60;
             // 
             // ProductName
             // 
             this.ProductName.Caption = "Product Name";
             this.ProductName.FieldName = "ProductName";
-            this.ProductName.MinWidth = 25;
+            this.ProductName.MinWidth = 21;
             this.ProductName.Name = "ProductName";
             this.ProductName.OptionsColumn.ReadOnly = true;
             this.ProductName.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
             this.ProductName.Visible = true;
             this.ProductName.VisibleIndex = 1;
-            this.ProductName.Width = 106;
+            this.ProductName.Width = 91;
             // 
             // Price
             // 
@@ -191,46 +195,46 @@ namespace ManagementStore.Form.Production
             this.Price.DisplayFormat.FormatString = "{0:#,0# VND}";
             this.Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.Price.FieldName = "Price";
-            this.Price.MinWidth = 25;
+            this.Price.MinWidth = 21;
             this.Price.Name = "Price";
             this.Price.OptionsColumn.ReadOnly = true;
             this.Price.Visible = true;
             this.Price.VisibleIndex = 2;
-            this.Price.Width = 106;
+            this.Price.Width = 91;
             // 
             // Brand
             // 
             this.Brand.Caption = "Brand";
             this.Brand.FieldName = "Brand";
-            this.Brand.MinWidth = 25;
+            this.Brand.MinWidth = 21;
             this.Brand.Name = "Brand";
             this.Brand.OptionsColumn.ReadOnly = true;
             this.Brand.Visible = true;
             this.Brand.VisibleIndex = 3;
-            this.Brand.Width = 106;
+            this.Brand.Width = 91;
             // 
             // Category
             // 
             this.Category.Caption = "Category";
             this.Category.FieldName = "CategoryId";
-            this.Category.MinWidth = 25;
+            this.Category.MinWidth = 21;
             this.Category.Name = "Category";
             this.Category.OptionsColumn.ReadOnly = true;
             this.Category.Visible = true;
             this.Category.VisibleIndex = 4;
-            this.Category.Width = 110;
+            this.Category.Width = 94;
             // 
             // Picture
             // 
             this.Picture.Caption = "Picture";
             this.Picture.ColumnEdit = this.itemPictureEditProduct;
             this.Picture.FieldName = "Picture";
-            this.Picture.MinWidth = 25;
+            this.Picture.MinWidth = 21;
             this.Picture.Name = "Picture";
             this.Picture.OptionsColumn.ReadOnly = true;
             this.Picture.Visible = true;
             this.Picture.VisibleIndex = 5;
-            this.Picture.Width = 76;
+            this.Picture.Width = 65;
             // 
             // itemPictureEditProduct
             // 
@@ -243,95 +247,95 @@ namespace ManagementStore.Form.Production
             // 
             this.Mainboard.Caption = "Mainboard";
             this.Mainboard.FieldName = "Mainboard";
-            this.Mainboard.MinWidth = 25;
+            this.Mainboard.MinWidth = 21;
             this.Mainboard.Name = "Mainboard";
             this.Mainboard.OptionsColumn.ReadOnly = true;
-            this.Mainboard.Width = 108;
+            this.Mainboard.Width = 93;
             // 
             // WarehouseName
             // 
             this.WarehouseName.Caption = "WH Name";
             this.WarehouseName.FieldName = "WHName";
-            this.WarehouseName.MinWidth = 25;
+            this.WarehouseName.MinWidth = 21;
             this.WarehouseName.Name = "WarehouseName";
             this.WarehouseName.Visible = true;
             this.WarehouseName.VisibleIndex = 11;
-            this.WarehouseName.Width = 94;
+            this.WarehouseName.Width = 81;
             // 
             // Quantity
             // 
             this.Quantity.Caption = "Quantity";
             this.Quantity.FieldName = "Total";
-            this.Quantity.MinWidth = 25;
+            this.Quantity.MinWidth = 21;
             this.Quantity.Name = "Quantity";
             this.Quantity.Visible = true;
             this.Quantity.VisibleIndex = 12;
-            this.Quantity.Width = 94;
+            this.Quantity.Width = 81;
             // 
             // CPU
             // 
             this.CPU.Caption = "CPU";
             this.CPU.FieldName = "CPU";
-            this.CPU.MinWidth = 25;
+            this.CPU.MinWidth = 21;
             this.CPU.Name = "CPU";
             this.CPU.OptionsColumn.ReadOnly = true;
             this.CPU.Visible = true;
             this.CPU.VisibleIndex = 6;
-            this.CPU.Width = 115;
+            this.CPU.Width = 99;
             // 
             // VGA
             // 
             this.VGA.Caption = "VGA";
             this.VGA.FieldName = "VGA";
-            this.VGA.MinWidth = 25;
+            this.VGA.MinWidth = 21;
             this.VGA.Name = "VGA";
             this.VGA.OptionsColumn.ReadOnly = true;
             this.VGA.Visible = true;
             this.VGA.VisibleIndex = 7;
-            this.VGA.Width = 125;
+            this.VGA.Width = 107;
             // 
             // RAM
             // 
             this.RAM.Caption = "RAM";
             this.RAM.FieldName = "RAM";
-            this.RAM.MinWidth = 25;
+            this.RAM.MinWidth = 21;
             this.RAM.Name = "RAM";
             this.RAM.OptionsColumn.ReadOnly = true;
             this.RAM.Visible = true;
             this.RAM.VisibleIndex = 8;
-            this.RAM.Width = 58;
+            this.RAM.Width = 50;
             // 
             // SSD
             // 
             this.SSD.Caption = "SSD";
             this.SSD.FieldName = "SSD";
-            this.SSD.MinWidth = 25;
+            this.SSD.MinWidth = 21;
             this.SSD.Name = "SSD";
             this.SSD.OptionsColumn.ReadOnly = true;
             this.SSD.Visible = true;
             this.SSD.VisibleIndex = 9;
-            this.SSD.Width = 52;
+            this.SSD.Width = 45;
             // 
             // CreatedBy
             // 
             this.CreatedBy.Caption = "Created By";
             this.CreatedBy.FieldName = "CreatedBy";
-            this.CreatedBy.MinWidth = 25;
+            this.CreatedBy.MinWidth = 21;
             this.CreatedBy.Name = "CreatedBy";
             this.CreatedBy.OptionsColumn.ReadOnly = true;
             this.CreatedBy.Visible = true;
             this.CreatedBy.VisibleIndex = 10;
-            this.CreatedBy.Width = 130;
+            this.CreatedBy.Width = 111;
             // 
             // CreatedAt
             // 
             this.CreatedAt.Caption = "Created At";
             this.CreatedAt.ColumnEdit = this.repositoryItemDateEdit1;
             this.CreatedAt.FieldName = "CreatedAt";
-            this.CreatedAt.MinWidth = 25;
+            this.CreatedAt.MinWidth = 21;
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.OptionsColumn.ReadOnly = true;
-            this.CreatedAt.Width = 197;
+            this.CreatedAt.Width = 169;
             // 
             // repositoryItemDateEdit1
             // 
@@ -357,11 +361,12 @@ namespace ManagementStore.Form.Production
             this.btnStockIn,
             this.btnHistoryStock});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonControl1.MaxItemId = 9;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1656, 181);
+            this.ribbonControl1.Size = new System.Drawing.Size(1186, 147);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // barBtnSearch
@@ -462,10 +467,11 @@ namespace ManagementStore.Form.Production
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 910);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 616);
+            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1656, 29);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1186, 23);
             // 
             // ribbonPage2
             // 
@@ -475,7 +481,8 @@ namespace ManagementStore.Form.Production
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 181);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 147);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -501,8 +508,9 @@ namespace ManagementStore.Form.Production
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridControlProduct);
-            this.splitContainer1.Size = new System.Drawing.Size(1656, 729);
-            this.splitContainer1.SplitterDistance = 486;
+            this.splitContainer1.Size = new System.Drawing.Size(1186, 469);
+            this.splitContainer1.SplitterDistance = 348;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
             // ccbWarehouse
@@ -510,43 +518,48 @@ namespace ManagementStore.Form.Production
             this.ccbWarehouse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ccbWarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbWarehouse.FormattingEnabled = true;
-            this.ccbWarehouse.Location = new System.Drawing.Point(147, 270);
+            this.ccbWarehouse.Location = new System.Drawing.Point(126, 219);
+            this.ccbWarehouse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbWarehouse.Name = "ccbWarehouse";
-            this.ccbWarehouse.Size = new System.Drawing.Size(316, 24);
+            this.ccbWarehouse.Size = new System.Drawing.Size(271, 21);
             this.ccbWarehouse.TabIndex = 21;
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(23, 278);
+            this.labelControl9.Location = new System.Drawing.Point(20, 226);
+            this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(70, 16);
+            this.labelControl9.Size = new System.Drawing.Size(59, 13);
             this.labelControl9.TabIndex = 20;
             this.labelControl9.Text = "Warehouse:";
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(379, 88);
+            this.btnEdit.Location = new System.Drawing.Point(325, 72);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(84, 22);
+            this.btnEdit.Size = new System.Drawing.Size(72, 18);
             this.btnEdit.TabIndex = 19;
             this.btnEdit.Text = "Go Edit";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // txtInputProductId
             // 
-            this.txtInputProductId.Location = new System.Drawing.Point(147, 88);
+            this.txtInputProductId.Location = new System.Drawing.Point(126, 72);
+            this.txtInputProductId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputProductId.MenuManager = this.ribbonControl1;
             this.txtInputProductId.Name = "txtInputProductId";
-            this.txtInputProductId.Size = new System.Drawing.Size(226, 22);
+            this.txtInputProductId.Size = new System.Drawing.Size(194, 20);
             this.txtInputProductId.TabIndex = 18;
             this.txtInputProductId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInputProductId_KeyPress);
             this.txtInputProductId.Validating += new System.ComponentModel.CancelEventHandler(this.txtInputProductId_Validating);
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(23, 94);
+            this.labelControl8.Location = new System.Drawing.Point(20, 76);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(64, 16);
+            this.labelControl8.Size = new System.Drawing.Size(55, 13);
             this.labelControl8.TabIndex = 17;
             this.labelControl8.Text = "Product ID:";
             // 
@@ -554,9 +567,10 @@ namespace ManagementStore.Form.Production
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(23, 42);
+            this.labelControl7.Location = new System.Drawing.Point(20, 34);
+            this.labelControl7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(99, 28);
+            this.labelControl7.Size = new System.Drawing.Size(77, 22);
             this.labelControl7.TabIndex = 16;
             this.labelControl7.Text = "Open edit";
             // 
@@ -565,26 +579,29 @@ namespace ManagementStore.Form.Production
             this.ccbPrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ccbPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbPrice.FormattingEnabled = true;
-            this.ccbPrice.Location = new System.Drawing.Point(147, 332);
+            this.ccbPrice.Location = new System.Drawing.Point(126, 270);
+            this.ccbPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbPrice.Name = "ccbPrice";
-            this.ccbPrice.Size = new System.Drawing.Size(316, 24);
+            this.ccbPrice.Size = new System.Drawing.Size(271, 21);
             this.ccbPrice.TabIndex = 11;
             // 
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(23, 158);
+            this.labelControl6.Location = new System.Drawing.Point(20, 128);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(140, 28);
+            this.labelControl6.Size = new System.Drawing.Size(109, 22);
             this.labelControl6.TabIndex = 10;
             this.labelControl6.Text = "Option search";
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(23, 517);
+            this.labelControl5.Location = new System.Drawing.Point(20, 420);
+            this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(31, 16);
+            this.labelControl5.Size = new System.Drawing.Size(25, 13);
             this.labelControl5.TabIndex = 9;
             this.labelControl5.Text = "Ram:";
             // 
@@ -592,16 +609,18 @@ namespace ManagementStore.Form.Production
             // 
             this.ccbRams.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbRams.FormattingEnabled = true;
-            this.ccbRams.Location = new System.Drawing.Point(147, 514);
+            this.ccbRams.Location = new System.Drawing.Point(126, 418);
+            this.ccbRams.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbRams.Name = "ccbRams";
-            this.ccbRams.Size = new System.Drawing.Size(316, 24);
+            this.ccbRams.Size = new System.Drawing.Size(271, 21);
             this.ccbRams.TabIndex = 8;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(23, 460);
+            this.labelControl4.Location = new System.Drawing.Point(20, 374);
+            this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(56, 16);
+            this.labelControl4.Size = new System.Drawing.Size(49, 13);
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Category:";
             // 
@@ -609,16 +628,18 @@ namespace ManagementStore.Form.Production
             // 
             this.ccbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbCategory.FormattingEnabled = true;
-            this.ccbCategory.Location = new System.Drawing.Point(147, 452);
+            this.ccbCategory.Location = new System.Drawing.Point(126, 367);
+            this.ccbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbCategory.Name = "ccbCategory";
-            this.ccbCategory.Size = new System.Drawing.Size(316, 24);
+            this.ccbCategory.Size = new System.Drawing.Size(271, 21);
             this.ccbCategory.TabIndex = 6;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(23, 403);
+            this.labelControl3.Location = new System.Drawing.Point(20, 327);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(44, 16);
+            this.labelControl3.Size = new System.Drawing.Size(37, 13);
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "Brands:";
             // 
@@ -626,32 +647,36 @@ namespace ManagementStore.Form.Production
             // 
             this.ccbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbBrands.FormattingEnabled = true;
-            this.ccbBrands.Location = new System.Drawing.Point(147, 395);
+            this.ccbBrands.Location = new System.Drawing.Point(126, 321);
+            this.ccbBrands.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbBrands.Name = "ccbBrands";
-            this.ccbBrands.Size = new System.Drawing.Size(316, 24);
+            this.ccbBrands.Size = new System.Drawing.Size(271, 21);
             this.ccbBrands.TabIndex = 4;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(23, 340);
+            this.labelControl2.Location = new System.Drawing.Point(20, 276);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(33, 16);
+            this.labelControl2.Size = new System.Drawing.Size(27, 13);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Price:";
             // 
             // txtInputPName
             // 
-            this.txtInputPName.Location = new System.Drawing.Point(147, 211);
+            this.txtInputPName.Location = new System.Drawing.Point(126, 171);
+            this.txtInputPName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputPName.MenuManager = this.ribbonControl1;
             this.txtInputPName.Name = "txtInputPName";
-            this.txtInputPName.Size = new System.Drawing.Size(316, 22);
+            this.txtInputPName.Size = new System.Drawing.Size(271, 20);
             this.txtInputPName.TabIndex = 1;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(23, 214);
+            this.labelControl1.Location = new System.Drawing.Point(20, 174);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(85, 16);
+            this.labelControl1.Size = new System.Drawing.Size(71, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Product Name:";
             // 
@@ -661,12 +686,13 @@ namespace ManagementStore.Form.Production
             // 
             // ProductionMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1656, 939);
+            this.ClientSize = new System.Drawing.Size(1186, 639);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProductionMgt";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
@@ -718,10 +744,6 @@ namespace ManagementStore.Form.Production
         private DevExpress.XtraGrid.GridControl gridControlProduct;
         private DevExpress.XtraBars.BarButtonItem barBtnClose;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraEditors.SimpleButton btnEdit;
-        private DevExpress.XtraEditors.TextEdit txtInputProductId;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
         private System.Windows.Forms.ErrorProvider errorProviderProductID;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private System.Windows.Forms.ComboBox ccbWarehouse;
@@ -750,5 +772,9 @@ namespace ManagementStore.Form.Production
         public DevExpress.XtraBars.BarButtonItem barBtnCreate;
         public DevExpress.XtraBars.BarButtonItem btnStockOut;
         public DevExpress.XtraBars.BarButtonItem btnStockIn;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.TextEdit txtInputProductId;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }

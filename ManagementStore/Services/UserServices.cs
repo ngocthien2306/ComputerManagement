@@ -5,6 +5,7 @@ using ManagementStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace ManagementStore.Services
     {
        
         private static readonly string SP_Name = "SP_USER_MANAGEMENT";
+        private static readonly string SP_ADMIN = "SP_ADMIN";
+
         public Result RegisterUser(AppUser user, string userId)
         {
             var resultString = "Y";
@@ -197,6 +200,176 @@ namespace ManagementStore.Services
 
             }
 
+
+        }
+
+        //vuong test
+        public DataTable GetListData(string query, object[] comCode, string[] param)
+        {
+            My_Database database = new My_Database();
+            SqlCommand command = new SqlCommand(query, database.GetConnection);
+
+            for (int i = 0; i < param.Length; i++)
+            {
+                command.Parameters.Add(param[i], SqlDbType.NVarChar).Value = comCode[i];
+            }
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = command;
+            DataTable table = new DataTable();
+            database.Openconnection();
+            adapter.Fill(table);
+            database.Closeconnection();
+            return table;
+
+        }
+
+        public AppUser GetOneUser(String Username)
+        {
+            AppUser user = new AppUser();
+
+            try
+            {
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[2];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@Username";
+                    object[] arrParamsValue = new object[2];
+                    arrParamsValue[0] = "GetOneUserData";
+                    arrParamsValue[1] = Username;
+                    user = connection.ExecuteQuery<AppUser>(SP_Name, arrParams, arrParamsValue).FirstOrDefault();
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return user;
+        }
+
+        public List<Userrole> GetListRole()
+        {
+            List<Userrole> roles = new List<Userrole>();
+
+            try
+            {
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[1];
+                    arrParams[0] = "@Method";
+
+                    object[] arrParamsValue = new object[1];
+                    arrParamsValue[0] = "GetDataRole";
+
+                    roles = connection.ExecuteQuery<Userrole>(SP_Name, arrParams, arrParamsValue).ToList();
+                    return roles;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return roles;
+        }
+
+        public List<Access> GetListAccess()
+        {
+            List<Access> access = new List<Access>();
+
+            try
+            {
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[1];
+                    arrParams[0] = "@Method";
+
+                    object[] arrParamsValue = new object[1];
+                    arrParamsValue[0] = "GetDataAccess";
+
+                    access = connection.ExecuteQuery<Access>(SP_Name, arrParams, arrParamsValue).ToList();
+                    return access;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return access;
+        }
+
+        public Result DeleteUser(String username)
+        {
+            var resultString = "Error";
+            try
+            {
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[2];
+                    arrParams[0] = "@Method";
+                    arrParams[1] = "@Username";
+                    object[] arrParamsValue = new object[2];
+                    arrParamsValue[0] = "DeleteUser";
+                    arrParamsValue[1] = username;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+
+                    if (resultString != "Error")
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Delete user successfull" };
+                    }
+                    else
+                    {
+
+                        return new Result { Success = false, Message = "Delete user failed" };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
+
+        public Result SaveUser(AppUser user, string userId)
+        {
+            try
+            {
+                var resultString = "Error";
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+
+                    string[] arrParams = new string[10];
+                    arrParams[0] = "@Method"; arrParams[1] = "@UserName"; arrParams[2] = "@Firstname";
+                    arrParams[3] = "@Lastname"; arrParams[4] = "@Email"; arrParams[5] = "@Phone";
+                    arrParams[6] = "@Address"; arrParams[7] = "@Birthday"; arrParams[8] = "@Picture";
+                    arrParams[9] = "@UserId";
+
+                    object[] arrParamsValue = new object[10];
+                    arrParamsValue[0] = "SaveData"; arrParamsValue[1] = user.Username;
+                    arrParamsValue[2] = user.Firstname; arrParamsValue[3] = user.Lastname;
+                    arrParamsValue[4] = user.Email; arrParamsValue[5] = user.Phone;
+                    arrParamsValue[6] = user.Address; arrParamsValue[7] = user.Birthday;
+                    arrParamsValue[8] = user.Picture; arrParamsValue[9] = userId;
+                    resultString = connection.ExecuteScalar<string>(SP_Name, CommandType.StoredProcedure, arrParams, arrParamsValue);
+
+                    if (resultString == null)
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Save user successfull" };
+                    }
+                    else
+                    {
+                        return new Result { Success = false, Message = "Save user failed! " + resultString };
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new Result { Success = false, Message = ex.Message };
+            }
         }
     }
 }

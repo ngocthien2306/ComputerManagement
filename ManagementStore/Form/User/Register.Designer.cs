@@ -453,7 +453,7 @@ namespace ManagementStore.Form.User
         #endregion
         private DevExpress.XtraEditors.GroupControl groupControlInfo;
         private DevExpress.XtraEditors.SimpleButton btnRegister;
-        private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkLogin;
+        public DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkLogin;
         private DevExpress.XtraEditors.PictureEdit PictureEditUser;
         private DevExpress.XtraEditors.SimpleButton btnTakePicture;
         private DevExpress.XtraEditors.SimpleButton btnUploadImage;

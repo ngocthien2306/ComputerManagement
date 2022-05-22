@@ -28,13 +28,11 @@ namespace ManagementStore.Form.Production
 
         private void ProductionMgt_Load(object sender, EventArgs e)
         {
-
+            
 
             LoadOptionSearch();
 
-
-
-            //ClearOptionSearch();
+            ClearOptionSearch();
 
             gridControlProduct.DataSource =  GetListProduct();
 
@@ -120,7 +118,7 @@ namespace ManagementStore.Form.Production
         }
         private void barBtnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void barBtnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

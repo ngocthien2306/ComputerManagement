@@ -34,7 +34,7 @@ namespace ManagementStore.Form
         {
             LoginUser loginUser = new LoginUser();
             loginUser.Show();
-            Hide();
+            Close();
         }
 
         private void barBtnCreate_ItemClick(object sender, ItemClickEventArgs e)
@@ -83,8 +83,8 @@ namespace ManagementStore.Form
 
         private void btnUserMgt_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EmployeeMgt employeeMgt = new EmployeeMgt();
-            employeeMgt.ShowDialog();
+           AdminMgt adminMgt = new AdminMgt();
+            adminMgt.ShowDialog();
         }
     }
 }

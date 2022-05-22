@@ -27,7 +27,7 @@ namespace ManagementStore.Form.User
         private void LoginUser_Load(object sender, EventArgs e)
         {
             txtInputUsername.Text = "ngocthien";
-            txtInputPassword.Text = "user123456";
+            txtInputPassword.Text = "thien123";
 
             radioBtnStaff.Checked = true;
         }
@@ -125,7 +125,7 @@ namespace ManagementStore.Form.User
 
             if (role.Equals("GUEST"))
             {
-                ConnectionDB.SetConnectionString("employee", "employee01");
+                ConnectionDB.SetConnectionString("guest", "guest01");
             }
             else if (role.Equals("EMPLOYEE"))
             {

@@ -2,6 +2,7 @@
 using ManagementStore.Extensions;
 using ManagementStore.Model;
 using ManagementStore.Services;
+using ManagementStore.Form.User;
 using ManagementStore.Form.Production;
 using System;
 using System.ComponentModel;
@@ -16,248 +17,142 @@ namespace ManagementStore.Form.Employee
 {
     public partial class AdminMgt : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        ProductServices productServices = new ProductServices();
-        WarehouseServices warehouseServices = new WarehouseServices();
+        UserServices userServices = new UserServices();
         public AdminMgt()
         {
             InitializeComponent();
         }
 
-        private void ProductionMgt_Load(object sender, EventArgs e)
+        private void AdminMgt_Load(object sender, EventArgs e)
         {
+           LoadOptionSearch();
+           ClearOptionSearch();
 
-
-           // LoadOptionSearch();
-
-
-
-            //ClearOptionSearch();
-
-           // gridControlProduct.DataSource = GetListProduct();
+           gridControlUser.DataSource = GetListUser();
 
         }
         public void ClearOptionSearch()
         {
-            ccbFirstName.Text = "";
-            ccbPermission.Text = "";
-            ccbLastName.Text = "";
-            txtInputCreateAt.Text = "";
             txtInputUsername2.Text = "";
+            txtInputFirstname.Text = "";
+            txtInputLastname.Text = "";
+            txtInputEmail.Text = "";
+            txtInputPhone.Text = "";
         }
         public void LoadOptionSearch()
         {
-           /* string query = "";
+            
+            string query = "";
 
-            var categorys = productServices.GetListCategory();
-            var warehouses = warehouseServices.GetListWarehouse();
-            warehouses.Add(new WareHouse { WHId = 1, WHName = "All", Capacity = -1, WHCode = "All" });
-            query = @"select * from[dbo].[GetListComCode](@GroupCode)";
-            var brands = productServices.GetListData(query, new object[1] { "BRAS00" }, new string[1] { "@GroupCode" });
-            var rams = productServices.GetListData(query, new object[1] { "RAMS00" }, new string[1] { "@GroupCode" });
-            var prices = productServices.GetListData(query, new object[1] { "PRIP00" }, new string[1] { "@GroupCode" });
-            /*
-            ccbCategory.DataSource = categorys;
-            ccbCategory.DisplayMember = "Name";
-            ccbCategory.ValueMember = "Id";
-            ccbCategory.SelectedValue = 1002;
+            var role = userServices.GetListRole();
+            role.Add(new Userrole { TypeId = 0, TypeName = "All"});
 
-            ccbPermission.DataSource = brands;
-            ccbPermission.DisplayMember = "Name";
-            ccbPermission.ValueMember = "ID";
-            ccbPermission.SelectedValue = "BRAS01";
+            ccbPermission.DataSource = role;
+            ccbPermission.DisplayMember = "TypeName";
+            ccbPermission.ValueMember = "TypeId";
+            ccbPermission.SelectedValue = 0;
 
-            ccbRams.DataSource = rams;
-            ccbRams.DisplayMember = "Name";
-            ccbRams.ValueMember = "ID";
-            ccbRams.SelectedValue = "RAMS01";
-
-            ccbLastName.DataSource = prices;
-            ccbLastName.DisplayMember = "Name";
-            ccbLastName.ValueMember = "ID";
-            ccbLastName.SelectedValue = "PRIP01";
-
-            ccbFirstName.DataSource = warehouses;
-            ccbFirstName.DisplayMember = "WHName";
-            ccbFirstName.ValueMember = "WHCode";
-            ccbFirstName.SelectedValue = "All";
-            */
+            ccbUseYN.Text = "All";
         }
 
-        
+        public DataTable GetListUser()
+        {
+            // using function to select product data
+            string query = @"select * from[dbo].[GetListUser](@Username, @Firstname, @Lastname, @Email, @Phone, @TypeId, @UseYN)";
+            string[] arrParams = new string[7];
+            arrParams[0] = "@Username";
+            arrParams[1] = "@Firstname";
+            arrParams[2] = "@Lastname";
+            arrParams[3] = "@Email";
+            arrParams[4] = "@Phone";
+            arrParams[5] = "@TypeId";
+            arrParams[6] = "@UseYN";
+
+            object[] arrParamsValue = new object[7];
+            arrParamsValue[0] = txtInputUsername2.Text;
+            arrParamsValue[1] = txtInputFirstname.Text;
+            arrParamsValue[2] = txtInputLastname.Text;
+            arrParamsValue[3] = txtInputEmail.Text;
+            arrParamsValue[4] = txtInputPhone.Text;
+            arrParamsValue[5] = ccbPermission.Text == "All" ? 0 : Convert.ToInt32(ccbPermission.SelectedValue.ToString());
+            //arrParamsValue[6] = ccbUseYN.Text == "All" ? 5 : Convert.ToInt32(ccbUseYN.SelectedValue.ToString());
+            arrParamsValue[6] = 5;
+
+            var users = userServices.GetListData(query, arrParamsValue, arrParams);
+            return users;   
+        }
+
+
         private void barBtnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
 
         private void barBtnSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-
+            gridControlUser.DataSource = GetListUser();
         }
 
         private void barBtnCreate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CreateProduct createProduct = new CreateProduct();
+            UserInfor createProduct = new UserInfor();
             createProduct.ShowDialog();
-        }
-
-        private void gridViewProduct_DoubleClick(object sender, EventArgs e)
-        {
-
-            CreateProduct createProduct = new CreateProduct();
-
-            createProduct.ShowDialog();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-           /* string productId = txtInputUsername.Text;
-            if (productId.Equals(""))
-            {
-                XtraMessageBox.Show("Please input Product ID to open edit", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            }
-            else
-            {
-
-                Product product = productServices.GetOneProduct(Convert.ToInt32(productId));
-                if (product == null)
-                {
-                    XtraMessageBox.Show("The product not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                }
-                else
-                {
-
-                    CreateProduct createProduct = new CreateProduct();
-                    createProduct.Show();
-                    MemoryStream pic = new MemoryStream(product.Picture);
-                    createProduct.txtPName.Text = product.ProductName;
-                    createProduct.txtPPrice.Text = product.Price.ToString();
-                    createProduct.txtMainboard.Text = product.Mainboard;
-                    createProduct.txtCPU.Text = product.CPU;
-                    createProduct.txtHDD.Text = product.HDD;
-                    createProduct.txtSSD.Text = product.SSD;
-                    createProduct.txtVGA.Text = product.VGA;
-                    createProduct.ccbPBrand.SelectedValue = product.Brand;
-                    createProduct.ccbPCategory.SelectedValue = product.CategoryId;
-                    createProduct.ccbRam.SelectedValue = product.RAM;
-                    createProduct.picturePImage.Image = Image.FromStream(pic);
-                    createProduct.txtInputProductId.Text = product.PId.ToString();
-                    createProduct.groupWH.Enabled = false;
-                    //this.Hide();
-                }
-
-            }*/
         }
         private void barBtnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
-        }
-
-        private void txtInputProductId_Validating(object sender, CancelEventArgs e)
-        {
-           /* if (string.IsNullOrEmpty(txtInputUsername.Text))
-            {
-                errorProviderProductID.SetError(txtInputUsername, "Please input product id!");
-            }
-            else
-            {
-                errorProviderProductID.SetError(txtInputUsername, null);
-            }*/
+            GetListUser();
         }
 
 
-        private void barBtnExport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void cardViewUser_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-           /* string path = "production.xlsx";
-            //gridViewProduct.Focused = false;
-            gridViewProduct.ExportToXlsx(path);
-            Process.Start(path);*/
         }
 
-        private void txtInputProductId_KeyPress(object sender, KeyPressEventArgs e)
+        private void cardViewUser_Click(object sender, EventArgs e)
         {
-           /* if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // If you want, you can allow decimal (float) numbers
-            if ((e.KeyChar == '.') && ((sender as TextEdit).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }*/
-        }
-
-        private void btnStockIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            StockIn stockIn = new StockIn();
-            stockIn.ShowDialog();
-        }
-
-        private void cardViewProduct_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            //int selectedRows = cardViewProduct.GetSelectedRows()[0];
-
-            //if (selectedRows >= 0)
-            //{
-            //    var cellValue = cardViewProduct.GetRowCellValue(selectedRows, "PId");
-            //    txtInputProductId.Text = cellValue.ToString();
-            //}
-        }
-
-        private void cardViewProduct_Click(object sender, EventArgs e)
-        {
-           /* int selectedRows = cardViewProduct.GetSelectedRows()[0];
+            int selectedRows = cardViewUser.GetSelectedRows()[0];
 
             if (selectedRows >= 0)
             {
-                var cellValue = cardViewProduct.GetRowCellValue(selectedRows, "PId");
-                txtInputUsername.Text = cellValue.ToString();
-                Product product = productServices.GetOneProduct(Convert.ToInt32(cellValue));
-                if (product == null)
+                var cellValueuname = cardViewUser.GetRowCellValue(selectedRows, "Username");
+                txtInputUsername2.Text = cellValueuname.ToString();
+                AppUser user = userServices.GetOneUser(cellValueuname.ToString());
+                if (user == null)
                 {
-                    XtraMessageBox.Show("The product not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    XtraMessageBox.Show("The User not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 }
                 else
                 {
-
-                    CreateProduct createProduct = new CreateProduct();
-                    createProduct.Show();
-                    MemoryStream pic = new MemoryStream(product.Picture);
-                    createProduct.txtPName.Text = product.ProductName;
-                    createProduct.txtPPrice.Text = product.Price.ToString();
-                    createProduct.txtMainboard.Text = product.Mainboard;
-                    createProduct.txtCPU.Text = product.CPU;
-                    createProduct.txtHDD.Text = product.HDD;
-                    createProduct.txtSSD.Text = product.SSD;
-                    createProduct.txtVGA.Text = product.VGA;
-                    createProduct.ccbPBrand.SelectedValue = product.Brand;
-                    createProduct.ccbPCategory.SelectedValue = product.CategoryId;
-                    createProduct.ccbRam.SelectedValue = product.RAM;
-                    createProduct.picturePImage.Image = Image.FromStream(pic);
-                    createProduct.txtInputProductId.Text = product.PId.ToString();
-                    createProduct.groupWH.Enabled = false;
-                    createProduct.txtInputProductId.Enabled = false;
-                    createProduct.btnFindProduct.Enabled = false;
-
-                    //this.Hide();
+                    UserInfor userInfor = new UserInfor();
+                    userInfor.Show();
+                    MemoryStream pic = new MemoryStream(user.Picture);
+                    userInfor.txtInputFirstname.Text = user.Firstname.ToString();
+                    userInfor.txtInputLastname.Text = user.Lastname.ToString();
+                    userInfor.txtInputEmail.Text = user.Email.ToString();
+                    userInfor.txtInputPhone.Text = user.Phone.ToString();
+                    userInfor.txtInputAddress.Text = user.Address.ToString();
+                    userInfor.birthdayDate.DateTime = user.Birthday;
+                    userInfor.txtInputUsername.Text = user.Username.ToString();
+                    userInfor.txtInputPassword.Text = user.Password.ToString();
+                    userInfor.ccbPermission.SelectedValue = user.TypeId;
+                    userInfor.PictureEditUser.Image = Image.FromStream(pic);
+                    userInfor.txtInputUsername.Enabled = false;
                 }
-            }*/
+            }
         }
 
-        private void btnStockOut_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barbtnCreateUser_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           /* StockOut stockOut = new StockOut();
-            stockOut.ShowDialog();*/
+            Register createuser = new Register();
+            createuser.hyperLinkLogin.Visible = false;
+            createuser.ShowDialog();
         }
 
-        private void btnHistoryStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barBtnPermissionChange_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            /*HistoryStock historyStock = new HistoryStock();
-            historyStock.ShowDialog();*/
+            EmployeeMgt employeeMgt = new EmployeeMgt();
+            employeeMgt.ShowDialog();
         }
     }
 }
