@@ -45,6 +45,10 @@ namespace ManagementStore.Form
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUserMgt = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAdminPage = new DevExpress.XtraBars.BarButtonItem();
+            this.btnClose = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStatisticEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_Product = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_System = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupProduct = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -52,12 +56,12 @@ namespace ManagementStore.Form
             this.ribbonPageGroupNotify = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageEmployee = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageStatistic = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageTheme = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupTheme = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnUserMgt = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,10 +85,13 @@ namespace ManagementStore.Form
             this.barButtonItem9,
             this.barButtonItem10,
             this.barBtnProduct,
-            this.btnUserMgt});
+            this.btnUserMgt,
+            this.btnAdminPage,
+            this.btnClose,
+            this.btnStatisticEmployee});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbon.MaxItemId = 19;
+            this.ribbon.MaxItemId = 22;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_Product,
@@ -196,6 +203,37 @@ namespace ManagementStore.Form
             this.barBtnProduct.Name = "barBtnProduct";
             this.barBtnProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnProduct_ItemClick);
             // 
+            // btnUserMgt
+            // 
+            this.btnUserMgt.Caption = "Employee Management";
+            this.btnUserMgt.Id = 18;
+            this.btnUserMgt.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnUserMgt.ImageOptions.SvgImage")));
+            this.btnUserMgt.Name = "btnUserMgt";
+            this.btnUserMgt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserMgt_ItemClick);
+            // 
+            // btnAdminPage
+            // 
+            this.btnAdminPage.Caption = "Admin";
+            this.btnAdminPage.Id = 19;
+            this.btnAdminPage.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAdminPage.ImageOptions.SvgImage")));
+            this.btnAdminPage.Name = "btnAdminPage";
+            this.btnAdminPage.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAdminPage_ItemClick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Caption = "Close";
+            this.btnClose.Id = 20;
+            this.btnClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnClose.ImageOptions.SvgImage")));
+            this.btnClose.Name = "btnClose";
+            this.btnClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnClose_ItemClick);
+            // 
+            // btnStatisticEmployee
+            // 
+            this.btnStatisticEmployee.Caption = "Employee";
+            this.btnStatisticEmployee.Id = 21;
+            this.btnStatisticEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnStatisticEmployee.ImageOptions.SvgImage")));
+            this.btnStatisticEmployee.Name = "btnStatisticEmployee";
+            // 
             // ribbonPage_Product
             // 
             this.ribbonPage_Product.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -208,8 +246,10 @@ namespace ManagementStore.Form
             // 
             // ribbonPageGroup_System
             // 
+            this.ribbonPageGroup_System.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Profile);
             this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Logout);
+            this.ribbonPageGroup_System.ItemLinks.Add(this.btnClose);
             this.ribbonPageGroup_System.Name = "ribbonPageGroup_System";
             this.ribbonPageGroup_System.Text = "Systems";
             // 
@@ -237,15 +277,23 @@ namespace ManagementStore.Form
             // ribbonPageEmployee
             // 
             this.ribbonPageEmployee.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupEmployee});
+            this.ribbonPageGroupEmployee,
+            this.ribbonPageStatistic});
             this.ribbonPageEmployee.Name = "ribbonPageEmployee";
             this.ribbonPageEmployee.Text = "Employee";
             // 
             // ribbonPageGroupEmployee
             // 
             this.ribbonPageGroupEmployee.ItemLinks.Add(this.btnUserMgt);
+            this.ribbonPageGroupEmployee.ItemLinks.Add(this.btnAdminPage);
             this.ribbonPageGroupEmployee.Name = "ribbonPageGroupEmployee";
-            this.ribbonPageGroupEmployee.Text = "Employee Management";
+            this.ribbonPageGroupEmployee.Text = "Management";
+            // 
+            // ribbonPageStatistic
+            // 
+            this.ribbonPageStatistic.ItemLinks.Add(this.btnStatisticEmployee);
+            this.ribbonPageStatistic.Name = "ribbonPageStatistic";
+            this.ribbonPageStatistic.Text = "Statistics";
             // 
             // ribbonPageTheme
             // 
@@ -281,13 +329,6 @@ namespace ManagementStore.Form
             this.ribbonGroupEmployee.ItemLinks.Add(this.barButtonItem3);
             this.ribbonGroupEmployee.Name = "ribbonGroupEmployee";
             this.ribbonGroupEmployee.Text = "Product Management";
-            // 
-            // btnUserMgt
-            // 
-            this.btnUserMgt.Caption = "User Management";
-            this.btnUserMgt.Id = 18;
-            this.btnUserMgt.Name = "btnUserMgt";
-            this.btnUserMgt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserMgt_ItemClick);
             // 
             // Main
             // 
@@ -340,5 +381,9 @@ namespace ManagementStore.Form
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupEmployee;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageEmployee;
         private DevExpress.XtraBars.BarButtonItem btnUserMgt;
+        private DevExpress.XtraBars.BarButtonItem btnAdminPage;
+        private DevExpress.XtraBars.BarButtonItem btnClose;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageStatistic;
+        public DevExpress.XtraBars.BarButtonItem btnStatisticEmployee;
     }
 }

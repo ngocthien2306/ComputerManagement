@@ -38,6 +38,15 @@ namespace ManagementStore.Model
         }
     }
 
+    public class Behavior
+    {
+        public string Username { get; set; }
+        public string Fullname { get; set; }
+        public string Status { get; set; }
+        public DateTime Time { get; set; }
+        public string Data { get; set; }
+    }
+
 
 
 }

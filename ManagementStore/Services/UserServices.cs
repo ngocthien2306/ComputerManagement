@@ -142,6 +142,37 @@ namespace ManagementStore.Services
             
         }
 
+        public List<Behavior> GetListBehavior()
+        {
+            List<Behavior> behaviors = null;
+            try
+            {
+
+                using (var connect = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+                    string[] arrParams = new string[1];
+                    arrParams[0] = "@Method";
+
+
+                    object[] arrParamsValue = new object[1];
+                    arrParamsValue[0] = "GetListBehavior";
+
+
+                    var result = connect.ExecuteQuery<Behavior>("SP_BEHAVIOR", arrParams, arrParamsValue);
+
+                    return result.ToList();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return behaviors;
+
+            }
+
+        }
+
         public List<AppUser> GetDataUser()
         {
             List<AppUser> user = null;
@@ -371,5 +402,49 @@ namespace ManagementStore.Services
                 return new Result { Success = false, Message = ex.Message };
             }
         }
+
+
+        public Result SaveBehaviorUser(string userId, string status, string data)
+        {
+            try
+            {
+                var resultString = "Y";
+                using (var connection = DataConnectionFactory.GetConnection(ConnectionDB.GetConnectionString()))
+                {
+
+                    string[] arrParams = new string[4];
+                    arrParams[0] = "@Method"; 
+                    arrParams[1] = "@UserId"; 
+                    arrParams[2] = "@Status";
+                    arrParams[3] = "@Data"; 
+
+
+                    object[] arrParamsValue = new object[4];
+                    arrParamsValue[0] = "SaveBehavior"; 
+                    arrParamsValue[1] = userId;
+                    arrParamsValue[2] = status; 
+                    arrParamsValue[3] = data;
+                   
+                    resultString = connection.ExecuteScalar<string>("SP_BEHAVIOR", CommandType.StoredProcedure, arrParams, arrParamsValue);
+
+                    if (resultString == "Y")
+                    {
+                        return new Result { Success = true, Data = resultString, Message = "Save successfull" };
+                    }
+                    else
+                    {
+                        return new Result { Success = false, Message = "Save failed! " + resultString };
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new Result { Success = false, Message = ex.Message };
+            }
+        }
+
     }
 }

@@ -60,8 +60,10 @@ namespace ManagementStore.Form.Employee
             this.barBtnPermissionChange = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnBlock = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnCreateUser = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBehavior = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -105,23 +107,23 @@ namespace ManagementStore.Form.Employee
             // 
             // gridViewUser
             // 
-            this.gridViewUser.DetailHeight = 284;
             this.gridViewUser.GridControl = this.gridControlUser;
             this.gridViewUser.Name = "gridViewUser";
             // 
             // gridControlUser
             // 
+            this.gridControlUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlUser.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             gridLevelNode1.LevelTemplate = this.gridViewUser;
             gridLevelNode1.RelationName = "Level1";
             this.gridControlUser.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode1});
-            this.gridControlUser.Location = new System.Drawing.Point(3, 5);
+            this.gridControlUser.Location = new System.Drawing.Point(0, 0);
             this.gridControlUser.MainView = this.cardViewUser;
             this.gridControlUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControlUser.MenuManager = this.ribbonControl1;
             this.gridControlUser.Name = "gridControlUser";
-            this.gridControlUser.Size = new System.Drawing.Size(987, 583);
+            this.gridControlUser.Size = new System.Drawing.Size(1169, 620);
             this.gridControlUser.TabIndex = 0;
             this.gridControlUser.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardViewUser,
@@ -133,7 +135,7 @@ namespace ManagementStore.Form.Employee
             this.cardViewUser.Appearance.FieldCaption.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
             this.cardViewUser.Appearance.FieldCaption.Options.UseBackColor = true;
             this.cardViewUser.Appearance.FieldCaption.Options.UseForeColor = true;
-            this.cardViewUser.CardWidth = 231;
+            this.cardViewUser.CardWidth = 269;
             this.cardViewUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.Username,
             this.Password,
@@ -147,7 +149,6 @@ namespace ManagementStore.Form.Employee
             this.TypeName,
             this.CreatedAt,
             this.UseYN});
-            this.cardViewUser.DetailHeight = 284;
             this.cardViewUser.GridControl = this.gridControlUser;
             this.cardViewUser.MaximumCardColumns = 4;
             this.cardViewUser.MaximumCardRows = 10;
@@ -163,23 +164,23 @@ namespace ManagementStore.Form.Employee
             this.Username.AppearanceCell.Options.UseForeColor = true;
             this.Username.Caption = "Username";
             this.Username.FieldName = "Username";
-            this.Username.MinWidth = 21;
+            this.Username.MinWidth = 24;
             this.Username.Name = "Username";
             this.Username.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count)});
             this.Username.Visible = true;
             this.Username.VisibleIndex = 0;
-            this.Username.Width = 60;
+            this.Username.Width = 70;
             // 
             // Password
             // 
             this.Password.Caption = "Password";
             this.Password.FieldName = "Password";
-            this.Password.MinWidth = 21;
+            this.Password.MinWidth = 24;
             this.Password.Name = "Password";
             this.Password.OptionsColumn.ReadOnly = true;
             this.Password.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedRow;
-            this.Password.Width = 91;
+            this.Password.Width = 106;
             // 
             // FirstName
             // 
@@ -189,46 +190,46 @@ namespace ManagementStore.Form.Employee
             this.FirstName.DisplayFormat.FormatString = "{0:#,0# VND}";
             this.FirstName.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.FirstName.FieldName = "Firstname";
-            this.FirstName.MinWidth = 21;
+            this.FirstName.MinWidth = 24;
             this.FirstName.Name = "FirstName";
             this.FirstName.OptionsColumn.ReadOnly = true;
             this.FirstName.Visible = true;
             this.FirstName.VisibleIndex = 1;
-            this.FirstName.Width = 91;
+            this.FirstName.Width = 106;
             // 
             // LastName
             // 
             this.LastName.Caption = "Last Name";
             this.LastName.FieldName = "Lastname";
-            this.LastName.MinWidth = 21;
+            this.LastName.MinWidth = 24;
             this.LastName.Name = "LastName";
             this.LastName.OptionsColumn.ReadOnly = true;
             this.LastName.Visible = true;
             this.LastName.VisibleIndex = 2;
-            this.LastName.Width = 91;
+            this.LastName.Width = 106;
             // 
             // Email
             // 
             this.Email.Caption = "Email";
             this.Email.FieldName = "Email";
-            this.Email.MinWidth = 21;
+            this.Email.MinWidth = 24;
             this.Email.Name = "Email";
             this.Email.OptionsColumn.ReadOnly = true;
             this.Email.Visible = true;
             this.Email.VisibleIndex = 3;
-            this.Email.Width = 94;
+            this.Email.Width = 110;
             // 
             // Picture
             // 
             this.Picture.Caption = "Picture";
             this.Picture.ColumnEdit = this.itemPictureEditUser;
             this.Picture.FieldName = "Picture";
-            this.Picture.MinWidth = 21;
+            this.Picture.MinWidth = 24;
             this.Picture.Name = "Picture";
             this.Picture.OptionsColumn.ReadOnly = true;
             this.Picture.Visible = true;
             this.Picture.VisibleIndex = 4;
-            this.Picture.Width = 65;
+            this.Picture.Width = 76;
             // 
             // itemPictureEditUser
             // 
@@ -241,62 +242,64 @@ namespace ManagementStore.Form.Employee
             // 
             this.Address.Caption = "Address";
             this.Address.FieldName = "Address";
-            this.Address.MinWidth = 21;
+            this.Address.MinWidth = 24;
             this.Address.Name = "Address";
             this.Address.OptionsColumn.ReadOnly = true;
             this.Address.Visible = true;
             this.Address.VisibleIndex = 9;
-            this.Address.Width = 93;
+            this.Address.Width = 108;
             // 
             // Phone
             // 
             this.Phone.Caption = "Phone Number";
             this.Phone.FieldName = "Phone";
-            this.Phone.MinWidth = 21;
+            this.Phone.MinWidth = 24;
             this.Phone.Name = "Phone";
             this.Phone.Visible = true;
             this.Phone.VisibleIndex = 7;
-            this.Phone.Width = 81;
+            this.Phone.Width = 94;
             // 
             // Birthday
             // 
             this.Birthday.Caption = "Birthday";
             this.Birthday.FieldName = "Birthday";
-            this.Birthday.MinWidth = 21;
+            this.Birthday.MinWidth = 24;
             this.Birthday.Name = "Birthday";
             this.Birthday.Visible = true;
             this.Birthday.VisibleIndex = 8;
-            this.Birthday.Width = 81;
+            this.Birthday.Width = 94;
             // 
             // TypeName
             // 
             this.TypeName.Caption = "Permission";
             this.TypeName.FieldName = "TypeName";
-            this.TypeName.MinWidth = 21;
+            this.TypeName.MinWidth = 24;
             this.TypeName.Name = "TypeName";
             this.TypeName.OptionsColumn.ReadOnly = true;
             this.TypeName.Visible = true;
             this.TypeName.VisibleIndex = 5;
-            this.TypeName.Width = 99;
+            this.TypeName.Width = 115;
             // 
             // CreatedAt
             // 
             this.CreatedAt.Caption = "Created Date";
             this.CreatedAt.FieldName = "CreatedAt";
-            this.CreatedAt.MinWidth = 21;
+            this.CreatedAt.MinWidth = 24;
             this.CreatedAt.Name = "CreatedAt";
             this.CreatedAt.OptionsColumn.ReadOnly = true;
             this.CreatedAt.Visible = true;
             this.CreatedAt.VisibleIndex = 6;
-            this.CreatedAt.Width = 107;
+            this.CreatedAt.Width = 125;
             // 
             // UseYN
             // 
             this.UseYN.Caption = "Block";
             this.UseYN.FieldName = "UseYN";
+            this.UseYN.MinWidth = 23;
             this.UseYN.Name = "UseYN";
             this.UseYN.Visible = true;
             this.UseYN.VisibleIndex = 10;
+            this.UseYN.Width = 87;
             // 
             // ribbonControl1
             // 
@@ -314,14 +317,15 @@ namespace ManagementStore.Form.Employee
             this.btnHistoryStock,
             this.barBtnPermissionChange,
             this.barBtnBlock,
-            this.barbtnCreateUser});
+            this.barbtnCreateUser,
+            this.btnBehavior});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbonControl1.MaxItemId = 22;
+            this.ribbonControl1.MaxItemId = 23;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
-            this.ribbonControl1.Size = new System.Drawing.Size(1186, 147);
+            this.ribbonControl1.Size = new System.Drawing.Size(1658, 181);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // barBtnSearch
@@ -377,8 +381,7 @@ namespace ManagementStore.Form.Employee
             // 
             this.barBtnPermissionChange.Caption = "Permission";
             this.barBtnPermissionChange.Id = 10;
-            this.barBtnPermissionChange.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnPermissionChange.ImageOptions.Image")));
-            this.barBtnPermissionChange.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnPermissionChange.ImageOptions.LargeImage")));
+            this.barBtnPermissionChange.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnPermissionChange.ImageOptions.SvgImage")));
             this.barBtnPermissionChange.Name = "barBtnPermissionChange";
             this.barBtnPermissionChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnPermissionChange_ItemClick);
             // 
@@ -386,9 +389,9 @@ namespace ManagementStore.Form.Employee
             // 
             this.barBtnBlock.Caption = "Block";
             this.barBtnBlock.Id = 11;
-            this.barBtnBlock.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barBtnBlock.ImageOptions.Image")));
-            this.barBtnBlock.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barBtnBlock.ImageOptions.LargeImage")));
+            this.barBtnBlock.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnBlock.ImageOptions.SvgImage")));
             this.barBtnBlock.Name = "barBtnBlock";
+            this.barBtnBlock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtnBlock_ItemClick);
             // 
             // barbtnCreateUser
             // 
@@ -398,10 +401,19 @@ namespace ManagementStore.Form.Employee
             this.barbtnCreateUser.Name = "barbtnCreateUser";
             this.barbtnCreateUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnCreateUser_ItemClick);
             // 
+            // btnBehavior
+            // 
+            this.btnBehavior.Caption = "Audit";
+            this.btnBehavior.Id = 22;
+            this.btnBehavior.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnBehavior.ImageOptions.SvgImage")));
+            this.btnBehavior.Name = "btnBehavior";
+            this.btnBehavior.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBehavior_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
+            this.ribbonPageGroup4,
             this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "User Management";
@@ -416,6 +428,12 @@ namespace ManagementStore.Form.Employee
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
             // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnBehavior);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Behavior";
+            // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.barBtnClose);
@@ -424,11 +442,11 @@ namespace ManagementStore.Form.Employee
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 616);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 801);
             this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1186, 23);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1658, 29);
             // 
             // repositoryItemDateEdit1
             // 
@@ -447,7 +465,7 @@ namespace ManagementStore.Form.Employee
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 147);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 181);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -472,90 +490,90 @@ namespace ManagementStore.Form.Employee
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gridControlUser);
-            this.splitContainer1.Size = new System.Drawing.Size(1186, 469);
-            this.splitContainer1.SplitterDistance = 348;
+            this.splitContainer1.Size = new System.Drawing.Size(1658, 620);
+            this.splitContainer1.SplitterDistance = 486;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
             // txtInputPhone
             // 
-            this.txtInputPhone.Location = new System.Drawing.Point(124, 255);
+            this.txtInputPhone.Location = new System.Drawing.Point(145, 314);
             this.txtInputPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputPhone.MenuManager = this.ribbonControl1;
             this.txtInputPhone.Name = "txtInputPhone";
-            this.txtInputPhone.Size = new System.Drawing.Size(271, 20);
+            this.txtInputPhone.Size = new System.Drawing.Size(248, 22);
             this.txtInputPhone.TabIndex = 30;
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(18, 258);
+            this.labelControl10.Location = new System.Drawing.Point(21, 318);
             this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(74, 13);
+            this.labelControl10.Size = new System.Drawing.Size(89, 16);
             this.labelControl10.TabIndex = 29;
             this.labelControl10.Text = "Phone Number:";
             // 
             // txtInputEmail
             // 
-            this.txtInputEmail.Location = new System.Drawing.Point(124, 213);
+            this.txtInputEmail.Location = new System.Drawing.Point(145, 262);
             this.txtInputEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputEmail.MenuManager = this.ribbonControl1;
             this.txtInputEmail.Name = "txtInputEmail";
-            this.txtInputEmail.Size = new System.Drawing.Size(271, 20);
+            this.txtInputEmail.Size = new System.Drawing.Size(248, 22);
             this.txtInputEmail.TabIndex = 28;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(18, 216);
+            this.labelControl4.Location = new System.Drawing.Point(21, 266);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(28, 13);
+            this.labelControl4.Size = new System.Drawing.Size(36, 16);
             this.labelControl4.TabIndex = 27;
             this.labelControl4.Text = "Email:";
             // 
             // txtInputLastname
             // 
-            this.txtInputLastname.Location = new System.Drawing.Point(124, 171);
+            this.txtInputLastname.Location = new System.Drawing.Point(145, 210);
             this.txtInputLastname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputLastname.MenuManager = this.ribbonControl1;
             this.txtInputLastname.Name = "txtInputLastname";
-            this.txtInputLastname.Size = new System.Drawing.Size(271, 20);
+            this.txtInputLastname.Size = new System.Drawing.Size(248, 22);
             this.txtInputLastname.TabIndex = 26;
             // 
             // txtInputFirstname
             // 
-            this.txtInputFirstname.Location = new System.Drawing.Point(124, 130);
+            this.txtInputFirstname.Location = new System.Drawing.Point(145, 160);
             this.txtInputFirstname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputFirstname.MenuManager = this.ribbonControl1;
             this.txtInputFirstname.Name = "txtInputFirstname";
-            this.txtInputFirstname.Size = new System.Drawing.Size(271, 20);
+            this.txtInputFirstname.Size = new System.Drawing.Size(248, 22);
             this.txtInputFirstname.TabIndex = 25;
             // 
             // ccbUseYN
             // 
             this.ccbUseYN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbUseYN.FormattingEnabled = true;
-            this.ccbUseYN.Location = new System.Drawing.Point(124, 345);
+            this.ccbUseYN.Location = new System.Drawing.Point(145, 425);
             this.ccbUseYN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbUseYN.Name = "ccbUseYN";
-            this.ccbUseYN.Size = new System.Drawing.Size(271, 21);
+            this.ccbUseYN.Size = new System.Drawing.Size(248, 24);
             this.ccbUseYN.TabIndex = 24;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(18, 348);
+            this.labelControl5.Location = new System.Drawing.Point(21, 428);
             this.labelControl5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(28, 13);
+            this.labelControl5.Size = new System.Drawing.Size(34, 16);
             this.labelControl5.TabIndex = 23;
             this.labelControl5.Text = "Block:";
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(18, 133);
+            this.labelControl9.Location = new System.Drawing.Point(21, 164);
             this.labelControl9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(55, 13);
+            this.labelControl9.Size = new System.Drawing.Size(67, 16);
             this.labelControl9.TabIndex = 20;
             this.labelControl9.Text = "First Name:";
             // 
@@ -563,19 +581,19 @@ namespace ManagementStore.Form.Employee
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Location = new System.Drawing.Point(18, 46);
+            this.labelControl6.Location = new System.Drawing.Point(21, 57);
             this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(109, 22);
+            this.labelControl6.Size = new System.Drawing.Size(140, 28);
             this.labelControl6.TabIndex = 10;
             this.labelControl6.Text = "Option search";
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(18, 305);
+            this.labelControl3.Location = new System.Drawing.Point(21, 375);
             this.labelControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(50, 13);
+            this.labelControl3.Size = new System.Drawing.Size(62, 16);
             this.labelControl3.TabIndex = 5;
             this.labelControl3.Text = "Permission";
             // 
@@ -583,36 +601,36 @@ namespace ManagementStore.Form.Employee
             // 
             this.ccbPermission.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ccbPermission.FormattingEnabled = true;
-            this.ccbPermission.Location = new System.Drawing.Point(124, 299);
+            this.ccbPermission.Location = new System.Drawing.Point(145, 368);
             this.ccbPermission.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ccbPermission.Name = "ccbPermission";
-            this.ccbPermission.Size = new System.Drawing.Size(271, 21);
+            this.ccbPermission.Size = new System.Drawing.Size(248, 24);
             this.ccbPermission.TabIndex = 4;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(18, 174);
+            this.labelControl2.Location = new System.Drawing.Point(21, 214);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(54, 13);
+            this.labelControl2.Size = new System.Drawing.Size(65, 16);
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "Last Name:";
             // 
             // txtInputUsername2
             // 
-            this.txtInputUsername2.Location = new System.Drawing.Point(124, 89);
+            this.txtInputUsername2.Location = new System.Drawing.Point(145, 110);
             this.txtInputUsername2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtInputUsername2.MenuManager = this.ribbonControl1;
             this.txtInputUsername2.Name = "txtInputUsername2";
-            this.txtInputUsername2.Size = new System.Drawing.Size(271, 20);
+            this.txtInputUsername2.Size = new System.Drawing.Size(248, 22);
             this.txtInputUsername2.TabIndex = 1;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(18, 92);
+            this.labelControl1.Location = new System.Drawing.Point(21, 113);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(53, 13);
+            this.labelControl1.Size = new System.Drawing.Size(64, 16);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "UserName:";
             // 
@@ -626,9 +644,9 @@ namespace ManagementStore.Form.Employee
             // 
             // AdminMgt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 639);
+            this.ClientSize = new System.Drawing.Size(1658, 830);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
@@ -715,5 +733,7 @@ namespace ManagementStore.Form.Employee
         private DevExpress.XtraEditors.TextEdit txtInputEmail;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraBars.BarButtonItem barbtnCreateUser;
+        private DevExpress.XtraBars.BarButtonItem btnBehavior;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
     }
 }

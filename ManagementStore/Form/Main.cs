@@ -32,9 +32,11 @@ namespace ManagementStore.Form
 
         private void barBtn_Logout_ItemClick(object sender, ItemClickEventArgs e)
         {
+            userServices.SaveBehaviorUser(CurrentUser.AppUser.Id, "LOGOUT", "");
             LoginUser loginUser = new LoginUser();
             loginUser.Show();
-            Close();
+            
+    
         }
 
         private void barBtnCreate_ItemClick(object sender, ItemClickEventArgs e)
@@ -83,8 +85,19 @@ namespace ManagementStore.Form
 
         private void btnUserMgt_ItemClick(object sender, ItemClickEventArgs e)
         {
-           AdminMgt adminMgt = new AdminMgt();
-            adminMgt.ShowDialog();
+           EmployeeMgt employeeMgt = new EmployeeMgt();
+            employeeMgt.ShowDialog();
+        }
+
+        private void btnAdminPage_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AdminMgt admin = new AdminMgt();
+            admin.ShowDialog();
+        }
+
+        private void btnClose_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

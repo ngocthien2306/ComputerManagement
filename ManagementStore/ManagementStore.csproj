@@ -120,6 +120,12 @@
     <Compile Include="Extensions\SearchExtensions.cs" />
     <Compile Include="Extensions\PasswordExtensions.cs" />
     <Compile Include="Extensions\ValidateExtensions.cs" />
+    <Compile Include="Form\Behavior\BehaviorUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Behavior\BehaviorUser.Designer.cs">
+      <DependentUpon>BehaviorUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\Employee\AdminMgt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     <Compile Include="Services\ProductServices.cs" />
     <Compile Include="Services\UserServices.cs" />
     <Compile Include="Services\WarehouseServices.cs" />
+    <EmbeddedResource Include="Form\Behavior\BehaviorUser.resx">
+      <DependentUpon>BehaviorUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\Employee\AdminMgt.resx">
       <DependentUpon>AdminMgt.cs</DependentUpon>
     </EmbeddedResource>

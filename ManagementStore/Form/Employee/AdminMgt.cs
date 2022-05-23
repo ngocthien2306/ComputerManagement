@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-
+using ManagementStore.Form.Behavior;
 
 namespace ManagementStore.Form.Employee
 {
@@ -153,6 +153,17 @@ namespace ManagementStore.Form.Employee
         {
             EmployeeMgt employeeMgt = new EmployeeMgt();
             employeeMgt.ShowDialog();
+        }
+
+        private void barBtnBlock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnBehavior_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            BehaviorUser behaviorUser = new BehaviorUser();
+            behaviorUser.ShowDialog();
         }
     }
 }

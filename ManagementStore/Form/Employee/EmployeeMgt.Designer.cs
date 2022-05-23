@@ -36,13 +36,12 @@ namespace ManagementStore.Form.Employee
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.Employee = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControlUser = new DevExpress.XtraGrid.GridControl();
             this.gridViewUser = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.groupStockInItem = new DevExpress.XtraEditors.GroupControl();
@@ -111,7 +110,7 @@ namespace ManagementStore.Form.Employee
             this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
+            this.Employee});
             this.ribbon.Size = new System.Drawing.Size(1801, 181);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             this.ribbon.Click += new System.EventHandler(this.ribbon_Click);
@@ -152,13 +151,13 @@ namespace ManagementStore.Form.Employee
             this.barButtonItem6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
             this.barButtonItem6.Name = "barButtonItem6";
             // 
-            // ribbonPage1
+            // Employee
             // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.Employee.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroup5});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
+            this.Employee.Name = "Employee";
+            this.Employee.Text = "Employee";
             // 
             // ribbonPageGroup1
             // 
@@ -201,23 +200,11 @@ namespace ManagementStore.Form.Employee
             this.gridViewUser.Appearance.GroupRow.Options.UseBackColor = true;
             this.gridViewUser.AppearancePrint.GroupRow.BackColor = System.Drawing.Color.LightGray;
             this.gridViewUser.AppearancePrint.GroupRow.Options.UseBackColor = true;
-            this.gridViewUser.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1});
             this.gridViewUser.GridControl = this.gridControlUser;
             this.gridViewUser.Name = "gridViewUser";
             this.gridViewUser.OptionsPrint.PrintPreview = true;
             this.gridViewUser.OptionsView.ShowFooter = true;
             this.gridViewUser.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewUser_FocusedRowChanged);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Firstname";
-            this.gridColumn1.FieldName = "Firstname";
-            this.gridColumn1.MinWidth = 25;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 94;
             // 
             // repositoryItemDateEdit1
             // 
@@ -553,7 +540,7 @@ namespace ManagementStore.Form.Employee
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage Employee;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraGrid.GridControl gridControlUser;
@@ -598,6 +585,5 @@ namespace ManagementStore.Form.Employee
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

@@ -27,7 +27,7 @@ namespace ManagementStore.Form.User
         private void LoginUser_Load(object sender, EventArgs e)
         {
             txtInputUsername.Text = "ngocthien";
-            txtInputPassword.Text = "thien123";
+            txtInputPassword.Text = "";
 
             radioBtnStaff.Checked = true;
         }
@@ -59,7 +59,8 @@ namespace ManagementStore.Form.User
                 {
                     CurrentUser.SetCurrentUser(appUser);                    
                     Main main = new Main();
-                    //main.ribbonPageGroupEmployee.Visible = false;
+                    main.ribbonPageGroupEmployee.Enabled = false;
+                    main.btnStatisticEmployee.Enabled = false;
                     main.Show();
                     Hide();
                 }
@@ -75,6 +76,10 @@ namespace ManagementStore.Form.User
                     Hide();
                 }
 
+                if(result.Success)
+                {
+                    userServices.SaveBehaviorUser(appUser.Id, "LOGIN", "");
+                }
                 
 
             }
@@ -125,7 +130,7 @@ namespace ManagementStore.Form.User
 
             if (role.Equals("GUEST"))
             {
-                ConnectionDB.SetConnectionString("guest", "guest01");
+                ConnectionDB.SetConnectionString("employee", "employee01");
             }
             else if (role.Equals("EMPLOYEE"))
             {
