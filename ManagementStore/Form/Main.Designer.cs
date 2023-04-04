@@ -34,26 +34,26 @@ namespace ManagementStore.Form
             this.barBtn_Logout = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_Profile = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonTheme = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
-            this.barBtnCreateProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnEditProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnDeleteProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnCreate = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnSearchProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnSaveProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnPrintProduct = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnSaveSale = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnDeleteSale = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtnPrintSale = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnStatisticProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUserMgt = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAdminPage = new DevExpress.XtraBars.BarButtonItem();
+            this.btnClose = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStatisticEmployee = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_Product = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup_System = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonGroupEmployee = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.gridGroupRole = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridUserRole = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.labelUsername = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridGroupRole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -69,23 +69,14 @@ namespace ManagementStore.Form
             this.ribbon.SearchEditItem,
             this.barBtn_Logout,
             this.barBtn_Profile,
-            this.skinRibbonTheme,
-            this.barBtnCreateProduct,
-            this.barBtnEditProduct,
-            this.barBtnDeleteProduct,
-            this.barBtnSearchProduct,
-            this.barBtnSaveProduct,
-            this.barBtnPrintProduct,
-            this.barBtnSaveSale,
-            this.barBtnDeleteSale,
-            this.barBtnPrintSale});
+            this.skinRibbonTheme});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ribbon.MaxItemId = 13;
+            this.ribbon.MaxItemId = 4;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_Product});
-            this.ribbon.Size = new System.Drawing.Size(1446, 181);
+            this.ribbon.Size = new System.Drawing.Size(1022, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // barBtn_Logout
@@ -104,6 +95,7 @@ namespace ManagementStore.Form
             this.barBtn_Profile.Id = 2;
             this.barBtn_Profile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtn_Profile.ImageOptions.SvgImage")));
             this.barBtn_Profile.Name = "barBtn_Profile";
+            this.barBtn_Profile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Profile_ItemClick);
             // 
             // skinRibbonTheme
             // 
@@ -111,169 +103,90 @@ namespace ManagementStore.Form
             this.skinRibbonTheme.Id = 3;
             this.skinRibbonTheme.Name = "skinRibbonTheme";
             // 
-            // barBtnCreateProduct
-            // 
-            this.barBtnCreateProduct.Caption = "Create";
-            this.barBtnCreateProduct.Id = 4;
-            this.barBtnCreateProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnCreateProduct.ImageOptions.SvgImage")));
-            this.barBtnCreateProduct.Name = "barBtnCreateProduct";
-            // 
-            // barBtnEditProduct
-            // 
-            this.barBtnEditProduct.Caption = "Edit";
-            this.barBtnEditProduct.Id = 5;
-            this.barBtnEditProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnEditProduct.ImageOptions.SvgImage")));
-            this.barBtnEditProduct.Name = "barBtnEditProduct";
-            // 
-            // barBtnDeleteProduct
-            // 
-            this.barBtnDeleteProduct.Caption = "Delete";
-            this.barBtnDeleteProduct.Id = 6;
-            this.barBtnDeleteProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnDeleteProduct.ImageOptions.SvgImage")));
-            this.barBtnDeleteProduct.Name = "barBtnDeleteProduct";
-            // 
-            // barBtnSearchProduct
-            // 
-            this.barBtnSearchProduct.Caption = "Search";
-            this.barBtnSearchProduct.Id = 7;
-            this.barBtnSearchProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnSearchProduct.ImageOptions.SvgImage")));
-            this.barBtnSearchProduct.Name = "barBtnSearchProduct";
-            // 
-            // barBtnSaveProduct
-            // 
-            this.barBtnSaveProduct.Caption = "Save";
-            this.barBtnSaveProduct.Id = 8;
-            this.barBtnSaveProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnSaveProduct.ImageOptions.SvgImage")));
-            this.barBtnSaveProduct.Name = "barBtnSaveProduct";
-            // 
-            // barBtnPrintProduct
-            // 
-            this.barBtnPrintProduct.Caption = "Print";
-            this.barBtnPrintProduct.Id = 9;
-            this.barBtnPrintProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnPrintProduct.ImageOptions.SvgImage")));
-            this.barBtnPrintProduct.Name = "barBtnPrintProduct";
-            // 
-            // barBtnSaveSale
-            // 
-            this.barBtnSaveSale.Caption = "Save";
-            this.barBtnSaveSale.Id = 10;
-            this.barBtnSaveSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnSaveSale.ImageOptions.SvgImage")));
-            this.barBtnSaveSale.Name = "barBtnSaveSale";
-            // 
-            // barBtnDeleteSale
-            // 
-            this.barBtnDeleteSale.Caption = "Delete";
-            this.barBtnDeleteSale.Id = 11;
-            this.barBtnDeleteSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnDeleteSale.ImageOptions.SvgImage")));
-            this.barBtnDeleteSale.Name = "barBtnDeleteSale";
-            // 
-            // barBtnPrintSale
-            // 
-            this.barBtnPrintSale.Caption = "Print";
-            this.barBtnPrintSale.Id = 12;
-            this.barBtnPrintSale.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barBtnPrintSale.ImageOptions.SvgImage")));
-            this.barBtnPrintSale.Name = "barBtnPrintSale";
-            // 
             // ribbonPage_Product
             // 
             this.ribbonPage_Product.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup_System,
             this.ribbonGroupEmployee,
-            this.ribbonPageGroup2,
             this.ribbonPageGroup1});
             this.ribbonPage_Product.Name = "ribbonPage_Product";
-            this.ribbonPage_Product.Text = "Home";
+            this.ribbonPage_Product.Text = "Product";
             // 
             // ribbonPageGroup_System
             // 
-            this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Logout);
+            this.ribbonPageGroup_System.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Profile);
+            this.ribbonPageGroup_System.ItemLinks.Add(this.barBtn_Logout);
+            this.ribbonPageGroup_System.ItemLinks.Add(this.btnClose);
             this.ribbonPageGroup_System.Name = "ribbonPageGroup_System";
             this.ribbonPageGroup_System.Text = "Systems";
             // 
-            // ribbonGroupEmployee
+            // ribbonPageGroupProduct
             // 
-            this.ribbonGroupEmployee.ItemLinks.Add(this.barBtnSaveSale);
-            this.ribbonGroupEmployee.ItemLinks.Add(this.barBtnDeleteSale);
-            this.ribbonGroupEmployee.ItemLinks.Add(this.barBtnPrintSale);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnProduct);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnSearchProduct);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barBtnStatisticProduct);
+            this.ribbonPageGroupProduct.ItemLinks.Add(this.barButtonItem8);
+            this.ribbonPageGroupProduct.Name = "ribbonPageGroupProduct";
+            this.ribbonPageGroupProduct.Text = "Product Task";
+            // 
+            // ribbonPageGroupExportData
+            // 
+            this.ribbonPageGroupExportData.ItemLinks.Add(this.barButtonItem9);
+            this.ribbonPageGroupExportData.Name = "ribbonPageGroupExportData";
+            this.ribbonPageGroupExportData.Text = "Export Data";
+            // 
+            // ribbonPageGroupNotify
+            // 
+            this.ribbonPageGroupNotify.ItemLinks.Add(this.barButtonItem10);
+            this.ribbonPageGroupNotify.Name = "ribbonPageGroupNotify";
+            this.ribbonPageGroupNotify.Text = "Notify";
+            // 
+            // ribbonPageEmployee
+            // 
+            this.ribbonPageEmployee.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupEmployee,
+            this.ribbonPageStatistic});
+            this.ribbonPageEmployee.Name = "ribbonPageEmployee";
+            this.ribbonPageEmployee.Text = "Employee";
+            // 
+            // ribbonPageGroupEmployee
+            // 
+            this.ribbonPageGroupEmployee.ItemLinks.Add(this.btnUserMgt);
+            this.ribbonPageGroupEmployee.ItemLinks.Add(this.btnAdminPage);
+            this.ribbonPageGroupEmployee.Name = "ribbonPageGroupEmployee";
+            this.ribbonPageGroupEmployee.Text = "Management";
+            // 
+            // ribbonPageStatistic
+            // 
+            this.ribbonPageStatistic.ItemLinks.Add(this.btnStatisticEmployee);
+            this.ribbonPageStatistic.Name = "ribbonPageStatistic";
+            this.ribbonPageStatistic.Text = "Statistics";
+            // 
             this.ribbonGroupEmployee.Name = "ribbonGroupEmployee";
-            this.ribbonGroupEmployee.Text = "Sales Project";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnCreateProduct);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnEditProduct);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnDeleteProduct);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnSearchProduct);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnSaveProduct);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barBtnPrintProduct);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Product Management";
+            this.ribbonGroupEmployee.Text = "Employee";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.skinRibbonTheme);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Theme";
+            // ribbonPageGroupTheme
+            // 
+            this.ribbonPageGroupTheme.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonPageGroupTheme.Name = "ribbonPageGroupTheme";
+            this.ribbonPageGroupTheme.Text = "Theme";
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 735);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 518);
             this.ribbonStatusBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1446, 29);
-            // 
-            // gridGroupRole
-            // 
-            this.gridGroupRole.Location = new System.Drawing.Point(12, 186);
-            this.gridGroupRole.MainView = this.gridView1;
-            this.gridGroupRole.MenuManager = this.ribbon;
-            this.gridGroupRole.Name = "gridGroupRole";
-            this.gridGroupRole.Size = new System.Drawing.Size(1422, 263);
-            this.gridGroupRole.TabIndex = 2;
-            this.gridGroupRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridGroupRole;
-            this.gridView1.Name = "gridView1";
-            // 
-            // gridUserRole
-            // 
-            this.gridUserRole.Location = new System.Drawing.Point(12, 455);
-            this.gridUserRole.MainView = this.gridView2;
-            this.gridUserRole.MenuManager = this.ribbon;
-            this.gridUserRole.Name = "gridUserRole";
-            this.gridUserRole.Size = new System.Drawing.Size(1422, 275);
-            this.gridUserRole.TabIndex = 3;
-            this.gridUserRole.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridUserRole;
-            this.gridView2.Name = "gridView2";
-            // 
-            // labelUsername
-            // 
-            this.labelUsername.Appearance.Font = new System.Drawing.Font("Tahoma", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Appearance.Options.UseFont = true;
-            this.labelUsername.Location = new System.Drawing.Point(1059, 90);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(73, 40);
-            this.labelUsername.TabIndex = 6;
-            this.labelUsername.Text = "Hello";
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1022, 23);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1446, 764);
-            this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.gridUserRole);
-            this.Controls.Add(this.gridGroupRole);
+            this.ClientSize = new System.Drawing.Size(1022, 541);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbon);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -301,22 +214,18 @@ namespace ManagementStore.Form
         private DevExpress.XtraBars.BarButtonItem barBtn_Logout;
         private DevExpress.XtraBars.BarButtonItem barBtn_Profile;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonTheme;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageTheme;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTheme;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barBtnCreate;
+        private DevExpress.XtraBars.BarButtonItem barBtnSearchProduct;
+        private DevExpress.XtraBars.BarButtonItem barBtnStatisticProduct;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProduct;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonGroupEmployee;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        public DevExpress.XtraGrid.GridControl gridUserRole;
-        public DevExpress.XtraGrid.GridControl gridGroupRole;
-        public DevExpress.XtraBars.BarButtonItem barBtnCreateProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnEditProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnDeleteProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnSearchProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnSaveProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnPrintProduct;
-        public DevExpress.XtraBars.BarButtonItem barBtnSaveSale;
-        public DevExpress.XtraBars.BarButtonItem barBtnDeleteSale;
-        public DevExpress.XtraBars.BarButtonItem barBtnPrintSale;
-        public DevExpress.XtraEditors.LabelControl labelUsername;
     }
 }

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ComputerStoreDataSet" targetNamespace="http://tempuri.org/ComputerStoreDataSet.xsd" xmlns:mstns="http://tempuri.org/ComputerStoreDataSet.xsd" xmlns="http://tempuri.org/ComputerStoreDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ComputerStoreDataSet" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ComputerStoreDataSet (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.ManagementStore.Properties.Settings.GlobalReference.Default.ComputerStoreDataSet" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StatisticProductTableAdapter" GeneratorDataComponentClassName="StatisticProductTableAdapter" Name="StatisticProduct" UserDataComponentName="StatisticProductTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ComputerStoreDataSet (Settings)" DbObjectName="ComputerStore.dbo.StatisticProduct" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT CreatedAt, Amount FROM dbo.StatisticProduct</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CreatedAt" DataSetColumn="CreatedAt" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ComputerStoreDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ComputerStoreDataSet" msprop:Generator_UserDSName="ComputerStoreDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="StatisticProduct" msprop:Generator_TableClassName="StatisticProductDataTable" msprop:Generator_TableVarName="tableStatisticProduct" msprop:Generator_RowChangedName="StatisticProductRowChanged" msprop:Generator_TablePropName="StatisticProduct" msprop:Generator_RowDeletingName="StatisticProductRowDeleting" msprop:Generator_RowChangingName="StatisticProductRowChanging" msprop:Generator_RowEvHandlerName="StatisticProductRowChangeEventHandler" msprop:Generator_RowDeletedName="StatisticProductRowDeleted" msprop:Generator_RowClassName="StatisticProductRow" msprop:Generator_UserTableName="StatisticProduct" msprop:Generator_RowEvArgName="StatisticProductRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CreatedAt" msprop:Generator_ColumnVarNameInTable="columnCreatedAt" msprop:Generator_ColumnPropNameInRow="CreatedAt" msprop:Generator_ColumnPropNameInTable="CreatedAtColumn" msprop:Generator_UserColumnName="CreatedAt" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

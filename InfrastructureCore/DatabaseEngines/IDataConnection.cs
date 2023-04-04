@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace InfrastructureCore.DatabaseEngines
 {
-    public  interface IDataConnection: IDisposable
+    public interface IDataConnection: IDisposable
     {
         SqlTransaction BeginTransaction();
         MySqlTransaction BeginMySqlTransaction();

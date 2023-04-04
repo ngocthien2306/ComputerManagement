@@ -29,159 +29,63 @@ namespace ManagementStore.Form.User
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelFirstName = new System.Windows.Forms.Label();
-            this.labelLastName = new System.Windows.Forms.Label();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.labelAddress = new System.Windows.Forms.Label();
-            this.labelPhone = new System.Windows.Forms.Label();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
+            this.btnUpdateUser = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControlInfo = new DevExpress.XtraEditors.GroupControl();
+            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.birthdayDate = new DevExpress.XtraEditors.DateEdit();
+            this.labelControlAddress = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputAddress = new DevExpress.XtraEditors.TextEdit();
+            this.labelControlPhone = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputPhone = new DevExpress.XtraEditors.TextEdit();
+            this.labelControlEmail = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlLname = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlFname = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputEmail = new DevExpress.XtraEditors.TextEdit();
+            this.txtInputLastname = new DevExpress.XtraEditors.TextEdit();
+            this.txtInputFirstname = new DevExpress.XtraEditors.TextEdit();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlRePass = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlPassword = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlUsername = new DevExpress.XtraEditors.LabelControl();
+            this.txtInputRePassword = new DevExpress.XtraEditors.TextEdit();
+            this.txtInputPassword = new DevExpress.XtraEditors.TextEdit();
+            this.txtInputUsername = new DevExpress.XtraEditors.TextEdit();
+            this.btnTakePicture = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUploadImage = new DevExpress.XtraEditors.SimpleButton();
+            this.PictureEditUser = new DevExpress.XtraEditors.PictureEdit();
+            this.btnChangePassword = new DevExpress.XtraEditors.SimpleButton();
+            this.txtInputOldPassword = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).BeginInit();
+            this.groupControlInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.birthdayDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birthdayDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputAddress.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputFirstname.Properties)).BeginInit();
+            this.xtraTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputRePassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputOldPassword.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // labelFirstName
-            // 
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFirstName.Location = new System.Drawing.Point(22, 27);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(106, 24);
-            this.labelFirstName.TabIndex = 0;
-            this.labelFirstName.Text = "First Name";
-            // 
-            // labelLastName
-            // 
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLastName.Location = new System.Drawing.Point(22, 68);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(105, 24);
-            this.labelLastName.TabIndex = 0;
-            this.labelLastName.Text = "Last Name";
-            // 
-            // labelEmail
-            // 
-            this.labelEmail.AutoSize = true;
-            this.labelEmail.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmail.Location = new System.Drawing.Point(22, 110);
-            this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(59, 24);
-            this.labelEmail.TabIndex = 0;
-            this.labelEmail.Text = "Email";
-            // 
-            // labelAddress
-            // 
-            this.labelAddress.AutoSize = true;
-            this.labelAddress.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAddress.Location = new System.Drawing.Point(22, 150);
-            this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(80, 24);
-            this.labelAddress.TabIndex = 0;
-            this.labelAddress.Text = "Address";
-            // 
-            // labelPhone
-            // 
-            this.labelPhone.AutoSize = true;
-            this.labelPhone.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPhone.Location = new System.Drawing.Point(22, 192);
-            this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(65, 24);
-            this.labelPhone.TabIndex = 0;
-            this.labelPhone.Text = "Phone";
-            // 
-            // labelUsername
-            // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsername.Location = new System.Drawing.Point(22, 233);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(100, 24);
-            this.labelUsername.TabIndex = 0;
-            this.labelUsername.Text = "Username";
-            // 
-            // labelPassword
-            // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(22, 273);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(94, 24);
-            this.labelPassword.TabIndex = 0;
-            this.labelPassword.Text = "Password";
-            // 
-            // txtFirstName
-            // 
-            this.txtFirstName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(189, 19);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(290, 32);
-            this.txtFirstName.TabIndex = 1;
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(189, 60);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(290, 32);
-            this.txtLastName.TabIndex = 1;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(189, 102);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(290, 32);
-            this.txtEmail.TabIndex = 1;
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(189, 142);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(290, 32);
-            this.txtAddress.TabIndex = 1;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(189, 184);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(290, 32);
-            this.txtPhone.TabIndex = 1;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(189, 225);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(290, 32);
-            this.txtUsername.TabIndex = 1;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(189, 265);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(290, 32);
-            this.txtPassword.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnSave.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(151, 323);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(185, 32);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save Changes";
-            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // Profile
             // 
@@ -189,45 +93,34 @@ namespace ManagementStore.Form.User
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 367);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtPhone);
-            this.Controls.Add(this.txtAddress);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtLastName);
-            this.Controls.Add(this.txtFirstName);
-            this.Controls.Add(this.labelPassword);
-            this.Controls.Add(this.labelUsername);
-            this.Controls.Add(this.labelPhone);
-            this.Controls.Add(this.labelAddress);
-            this.Controls.Add(this.labelEmail);
-            this.Controls.Add(this.labelLastName);
-            this.Controls.Add(this.labelFirstName);
+            this.ClientSize = new System.Drawing.Size(1004, 536);
             this.Name = "Profile";
             this.Text = "Profile";
+            ((System.ComponentModel.ISupportInitialize)(this.groupControlInfo)).EndInit();
+            this.groupControlInfo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.birthdayDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.birthdayDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputAddress.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputLastname.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputFirstname.Properties)).EndInit();
+            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputRePassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureEditUser.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInputOldPassword.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelFirstName;
-        private System.Windows.Forms.Label labelLastName;
-        private System.Windows.Forms.Label labelEmail;
-        private System.Windows.Forms.Label labelAddress;
-        private System.Windows.Forms.Label labelPhone;
-        private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox txtFirstName;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Button btnSave;
     }
 }

@@ -39,16 +39,15 @@ namespace ManagementStore.Form.User
             this.radioBtnGuest = new System.Windows.Forms.RadioButton();
             this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
             this.hyperLinkRegister = new DevExpress.XtraEditors.HyperlinkLabelControl();
-            this.dxErrorPass = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.dxErrorUsername = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dxErrorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBoxRememberMe = new DevExpress.XtraEditors.CheckEdit();
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInputPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).BeginInit();
             this.groupControlRole.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorPass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorUsername)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtInputUsername
@@ -77,7 +76,7 @@ namespace ManagementStore.Form.User
             this.groupControlRole.Controls.Add(this.radioBtnAdmin);
             this.groupControlRole.Controls.Add(this.radioBtnStaff);
             this.groupControlRole.Controls.Add(this.radioBtnGuest);
-            this.groupControlRole.Location = new System.Drawing.Point(93, 209);
+            this.groupControlRole.Location = new System.Drawing.Point(93, 190);
             this.groupControlRole.Name = "groupControlRole";
             this.groupControlRole.Size = new System.Drawing.Size(358, 68);
             this.groupControlRole.TabIndex = 2;
@@ -118,7 +117,7 @@ namespace ManagementStore.Form.User
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(159, 318);
+            this.btnLogin.Location = new System.Drawing.Point(164, 286);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(208, 45);
             this.btnLogin.TabIndex = 3;
@@ -127,22 +126,16 @@ namespace ManagementStore.Form.User
             // 
             // hyperLinkRegister
             // 
-            this.hyperLinkRegister.Location = new System.Drawing.Point(179, 296);
+            this.hyperLinkRegister.Location = new System.Drawing.Point(184, 264);
             this.hyperLinkRegister.Name = "hyperLinkRegister";
             this.hyperLinkRegister.Size = new System.Drawing.Size(174, 16);
             this.hyperLinkRegister.TabIndex = 4;
             this.hyperLinkRegister.Text = "Click here to create a account!";
             this.hyperLinkRegister.Click += new System.EventHandler(this.hyperLinkRegister_Click);
             // 
-            // dxErrorPass
+            // errorProvider1
             // 
-            this.dxErrorPass.ContainerControl = this;
-            // 
-            // dxErrorUsername
-            // 
-            this.dxErrorUsername.ContainerControl = this;
-            // 
-            // checkEdit1
+            this.errorProvider1.ContainerControl = this;
             // 
             this.checkEdit1.Location = new System.Drawing.Point(341, 183);
             this.checkEdit1.Name = "checkEdit1";
@@ -155,7 +148,6 @@ namespace ManagementStore.Form.User
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 389);
-            this.Controls.Add(this.checkEdit1);
             this.Controls.Add(this.hyperLinkRegister);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.groupControlRole);
@@ -169,9 +161,7 @@ namespace ManagementStore.Form.User
             ((System.ComponentModel.ISupportInitialize)(this.groupControlRole)).EndInit();
             this.groupControlRole.ResumeLayout(false);
             this.groupControlRole.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorPass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorUsername)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,8 +176,6 @@ namespace ManagementStore.Form.User
         private System.Windows.Forms.RadioButton radioBtnGuest;
         private DevExpress.XtraEditors.SimpleButton btnLogin;
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperLinkRegister;
-        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorPass;
-        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorUsername;
-        private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

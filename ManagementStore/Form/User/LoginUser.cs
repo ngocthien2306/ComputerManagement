@@ -11,13 +11,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManagementStore.Form.Production;
-using ManagementStore.Extensions;
-using ManagementStore.Model.UserModel;
 
 namespace ManagementStore.Form.User
 {
     public partial class LoginUser : DevExpress.XtraEditors.XtraForm
     {
+
         public LoginUser()
         {
             InitializeComponent();
@@ -26,8 +25,10 @@ namespace ManagementStore.Form.User
 
         private void LoginUser_Load(object sender, EventArgs e)
         {
-            txtInputPassword.Text = "thien123";
+            txtInputPassword.Text = "user123456";
             txtInputUsername.Text = "ngocthien";
+            txtInputPassword.Text = "";
+
             radioBtnStaff.Checked = true;
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
@@ -37,17 +38,12 @@ namespace ManagementStore.Form.User
         {
             string username = txtInputUsername.Text;
             string password = txtInputPassword.Text;
- 
+            var role = radioBtnAdmin.Checked == true ? 1 : radioBtnStaff.Checked ? 2 : 3;
             if(ValidateChildren(ValidationConstraints.Enabled))
             {
-                var result = userServices.LoginUser(username, password);
-                var appUser = (AppUser) result.Data;
-                
-                if (result.Success)
+                var result = userServices.LoginUser(username, password, role);
+                if (result.Success && result.Data.ToString() == "2")
                 {
-                    var groupAccessRole = userServices.GetListGroupAccessMenus(appUser.GroupRoleId);
-                    var userAccessRole = userServices.GetListUserAccessMenus(appUser.Id);
-
                     Main main = new Main();
                     main.gridGroupRole.DataSource = groupAccessRole;
                     main.gridUserRole.DataSource = userAccessRole;
@@ -69,10 +65,18 @@ namespace ManagementStore.Form.User
                     main.Show();
                     Hide();
                 }
+                else if (result.Success && result.Data.ToString() == "3")
+                {
+                    Productions productions = new Productions();
+                    productions.Show();
+                    Hide();
+                }
                 else
                 {
-                    XtraMessageBox.Show(result.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    userServices.SaveBehaviorUser(appUser.Id, "LOGIN", "");
                 }
+                
+
             }
         }
 
@@ -91,29 +95,16 @@ namespace ManagementStore.Form.User
                 e.Cancel = true;
 
                 txtInputUsername.Focus();
-                dxErrorUsername.SetError(txtInputUsername, "Please input username!");
+                errorProvider1.SetError(txtInputUsername, "Please input username!");
             }
             else
             {
                 e.Cancel = false;
-                dxErrorUsername.SetError(txtInputUsername, null);
+                errorProvider1.SetError(txtInputUsername, null);
             }
-        }
 
-        private void txtInputPassword_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtInputPassword.Text))
-            {
-                e.Cancel = true;
-
-                txtInputPassword.Focus();
-                dxErrorPass.SetError(txtInputPassword, "Please input password!");
-            }
-            else
-            {
-                e.Cancel = false;
-                dxErrorPass.SetError(txtInputPassword, null);
-            }
+            string roleId = role == "GUEST" ? "4" : role == "EMPLOYEE" ? "3" : "2";
+            return roleId;
         }
     }
 }

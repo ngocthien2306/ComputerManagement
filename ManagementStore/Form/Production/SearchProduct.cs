@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ManagementStore.Form.Production
 {
-    public partial class Productions : DevExpress.XtraEditors.XtraForm
+    public partial class SearchProduct : DevExpress.XtraEditors.XtraForm
     {
-        public Productions()
+        public SearchProduct()
         {
             InitializeComponent();
         }
