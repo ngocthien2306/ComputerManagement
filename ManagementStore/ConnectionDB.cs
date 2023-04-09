@@ -18,7 +18,7 @@ namespace ManagementStore
         }
         public static void SetConnectionString(string login, string password)
         {
-            string connect = "Data Source=26.178.255.191, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=" + login + "; Password=" + password;
+            string connect = "Data Source=HERMES;Initial Catalog=ComputerStore;Integrated Security=True";
             SqlString = @connect;
         }
         public static SqlConnection GetConnection
@@ -45,7 +45,7 @@ namespace ManagementStore
     }
     public class My_Database
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=26.178.255.191, 1433;Initial Catalog=ComputerStore;Persist Security Info=True;User ID=thiennguyen; Password=ngocthien");
+        SqlConnection connect = new SqlConnection(@"Data Source=HERMES;Initial Catalog=ComputerStore;Integrated Security=True");
         public SqlConnection GetConnection
         {
             get { return this.connect; }
